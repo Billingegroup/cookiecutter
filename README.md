@@ -1,2 +1,2 @@
-# diffpy-cookie-cutter
-A cookie-cutter for DiffPy packages.
+# diffpy-cookiecutter
+a cookiecutter for diffpy packages

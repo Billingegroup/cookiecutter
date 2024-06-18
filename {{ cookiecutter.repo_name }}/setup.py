@@ -46,7 +46,7 @@ setup(
     long_description=readme,
     author="{{ cookiecutter.full_name }}",
     author_email="{{ cookiecutter.email }}",
-    url="https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}",
+    url="https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}",
     python_requires=">={}".format(".".join(str(n) for n in min_version)),
     packages=find_packages(exclude=["docs", "tests"]),
     entry_points={
