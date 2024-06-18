@@ -1,0 +1,76 @@
+name: Docs
+
+on:
+  push:
+  pull_request:
+
+
+jobs:
+  publish-docs:
+    name: Build and publish documentation
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.8", "3.9", "3.10"]
+      fail-fast: false
+
+    defaults:
+      run:
+        shell: bash -l {0}
+
+    steps:
+      - name: Set environment variable
+        run: |
+          export REPOSITORY_NAME=${GITHUB_REPOSITORY#*/}  # just the repo, as opposed to org/repo
+          echo "REPOSITORY_NAME=${REPOSITORY_NAME}" >> $GITHUB_ENV
+
+      - uses: actions/checkout@v3
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Build example code
+        shell: 'script --return --quiet --command "bash -l {0}"'
+        run: |
+            set -vxeo pipefail
+
+            pip install -r requirements.txt
+            ./run_cookiecutter_example.py
+
+            # Test the style with pre-commit
+            cd example/
+            git config --global user.name "CI Tester"
+            git config --global user.email "noreply@github.com"
+            git init
+            git add .
+            git commit -m "Initial commit"
+            pre-commit run --all-files
+            cd ..
+
+            pip install -e example/
+            ./copy_user_content.sh
+            pytest example/
+            
+      - name: Build docs
+        run: make -C docs html
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.REPOSITORY_NAME }}-py${{ matrix.python-version }}-docs
+          path: docs/build/html/
+        
+      - name: Publish docs
+        # We pin to the SHA, not the tag, for security reasons.
+        # https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/security-hardening-for-github-actions#using-third-party-actions
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && matrix.python-version == '3.9' }}
+        uses: peaceiris/actions-gh-pages@bbdfb200618d235585ad98e965f4aafc39b4c501  # v3.7.3
+        with:
+          deploy_key: ${{ secrets.ACTIONS_DOCUMENTATION_DEPLOY_KEY }}
+          publish_branch: master
+          publish_dir: ./docs/build/html
+          external_repository: NSLS-II/NSLS-II.github.io
+          destination_dir: ${{ env.REPOSITORY_NAME }}
+          keep_files: true  # Keep old files.
+          force_orphan: false  # Keep git history.
