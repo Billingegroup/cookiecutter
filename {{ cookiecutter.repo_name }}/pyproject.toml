@@ -1,3 +1,54 @@
+[build-system]
+requires = ["setuptools>=62.0", "setuptools-git-versioning<2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "{{ cookiecutter.project_name }}"
+dynamic=['version']
+authors = [
+  { name="{{ cookiecutter.full_name }}", email="{{ cookiecutter.email }}" },
+]
+maintainers = [
+  { name="Simon J.L. Billinge group", email="simon.billinge@gmail.com" },
+]
+description = "{{ cookiecutter.project_short_description }}"
+keywords = []
+readme = "README.rst"
+requires-python = ">=3.9"
+classifiers = [
+        'Development Status :: 5 - Production/Stable',
+        'Environment :: Console',
+        'Intended Audience :: Developers',
+        'Intended Audience :: Science/Research',
+        'License :: OSI Approved :: BSD License',
+        'Operating System :: MacOS :: MacOS X',
+        'Operating System :: Microsoft :: Windows',
+        'Operating System :: POSIX',
+        'Operating System :: Unix',
+        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
+        'Programming Language :: Python :: 3.12',
+        'Topic :: Scientific/Engineering :: Physics',
+]
+
+[project.urls]
+Homepage = "{{ cookiecutter.url }}"
+Issues = "{{ cookiecutter.url }}/issues"
+
+[tool.setuptools-git-versioning]
+enabled = true
+template = "{tag}"
+dev_template = "{tag}"
+dirty_template = "{tag}"
+
+[tool.setuptools.packages.find]
+where = ["src"]  # list of folders that contain the packages (["."] by default)
+include = ["diffpy*"]  # package names should match these glob patterns (["*"] by default)
+exclude = ["{{ cookiecutter.project_name }}.tests*"]  # exclude packages matching these glob patterns (empty by default)
+namespaces = false  # to disable scanning PEP 420 namespaces (true by default)
+
 [tool.black]
 line-length = 115
 include = '\.pyi?$'
@@ -8,6 +59,8 @@ exclude = '''
   | \.mypy_cache
   | \.tox
   | \.venv
+  | \.rst
+  | \.txt
   | _build
   | buck-out
   | build
