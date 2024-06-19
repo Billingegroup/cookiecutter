@@ -88,8 +88,7 @@ def depart_youtube_node(self, node):
 
 def visit_youtube_node_latex(self, node):
     self.body.append(
-        r"\begin{quote}\begin{center}\fbox{\url{https://www.youtu.be/%s}}\end{center}\end{quote}"
-        % node["id"]
+        r"\begin{quote}\begin{center}\fbox{\url{https://www.youtu.be/%s}}\end{center}\end{quote}" % node["id"]
     )
 
 
@@ -115,9 +114,7 @@ class YouTube(Directive):
             aspect = None
         width = get_size(self.options, "width")
         height = get_size(self.options, "height")
-        return [
-            youtube(id=self.arguments[0], aspect=aspect, width=width, height=height)
-        ]
+        return [youtube(id=self.arguments[0], aspect=aspect, width=width, height=height)]
 
 
 def unsupported_visit_youtube(self, node):
