@@ -1,4 +1,5 @@
 {
+    "diffpy_project": ["y", "n"],
     "full_name": "Name or Organization",
     "email": "",
     "github_username": "",
