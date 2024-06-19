@@ -17,7 +17,7 @@ CONTROL_HEIGHT = 30
 def get_size(d, key):
     if key not in d:
         return None
-    m = re.match("(\d+)(|%|px)$", d[key])
+    m = re.match(r"(\d+)(|%|px)$", d[key])
     if not m:
         raise ValueError("invalid size %r" % d[key])
     return int(m.group(1)), m.group(2) or "px"
@@ -88,8 +88,7 @@ def depart_youtube_node(self, node):
 
 def visit_youtube_node_latex(self, node):
     self.body.append(
-        r"\begin{quote}\begin{center}\fbox{\url{https://www.youtu.be/%s}}\end{center}\end{quote}"
-        % node["id"]
+        r"\begin{quote}\begin{center}\fbox{\url{https://www.youtu.be/%s}}\end{center}\end{quote}" % node["id"]
     )
 
 
@@ -107,7 +106,7 @@ class YouTube(Directive):
     def run(self):
         if "aspect" in self.options:
             aspect = self.options.get("aspect")
-            m = re.match("(\d+):(\d+)", aspect)
+            m = re.match(r"(\d+):(\d+)", aspect)
             if m is None:
                 raise ValueError("invalid aspect ratio %r" % aspect)
             aspect = tuple(int(x) for x in m.groups())
@@ -115,9 +114,7 @@ class YouTube(Directive):
             aspect = None
         width = get_size(self.options, "width")
         height = get_size(self.options, "height")
-        return [
-            youtube(id=self.arguments[0], aspect=aspect, width=width, height=height)
-        ]
+        return [youtube(id=self.arguments[0], aspect=aspect, width=width, height=height)]
 
 
 def unsupported_visit_youtube(self, node):
