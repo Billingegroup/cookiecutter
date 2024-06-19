@@ -8,12 +8,12 @@ exclude = '''
   | \.mypy_cache
   | \.tox
   | \.venv
-  | _build
+  | _build/
   | buck-out
-  | build
-  | dist
-  | \.*/doc/source/conf\.py
+  | build/
+  | dist/
   | blib2to3
-  | tests/data
+  | tests/data/
+  | .*conf\.py$
 )/
 '''
