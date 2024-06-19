@@ -12,7 +12,7 @@ exclude = '''
   | buck-out
   | build
   | dist
-  | .*/doc/source/conf\.py
+  | \.*/doc/source/conf\.py
   | blib2to3
   | tests/data
 )/
