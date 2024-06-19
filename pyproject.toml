@@ -10,8 +10,9 @@ exclude = '''
   | \.venv
   | _build/
   | buck-out
-  | build/
-  | dist/
+  | build
+  | dist
+  | ./doc/source/conf\.py
   | blib2to3
   | tests/data/
   | .*conf\.py$
