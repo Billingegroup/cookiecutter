@@ -1,9 +1,9 @@
 {
-    "diffpy_project": ["y", "n"],
     "full_name": "Name or Organization",
+    "project_name": "MyProject",
     "email": "",
+    "author_name": "",
     "github_username": "",
-    "project_name": "Your Project Name",
     "package_dist_name": "{{ cookiecutter.project_name|replace(' ', '-')|lower }}",
     "package_dir_name": "{{ cookiecutter.project_name|replace(' ', '_')|replace('-', '_')|lower }}",
     "repo_name": "{{ cookiecutter.project_name|replace(' ', '-')|lower }}",
