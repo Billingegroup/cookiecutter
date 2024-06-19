@@ -12,7 +12,7 @@ exclude = '''
   | buck-out
   | build
   | dist
-  | \doc\source\conf.py
+  | doc\source\conf.py
 
   # The following are specific to Black, you probably don't want those.
   | blib2to3
