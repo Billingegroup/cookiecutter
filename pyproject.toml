@@ -12,7 +12,7 @@ exclude = '''
   | buck-out
   | build
   | dist
-  | \{\{ cookiecutter\.repo_name \}\}/doc/source/conf\.py
+  | **/doc/source/conf\.py
   | blib2to3
   | tests/data
 )/
