@@ -6,8 +6,8 @@ exclude =
     dist,
     versioneer.py,
     labpdfproc/_version.py,
-    doc/manual/source/conf.py
-    {{ cookiecutter.repo_name }}/setup.py
+    doc/manual/source/conf.py,
+    {{ cookiecutter.repo_name }}/setup.py,
     {{ cookiecutter.repo_name }}/doc/source/conf.py
 max-line-length = 115
 # Ignore some style 'errors' produced while formatting by 'black' (see link below)
