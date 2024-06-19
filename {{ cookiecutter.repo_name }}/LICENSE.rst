@@ -1,7 +1,12 @@
-BSD 3-Clause License
+This program is part of the DiffPy open-source project at Columbia University
+and is available subject to the conditions and terms laid out below.
 
-Copyright (c) {% now 'utc', '%Y' %}, {{ cookiecutter.full_name }}
+Copyright (c) {% now 'utc', '%Y' %}, The Trustees of Columbia Unversity
+in the City of New York.
 All rights reserved.
+
+For more information please visit the diffpy web-page at http://diffpy.org or
+email Prof. Simon Billinge at sb2896@columbia.edu.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:

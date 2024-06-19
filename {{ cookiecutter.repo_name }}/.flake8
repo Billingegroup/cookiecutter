@@ -4,9 +4,9 @@ exclude =
     __pycache__,
     build,
     dist,
-    versioneer.py,
-    {{ cookiecutter.package_dir_name }}/_version.py,
+    src/diffpy/{{ cookiecutter.package_dir_name }}/version.py,
     docs/source/conf.py
 max-line-length = 115
-# Ignore some style 'errors' produced while formatting by 'black'
-ignore = E203, W503
+# Ignore some style 'errors' produced while formatting by 'black' (see link below)
+# https://black.readthedocs.io/en/stable/guides/using_black_with_other_tools.html#labels-why-pycodestyle-warnings
+extend-ignore = E203

@@ -1,13 +1,9 @@
-=======
-Credits
+Authors
 =======
 
-Maintainer
-----------
-
-* {{ cookiecutter.full_name }} <{{ cookiecutter.email }}>
+{{ cookiecutter.full_name }}
 
 Contributors
 ------------
 
-None yet. Why not be the first? See: CONTRIBUTING.rst
+For a list of contributors, visit https://github.com/diffpy/{{ cookiecutter.repo_name }}/graphs/contributors.
