@@ -14,15 +14,6 @@ p.sendline("diffpy")
 p.expect("project_name .*")
 p.sendline("diffpy.utils")
 
-p.expect("author_name .*")
-p.sendline("Simon Billinge")
-
-p.expect("github_username .*")
-p.sendline("sbillinge")
-
-p.expect("email .*")
-p.sendline("sb2896@columbia.edu")
-
 p.expect("package_dist_name .*")
 p.sendline("")
 
