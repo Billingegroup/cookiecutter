@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-import pexpect
 from pathlib import Path
+
+import pexpect
 
 # This assumes you are running this from a directory called scratch/diffpy.utils
 # where scratch is at the same level as dev in your tree.
