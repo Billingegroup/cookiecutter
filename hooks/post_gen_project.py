@@ -1,15 +1,16 @@
 import datetime
-from pathlib import Path
 import shutil
+from pathlib import Path
 
 # All cookie-cutter hooks run on project root, but good to enforce
 ROOT = Path.cwd()
+
 
 def __gen_init__(module_name):
     __init__ = f"""#!/usr/bin/env python
 ##############################################################################
 #
-# (c) {datetime.date.today().year} The Trustees of Columbia University in the City of New York. 
+# (c) {datetime.date.today().year} The Trustees of Columbia University in the City of New York.
 # All rights reserved.
 #
 # File coded by: {{ cookiecutter.author_name }}
@@ -31,6 +32,7 @@ __path__ = extend_path(__path__, __name__)
 """
     return __init__
 
+
 # Add module packages for each leading period
 def add_supermodules(ROOT, name):
     src_dir = ROOT / "src"
@@ -40,7 +42,7 @@ def add_supermodules(ROOT, name):
     cp_dir = c_dir / package_dir_name  # Current package directory
 
     # Get the necessary modules given the period spacings
-    module_names = name.split('.')
+    module_names = name.split(".")
     for i, module in enumerate(module_names):
         module_names[i] = module.strip()
 
@@ -63,7 +65,7 @@ def add_supermodules(ROOT, name):
 
         # Make __init__.py file
         init_file = d_dir / "__init__.py"
-        with open(init_file, 'w') as ifile:
+        with open(init_file, "w") as ifile:
             ifile.write(__gen_init__(ns_module_name))
         c_dir = c_dir / ns_module_name
         cp_dir = c_dir / package_dir_name
@@ -71,5 +73,5 @@ def add_supermodules(ROOT, name):
     # Rename the final destination module
     cp_dir.rename(c_dir / module_names[-1])
 
-add_supermodules(ROOT, "{{ cookiecutter.project_name }}")
 
+add_supermodules(ROOT, "{{ cookiecutter.project_name }}")
