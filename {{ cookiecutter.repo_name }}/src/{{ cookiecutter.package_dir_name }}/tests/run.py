@@ -29,7 +29,7 @@ if __name__ == "__main__":
         warnings.simplefilter("default")
         # also affect subprocesses
         os.environ["PYTHONWARNINGS"] = "default"
-    from {{ cookiecutter.project_name }}.tests import test
+    from {{cookiecutter.project_name}}.tests import test
 
     # produce zero exit code for a successful test
     sys.exit(not test().wasSuccessful())
