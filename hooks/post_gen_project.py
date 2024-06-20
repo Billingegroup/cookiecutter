@@ -13,7 +13,7 @@ def __gen_init__(module_name):
 # (c) {datetime.date.today().year} The Trustees of Columbia University in the City of New York.
 # All rights reserved.
 #
-# File coded by: {{ cookiecutter.author_name }}
+# File coded by: Billinge group
 #
 # See AUTHORS.rst for a list of people who contributed.
 # See LICENSE.rst for license information.
