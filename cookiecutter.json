@@ -1,7 +1,7 @@
 {
-    "github_org": "Name or Organization",
+    "github_org": "diffpy",
     "project_name": "diffpy.my_project",
-    "author_name": "",
+    "author_name": "Billinge group",
     "github_username": "",
     "email": "",
     "package_dist_name": "{{ cookiecutter.project_name|replace(' ', '-')|lower }}",
