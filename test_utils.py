@@ -1,21 +1,27 @@
 #!/usr/bin/env python3
+from pathlib import Path
+
 import pexpect
 
 # This assumes you are running this from a directory called scratch/diffpy.utils
 # where scratch is at the same level as dev in your tree.
-p = pexpect.spawn("cookiecutter ../../dev/cookiecutter")
+cc_path = (Path.cwd() / ".." / ".." / "cookiecutter").resolve()
+p = pexpect.spawn(f"cookiecutter {cc_path}")
 
 p.expect("full_name .*")
 p.sendline("diffpy")
 
-p.expect("email .*")
-p.sendline("sb2896@columbia.edu")
+p.expect("project_name .*")
+p.sendline("diffpy.utils")
+
+p.expect("author_name .*")
+p.sendline("Simon Billinge")
 
 p.expect("github_username .*")
 p.sendline("sbillinge")
 
-p.expect("project_name .*")
-p.sendline("diffpy.utils")
+p.expect("email .*")
+p.sendline("sb2896@columbia.edu")
 
 p.expect("package_dist_name .*")
 p.sendline("")
