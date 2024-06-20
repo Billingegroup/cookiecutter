@@ -7,7 +7,7 @@
 # File coded by: Billinge Group members and community contributors.
 #
 # See GitHub contributions for a more detailed list of contributors.
-# https://github.com/{{ cookiecutter.full_name }}/{{ cookiecutter.repo_name }}/graphs/contributors
+# https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.repo_name }}/graphs/contributors
 #
 # See LICENSE.rst for license information.
 #
