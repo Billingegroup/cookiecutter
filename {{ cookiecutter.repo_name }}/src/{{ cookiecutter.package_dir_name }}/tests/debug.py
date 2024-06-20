@@ -25,7 +25,7 @@ Exceptions raised by failed tests or other errors are not caught.
 if __name__ == "__main__":
     import sys
 
-    from {{ cookiecutter.project_name }}.tests import testsuite
+    from {{cookiecutter.project_name}}.tests import testsuite
 
     pattern = sys.argv[1] if len(sys.argv) > 1 else ""
     suite = testsuite(pattern)
