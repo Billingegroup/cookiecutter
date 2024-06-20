@@ -19,14 +19,14 @@ the following workflow:
 
 ### One-time Setup:
 1. have all your code off a dir called `dev` or sthg like that
-2. at the same level as `dev` create a scratch area called `scratch`
+2. within `dev` create a scratch area called `scratch`
 1. clone `diffpy.utils` in the scratch area of my hard-drive
 1. cd to this directory.
 1. create an env that has `cookiecutter` and `pexpect` in it.
 
 ## Running:
 1. cd to `scratch/diffpy.utils`
-1. run `python /path/to/your/local/cookiecutter_project/test_utils.py`  which for me was `python ../dev/cookiecutter/test_utils.py`
+1. run `python /path/to/your/local/cookiecutter_project/test_utils.py`  which for me was `python ../../cookiecutter/test_utils.py`
 1. This creates a new empty `diffpy.utils` under the old one using the current version of the cookie cutter (watch out, cookie cutter sometimes caches so if you make a change and it is not reflected, clear the cache).
 1. cd to the directory that contains the file you are working on (for me it is `cd .` )
 1. copy the file I am working on that was created by the cookiecutter to the current directory (for me it was `cp diffpy.utils/.pre-commit-config.yaml .`).  It will overwrite the version that is already there.
