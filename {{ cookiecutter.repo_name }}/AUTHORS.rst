@@ -1,11 +1,7 @@
+Authors
 =======
-Credits
-=======
+*** EDIT ***
 
-Maintainer
-----------
-
-* {{ cookiecutter.full_name }} <{{ cookiecutter.email }}>
 
 Contributors
 ------------

@@ -3,17 +3,11 @@ import pexpect
 
 p = pexpect.spawn("cookiecutter .")
 
-p.expect("full_name .*")
-p.sendline("Brookhaven National Lab")
-
-p.expect("email .*")
-p.sendline("dallan@bnl.gov")
-
-p.expect("github_username .*")
-p.sendline("danielballan")
+p.expect("github_org .*")
+p.sendline("diffpy")
 
 p.expect("project_name .*")
-p.sendline("Example")
+p.sendline("diffpy.my_project")
 
 p.expect("package_dist_name .*")
 p.sendline("")

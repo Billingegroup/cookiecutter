@@ -4,6 +4,8 @@ from os import path
 import versioneer
 from setuptools import find_packages, setup
 
+author_email = "sb2896@columbia.edu"
+
 # NOTE: This file must remain Python 2 compatible for the foreseeable future,
 # to ensure that we error out properly for people with outdated setuptools
 # and/or pip.
@@ -43,9 +45,9 @@ setup(
     cmdclass=versioneer.get_cmdclass(),
     description="{{ cookiecutter.project_short_description }}",
     long_description=readme,
-    author="{{ cookiecutter.full_name }}",
-    author_email="{{ cookiecutter.email }}",
-    url="https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}",
+    author="Billinge Group and community contributors",
+    author_email=author_email,
+    url="https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.repo_name }}",
     python_requires=">={}".format(".".join(str(n) for n in min_version)),
     packages=find_packages(exclude=["docs", "tests"]),
     entry_points={

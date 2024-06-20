@@ -1,6 +1,6 @@
 BSD 3-Clause License
 
-Copyright (c) {% now 'utc', '%Y' %}, {{ cookiecutter.full_name }}
+Copyright (c) {% now 'utc', '%Y' %}, {{ cookiecutter.github_org }}
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
