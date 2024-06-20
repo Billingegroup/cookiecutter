@@ -5,7 +5,7 @@ Credits
 Maintainer
 ----------
 
-* {{ cookiecutter.full_name }} <{{ cookiecutter.email }}>
+* {{ cookiecutter.github_org }} <{{ cookiecutter.email }}>
 
 Contributors
 ------------

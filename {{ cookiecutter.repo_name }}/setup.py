@@ -43,7 +43,7 @@ setup(
     cmdclass=versioneer.get_cmdclass(),
     description="{{ cookiecutter.project_short_description }}",
     long_description=readme,
-    author="{{ cookiecutter.full_name }}",
+    author="{{ cookiecutter.github_org }}",
     author_email="{{ cookiecutter.email }}",
     url="https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}",
     python_requires=">={}".format(".".join(str(n) for n in min_version)),

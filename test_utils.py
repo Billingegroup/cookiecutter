@@ -8,7 +8,7 @@ import pexpect
 cc_path = (Path.cwd() / ".." / ".." / "cookiecutter").resolve()
 p = pexpect.spawn(f"cookiecutter {cc_path}")
 
-p.expect("full_name .*")
+p.expect("github_org .*")
 p.sendline("diffpy")
 
 p.expect("project_name .*")

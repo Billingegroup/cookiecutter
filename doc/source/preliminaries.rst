@@ -105,7 +105,7 @@ goes wrong, and debug if necessary. We recommend you do the same.
 
    .. code-block:: bash
 
-      full_name [Name or Organization]: Brookhaven National Lab
+      github_org [Name or Organization]: Brookhaven National Lab
       email []: dallan@bnl.gov
       github_username []: danielballan
       project_name [Your Project Name]: Example

@@ -3,7 +3,7 @@ import pexpect
 
 p = pexpect.spawn("cookiecutter .")
 
-p.expect("full_name .*")
+p.expect("github_org .*")
 p.sendline("Brookhaven National Lab")
 
 p.expect("email .*")

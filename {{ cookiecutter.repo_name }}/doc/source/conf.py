@@ -68,8 +68,8 @@ master_doc = "index"
 
 # General information about the project.
 project = "{{ cookiecutter.project_name }}"
-copyright = "{% now 'utc', '%Y' %}, {{ cookiecutter.full_name }}"
-author = "{{ cookiecutter.full_name }}"
+copyright = "{% now 'utc', '%Y' %}, {{ cookiecutter.github_org }}"
+author = "{{ cookiecutter.github_org }}"
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the

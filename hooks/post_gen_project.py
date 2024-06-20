@@ -1,4 +1,3 @@
-import datetime
 import shutil
 from pathlib import Path
 
@@ -10,7 +9,7 @@ def __gen_init__(module_name):
     __init__ = f"""#!/usr/bin/env python
 ##############################################################################
 #
-# (c) {datetime.date.today().year} The Trustees of Columbia University in the City of New York.
+# (c) {% now 'utc', '%Y' %} The Trustees of Columbia University in the City of New York.
 # All rights reserved.
 #
 # File coded by: Billinge group
