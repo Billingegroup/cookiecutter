@@ -1,4 +1,3 @@
-import datetime
 import shutil
 from pathlib import Path
 
@@ -10,12 +9,14 @@ def __gen_init__(module_name):
     __init__ = f"""#!/usr/bin/env python
 ##############################################################################
 #
-# (c) {datetime.date.today().year} The Trustees of Columbia University in the City of New York.
+# (c) {% now 'utc', '%Y' %} The Trustees of Columbia University in the City of New York.
 # All rights reserved.
 #
-# File coded by: Billinge group
+# File coded by: Billinge Group members and community contributors.
 #
-# See AUTHORS.rst for a list of people who contributed.
+# See GitHub contributions for a more detailed list of contributors.
+# https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.repo_name }}
+#
 # See LICENSE.rst for license information.
 #
 ##############################################################################
