@@ -1,5 +1,4 @@
 import datetime
-import os
 import shutil
 from pathlib import Path
 
@@ -83,7 +82,7 @@ def replace_placeholders():
     repo_name = f"{full_name}/{project_name}"
 
     # Get path to main.yml
-    path = os.path.join(Path.cwd(), '.github', 'workflows', 'main.yml')
+    path = Path.cwd() / '.github' / 'workflows' / 'main.yml'
 
     # Read main.yml
     with open(path, 'r') as file:
