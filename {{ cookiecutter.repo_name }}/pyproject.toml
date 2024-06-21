@@ -12,7 +12,9 @@ maintainers = [
   { name="Simon J.L. Billinge group", email="simon.billinge@gmail.com" },
 ]
 description = "{{ cookiecutter.project_short_description }}"
-keywords = []
+{%- set keywds = [cookiecutter.keyword_1, cookiecutter.keyword_2, cookiecutter.keyword_3] -%}
+{% set keyword_list = keywds | select('string') | map('trim') | reject('equalto', '') | list %}
+keywords = {{ keyword_list }}
 readme = "README.rst"
 requires-python = ">=3.9"
 classifiers = [
@@ -41,8 +43,8 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/{{ cookiecutter.full_name }}/{{ cookiecutter.project_name }}/"
-Issues = "https://github.com/{{ cookiecutter.full_name }}/{{ cookiecutter.project_name }}/issues/"
+Homepage = "https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.project_name }}/"
+Issues = "https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.project_name }}/issues/"
 
 [tool.setuptools-git-versioning]
 enabled = true
