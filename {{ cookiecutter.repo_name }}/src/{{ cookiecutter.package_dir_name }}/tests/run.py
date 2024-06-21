@@ -17,6 +17,7 @@ python -m {{ cookiecutter.project_name }}.tests.run
 """
 
 import sys
+
 import pytest
 
 if __name__ == "__main__":
