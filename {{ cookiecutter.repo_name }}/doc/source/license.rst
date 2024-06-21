@@ -1,5 +1,9 @@
+.. _license:
+
 License
-=====
+=======
+
+.. code-block:: text
 
                                  Apache License
                            Version 2.0, January 2004
@@ -179,7 +183,7 @@ License
    END OF TERMS AND CONDITIONS
 
 {{coockiecutter.project_name}}
--------
+------------------------------
 Copyright {% now 'utc', '%Y' %} The Trustees of Columbia University in the City of New York.
 
 Licensed under the Apache License, Version 2.0 (the "License");
