@@ -1,4 +1,5 @@
 import datetime
+import os
 import shutil
 from pathlib import Path
 
@@ -74,4 +75,28 @@ def add_supermodules(ROOT, name):
     cp_dir.rename(c_dir / module_names[-1])
 
 
+# Replace placeholders in main.yml
+def replace_placeholders():
+    # Get cookiecutter vars for replacement
+    full_name = "{{ cookiecutter.full_name }}"
+    project_name = "{{ cookiecutter.project_name }}"
+    repo_name = f"{full_name}/{project_name}"
+
+    # Get path to main.yml
+    path = os.path.join(os.getcwd(), '.github', 'workflows', 'main.yml')
+
+    # Read main.yml
+    with open(path, 'r') as file:
+        mainyml = file.read()
+
+    # Replace placeholders
+    mainyml = mainyml.replace('REPO_NAME', repo_name)
+    mainyml = mainyml.replace('PROJECT_NAME', project_name)
+
+    # Write modification back to main.yml
+    with open(path, 'w') as file:
+        file.write(mainyml)
+
+
 add_supermodules(ROOT, "{{ cookiecutter.project_name }}")
+replace_placeholders()

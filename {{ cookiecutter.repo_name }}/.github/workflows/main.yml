@@ -16,10 +16,10 @@ jobs:
         matrix:
             os: ["ubuntu-latest"]
     steps:
-      - name: check out ${{ github.event.repository.name }}
+      - name: check out PROJECT_NAME
         uses: actions/checkout@v3
         with:
-          repository: ${{ github.repository }}
+          repository: REPO_NAME
           path: .
           fetch-depth: 0  # avoid shallow clone with no tags
 
@@ -36,7 +36,7 @@ jobs:
           python-version: 3
           auto-activate-base: false
 
-      - name: install ${{ github.event.repository.name }} requirements
+      - name: install PROJECT_NAME requirements
         shell: bash -l {0}
         run: |
           conda config --set always_yes yes --set changeps1 no
@@ -45,7 +45,7 @@ jobs:
           conda install --file requirements/run.txt
           conda install --file requirements/test.txt
           pip install .
-      - name: Validate ${{ github.event.repository.name }}
+      - name: Validate PROJECT_NAME
         shell: bash -l {0}
         run: |
           conda activate test
