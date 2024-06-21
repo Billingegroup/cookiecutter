@@ -3,8 +3,7 @@ line-length = 115
 include = '\.pyi?$'
 exclude = '''
 /(
-    \.git
-  | \.hg
+    \.git\
   | \.mypy_cache
   | \.tox
   | \.venv
@@ -12,9 +11,10 @@ exclude = '''
   | buck-out
   | build
   | dist
-  | ./doc/source/conf\.py
   | blib2to3
   | tests/data/
-  | .*conf\.py$
+  | hooks/post_gen_project.py$
+  | .*\.py$
+  | .*\.toml$
 )/
 '''
