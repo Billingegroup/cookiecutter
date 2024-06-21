@@ -41,8 +41,8 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/{{ cookiecutter.full_name }}/{{ cookiecutter.project_name }}"
-Issues = "https://github.com/{{ cookiecutter.full_name }}/{{ cookiecutter.project_name }}/issues"
+Homepage = "https://github.com/{{ cookiecutter.full_name }}/{{ cookiecutter.project_name }}/"
+Issues = "https://github.com/{{ cookiecutter.full_name }}/{{ cookiecutter.project_name }}/issues/"
 
 [tool.setuptools-git-versioning]
 enabled = true
