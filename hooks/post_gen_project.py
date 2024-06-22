@@ -77,7 +77,7 @@ def add_supermodules(ROOT, name):
 # Replace placeholders in main.yml
 def replace_placeholders():
     # Get cookiecutter vars for replacement
-    full_name = "{{ cookiecutter.full_name }}"
+    full_name = "{{ cookiecutter.github_org }}"
     project_name = "{{ cookiecutter.project_name }}"
     repo_name = f"{full_name}/{project_name}"
 
