@@ -12,9 +12,10 @@ maintainers = [
   { name="Simon J.L. Billinge group", email="simon.billinge@gmail.com" },
 ]
 description = "{{ cookiecutter.project_short_description }}"
-keywords = []
+{%- set keywords_list = (cookiecutter.keywords.split(',') if cookiecutter.keywords.strip() else []) %}
+keywords = {{ keywords_list }}
 readme = "README.rst"
-requires-python = ">=3.9"
+requires-python = ">={{ cookiecutter.minimum_supported_python_version }}"
 classifiers = [
         'Development Status :: 5 - Production/Stable',
         'Environment :: Console',
@@ -25,17 +26,11 @@ classifiers = [
         'Operating System :: Microsoft :: Windows',
         'Operating System :: POSIX',
         'Operating System :: Unix',
-        {%- if cookiecutter.minimum_supported_python_version|length == 3 -%} # Parse cookiecutter min version variable
-                {%- set min_version = cookiecutter.minimum_supported_python_version[-1] | int -%}
-        {%- elif cookiecutter.minimum_supported_python_version|length == 4 -%}
-                {%- set min_version = cookiecutter.minimum_supported_python_version[-2:] | int -%}
-        {%- else -%}
-                {%- set min_version = 8 -%} # Choose 3.8 as a failsafe
-        {%- endif -%}
+        {%- set min_version = cookiecutter.minimum_supported_python_version.split('.')[1] | int -%}
         {%- for version in [8, 9, 10, 11, 12] -%}
-                {%- if version >= min_version %}
+            {%- if version >= min_version %}
         'Programming Language :: Python :: 3.{{ version }}',
-        {%- endif -%}
+            {%- endif -%}
         {% endfor %}
         'Topic :: Scientific/Engineering :: Physics',
 ]
