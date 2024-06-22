@@ -15,7 +15,7 @@ description = "{{ cookiecutter.project_short_description }}"
 {%- set keywords_list = (cookiecutter.keywords.split(',') if cookiecutter.keywords.strip() else []) %}
 keywords = {{ keywords_list }}
 readme = "README.rst"
-requires-python = ">=3.9"
+requires-python = ">={{ cookiecutter.minimum_supported_python_version }}"
 classifiers = [
         'Development Status :: 5 - Production/Stable',
         'Environment :: Console',
