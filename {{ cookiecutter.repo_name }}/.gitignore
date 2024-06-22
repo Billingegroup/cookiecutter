@@ -24,6 +24,10 @@ venv/
 *.egg-info/
 .installed.cfg
 *.egg
+bin/
+temp/
+tags/
+errors.err
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -34,6 +38,7 @@ venv/
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
+MANIFEST
 
 # Unit test / coverage reports
 htmlcov/
@@ -49,6 +54,11 @@ coverage.xml
 # Translations
 *.mo
 *.pot
+
+# Mr Developer
+.mr.developer.cfg
+.project
+.pydevproject
 
 # Django stuff:
 *.log
@@ -80,3 +90,10 @@ target/
 
 # Ipython Notebook
 .ipynb_checkpoints
+
+# version information
+setup.cfg
+/src/{{ cookiecutter.package_dir_name }}/*/version.cfg
+
+# Rever
+rever/
