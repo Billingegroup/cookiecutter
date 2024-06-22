@@ -93,7 +93,7 @@ target/
 
 # version information
 setup.cfg
-/src/{{ cookiecutter.package_dir_name }}/*/version.cfg
+/src/{{ cookiecutter.github_org }}/*/version.cfg
 
 # Rever
 rever/
