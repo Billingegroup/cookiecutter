@@ -12,9 +12,8 @@ maintainers = [
   { name="Simon J.L. Billinge group", email="simon.billinge@gmail.com" },
 ]
 description = "{{ cookiecutter.project_short_description }}"
-{%- set keywds = [cookiecutter.keyword_1, cookiecutter.keyword_2, cookiecutter.keyword_3] -%}
-{% set keyword_list = keywds | select('string') | map('trim') | reject('equalto', '') | list %}
-keywords = {{ keyword_list }}
+{%- set keywords_list = (cookiecutter.keywords.split(',') if cookiecutter.keywords.strip() else []) %}
+keywords = {{ keywords_list }}
 readme = "README.rst"
 requires-python = ">=3.9"
 classifiers = [

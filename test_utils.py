@@ -11,13 +11,7 @@ p = pexpect.spawn(f"cookiecutter {cc_path}")
 p.expect("github_org .*")
 p.sendline("diffpy")
 
-p.expect("keyword_1 .*")
-p.sendline("")
-
-p.expect("keyword_2 .*")
-p.sendline("")
-
-p.expect("keyword_3 .*")
+p.expect("keywords .*")
 p.sendline("")
 
 p.expect("project_name .*")
