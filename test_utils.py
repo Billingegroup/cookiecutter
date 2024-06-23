@@ -12,7 +12,7 @@ p.expect("github_org .*")
 p.sendline("diffpy")
 
 p.expect("keywords .*")
-p.sendline("")
+p.sendline("text data parsers, wx grid, diffraction objects")
 
 p.expect("project_name .*")
 p.sendline("diffpy.utils")
