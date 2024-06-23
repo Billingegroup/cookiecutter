@@ -12,8 +12,12 @@ maintainers = [
   { name="Simon J.L. Billinge group", email="simon.billinge@gmail.com" },
 ]
 description = "{{ cookiecutter.project_short_description }}"
-{%- set keywords_list = (cookiecutter.keywords.split(',') if cookiecutter.keywords.strip() else []) %}
-keywords = {{ keywords_list }}
+{%- set keywords_list = (cookiecutter.keywords.split(',') if cookiecutter.keywords.strip() else []) -%}
+{%- set ns = namespace(keywords_trim = []) -%}
+{%- for keyword in keywords_list -%}
+{%- set _ = ns.keywords_trim.append(keyword.strip()) -%}
+{%- endfor %}
+keywords = {{ ns.keywords_trim }}
 readme = "README.rst"
 requires-python = ">={{ cookiecutter.minimum_supported_python_version }}"
 classifiers = [
@@ -31,7 +35,7 @@ classifiers = [
             {%- if version >= min_version %}
         'Programming Language :: Python :: 3.{{ version }}',
             {%- endif -%}
-        {% endfor %}
+        {%- endfor %}
         'Topic :: Scientific/Engineering :: Physics',
 ]
 
