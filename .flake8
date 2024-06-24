@@ -5,8 +5,10 @@ exclude =
     build,
     dist,
     doc/source/conf.py,
-    */doc/source/conf.py
-    hooks/post_gen_project.py
+    */doc/source/conf.py,
+    hooks/post_gen_project.py,
+    */__init__.py,
+    */debug.py
 builtins = cookiecutter
 max-line-length = 115
 # Ignore some style 'errors' produced while formatting by 'black' (see link below)
