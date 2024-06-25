@@ -31,12 +31,12 @@ classifiers = [
         'Operating System :: POSIX',
         'Operating System :: Unix',
         {%- set min_version = cookiecutter.minimum_supported_python_version.split('.')[1] | int -%}
-        {%- for version in [8, 9, 10, 11, 12] -%}
-            {%- if version >= min_version %}
+        {%- set max_version = cookiecutter.maximum_supported_python_version.split('.')[1] | int -%}
+        {%- for version in range(min_version, max_version+1) %}
         'Programming Language :: Python :: 3.{{ version }}',
-            {%- endif -%}
         {%- endfor %}
         'Topic :: Scientific/Engineering :: Physics',
+        'Topic :: Scientific/Engineering :: Chemistry',
 ]
 
 [project.urls]
