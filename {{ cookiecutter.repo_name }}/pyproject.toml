@@ -36,6 +36,7 @@ classifiers = [
         'Programming Language :: Python :: 3.{{ version }}',
         {%- endfor %}
         'Topic :: Scientific/Engineering :: Physics',
+        'Topic :: Scientific/Engineering :: Chemistry',
 ]
 
 [project.urls]
