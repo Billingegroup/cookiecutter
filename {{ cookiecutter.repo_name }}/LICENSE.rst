@@ -1,6 +1,7 @@
 BSD 3-Clause License
 
-Copyright (c) {% now 'utc', '%Y' %}, {{ cookiecutter.github_org }}
+Copyright (c) {% now 'utc', '%Y' %}, The Trustees of Columbia Unversity
+in the City of New York.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without

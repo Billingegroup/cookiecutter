@@ -1,9 +1,10 @@
 Authors
 =======
-*** EDIT ***
 
+Billinge Group and community contibutors.
 
 Contributors
 ------------
 
-None yet. Why not be the first? See: CONTRIBUTING.rst
+For a list of contributors, visit
+https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.repo_name }}/graphs/contributors
