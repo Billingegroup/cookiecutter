@@ -99,6 +99,6 @@ Contact and Citation
 
 For more information on {{ cookiecutter.project_name }} please visit the project `web-page <https://{{ cookiecutter.github_org }}.github.io/>`_ or email Prof. Simon Billinge at sb2896@columbia.edu.
 
-If you use {{ cookiecutter.project_name }} in a scientific publication, we would appreciate `citations <LINK HERE>`_.  
+If you use {{ cookiecutter.project_name }} in a scientific publication, we would appreciate `citations [ADD LINK] <LINK HERE>`_.  
 
 .. ADD LINK IN <LINK HERE> and delete [ADD LINK]
