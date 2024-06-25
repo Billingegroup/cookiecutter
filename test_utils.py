@@ -27,7 +27,7 @@ p.expect("repo_name .*")
 p.sendline("")
 
 p.expect("project_short_description .*")
-p.sendline("")
+p.sendline("general purpose shared utilities for the diffpy libraries")
 
 p.expect("Select minimum_supported_python_version.*")
 p.sendline("3")
