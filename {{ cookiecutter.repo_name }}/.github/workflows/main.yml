@@ -1,59 +1,54 @@
-name: Unit Tests
+name: CI
 
 on:
   push:
+    branches:
+      - main
+      - CI
   pull_request:
   workflow_dispatch:
-  # schedule:
-  #   - cron: '00 4 * * *'  # daily at 4AM
 
 jobs:
-  run_tests:
-    # pull requests are a duplicate of a branch push if within the same repo.
-    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.repository
-
-    runs-on: ${{ matrix.host-os }}
+  miniconda:
+    name: Miniconda ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
     strategy:
-      matrix:
-        host-os: ["ubuntu-latest"]
-        # host-os: ["ubuntu-latest", "macos-latest", "windows-latest"]
-        python-version: ["3.8", "3.9", "3.10"]
-      fail-fast: false
-
-    defaults:
-      run:
-        shell: bash -l {0}
-
+        matrix:
+            os: ["ubuntu-latest"]
     steps:
-      - name: Set env vars
-        run: |
-          export REPOSITORY_NAME=${GITHUB_REPOSITORY#*/}  # just the repo, as opposed to org/repo
-          echo "REPOSITORY_NAME=${REPOSITORY_NAME}" >> $GITHUB_ENV
-
-      - name: Checkout the code
+      - name: check out PROJECT_NAME
         uses: actions/checkout@v3
-
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v4
         with:
-          python-version: ${{ matrix.python-version }}
+          repository: REPO_NAME
+          path: .
+          fetch-depth: 0  # avoid shallow clone with no tags
 
-      - name: Install dependencies
+      - name: initialize miniconda
+        # this uses a marketplace action that sets up miniconda in a way that makes
+        # it easier to use.  I tried setting it up without this and it was a pain
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          activate-environment: test
+          # environment.yml file is needed by this action.  Because I don't want
+          # maintain this but rather maintain the requirements files it just has
+          # basic things in it like conda and pip
+          environment-file: ./environment.yml
+          python-version: 3
+          auto-activate-base: false
+
+      - name: install PROJECT_NAME requirements
+        shell: bash -l {0}
         run: |
-          # For reference: https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html.
-          set -vxeuo pipefail
-
-          # These packages are installed in the base environment but may be older
-          # versions. Explicitly upgrade them because they often create
-          # installation problems if out of date.
-          python -m pip install --upgrade pip setuptools numpy
-
+          conda config --set always_yes yes --set changeps1 no
+          conda config --add channels conda-forge
+          conda activate test
+          conda install --file requirements/run.txt
+          conda install --file requirements/test.txt
           pip install .
-          pip install -r requirements-dev.txt
-          pip list
-
-      - name: Test with pytest
+      - name: Validate PROJECT_NAME
+        shell: bash -l {0}
         run: |
-          set -vxeuo pipefail
+          conda activate test
           coverage run -m pytest -vv -s
           coverage report -m
+          codecov
