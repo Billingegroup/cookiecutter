@@ -32,6 +32,7 @@ Table of contents
 
    license
    release
+   Package API <api/{{ cookiecutter.package_dir_name }}>
 
 =======
 Indices
