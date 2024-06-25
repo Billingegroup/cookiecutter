@@ -29,11 +29,11 @@ p.sendline("")
 p.expect("project_short_description .*")
 p.sendline("")
 
-p.expect("Select maximum_supported_python_version.*")
-p.sendline("3")
-
 p.expect("Select minimum_supported_python_version.*")
-p.sendline("3")
+p.sendline("")
+
+p.expect("Select maximum_supported_python_version.*")
+p.sendline("")
 
 # Runs until the cookiecutter is done; then exits.
 p.interact()
