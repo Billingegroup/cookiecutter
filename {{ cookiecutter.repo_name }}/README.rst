@@ -5,9 +5,9 @@
         :target: https://{{ cookiecutter.github_org }}.github.io/{{ cookiecutter.project_name }}
         :height: 100px
    
-|PyPi| |Forge| |PythonVersion| |Tracking| |PR|
+|PyPi| |Forge| |PythonVersion| |PR|
 
-|CI| |Codecov| |Black| |DOI| 
+|CI| |Codecov| |Black| |Tracking|
 
 .. |Black| image:: https://img.shields.io/badge/code_style-black-black
         :target: https://github.com/psf/black
@@ -17,9 +17,6 @@
 
 .. |Codecov| image:: https://codecov.io/gh/{{ cookiecutter.github_org }}/{{ cookiecutter.project_name }}/branch/main/graph/badge.svg
         :target: https://codecov.io/gh/{{ cookiecutter.github_org }}/{{ cookiecutter.project_name }}
-   
-.. |DOI| image:: https://img.shields.io/badge/TO_ADD_DOI-doi_%3F-red
-        :target: https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content
    
 .. |Forge| image:: https://img.shields.io/conda/vn/conda-forge/{{ cookiecutter.project_name }}
         :target: https://anaconda.org/conda-forge/{{ cookiecutter.project_name }}
@@ -79,19 +76,12 @@ and run the following ::
 
         pip install .
 
-To check the installation integrity, ``cd`` into your ``{{ cookiecutter.project_name }}`` directory and run ::
-
-        pip install -r https://raw.githubusercontent.com/{{ cookiecutter.github_org }}/{{ cookiecutter.project_name }}/main/requirements/test.txt
-        python -m {{ cookiecutter.project_name }}.tests.run
-
-If the following passes all checks, you are good! 
-
 Support and Contribute
 ----------------------
 
-`{{ cookiecutter.github_org }} user group <https://groups.google.com/g/{{ cookiecutter.github_org }}-users>`_ is the discussion forum for general questions and discussions about the use of {{ cookiecutter.project_name }}. You can join the {{ cookiecutter.github_org }}-users community by joining the Google group. The {{ cookiecutter.github_org }} project welcomes your expertise and enthusiasm!
+`Diffpy user group <https://groups.google.com/g/diffpy-users>`_ is the discussion forum for general questions and discussions about the use of {{ cookiecutter.project_name }}. You can join the {{ cookiecutter.project_name }} users community by joining the Google group. The {{ cookiecutter.project_name }} project welcomes your expertise and enthusiasm!
 
-If you see a bug or want to request a feature, please `report it as an issue <https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.project_name }}/issues>`_ and/or `submit a fix as a PR <https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.project_name }}/pulls>`_. You can also post it to the `{{ cookiecutter.github_org }}-dev user group <https://groups.google.com/g/{{ cookiecutter.github_org }}-dev>`_. 
+If you see a bug or want to request a feature, please `report it as an issue <https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.project_name }}/issues>`_ and/or `submit a fix as a PR <https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.project_name }}/pulls>`_. You can also post it to the `Diffpy user group <https://groups.google.com/g/diffpy-users>`_. 
 
 Feel free to fork the project and contribute. To install {{ cookiecutter.project_name }}
 in a development mode, with its sources being directly used by Python
@@ -109,4 +99,6 @@ Contact and Citation
 
 For more information on {{ cookiecutter.project_name }} please visit the project `web-page <https://{{ cookiecutter.github_org }}.github.io/>`_ or email Prof. Simon Billinge at sb2896@columbia.edu.
 
-If you use {{ cookiecutter.project_name }} in a scientific publication, we would appreciate `citations <>`_.
+If you use {{ cookiecutter.project_name }} in a scientific publication, we would appreciate `citations <LINK HERE>`_.  
+
+.. ADD LINK IN <LINK HERE> and delete [ADD LINK]
