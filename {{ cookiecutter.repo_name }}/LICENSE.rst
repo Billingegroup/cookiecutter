@@ -1,6 +1,6 @@
 BSD 3-Clause License
 
-Copyright (c) {% now 'utc', '%Y' %}, The Trustees of Columbia Unversity
+Copyright (c) {% now 'utc', '%Y' %}, The Trustees of Columbia University
 in the City of New York.
 All rights reserved.
 
