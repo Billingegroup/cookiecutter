@@ -44,7 +44,7 @@ desired change in our package structure.
     1. add and commit each of the untracked files to the git repo.  These are in cookiecutter but not in the original repo, so can simply be added.  Do it one or a few at a time to make it easier to rewind.
     2. Make a PR of your cookierelease branch by pushing your fork and opening a PR
     3. files showing as deleted in a `git status` are in the old repo but not in the new cookiecutter.  We took care of most these by moving over the src tree, but let's do the rest now.  Go down the list and for <filename> in the `git status` "delete" files type `cp -n ../<filepath>/<filename> .`  If there are files there we don't want, don't move them over.
-    4. Files that have been modified exist in both places and need to be merged manually.  Do these one at a time.
+    4. Files that have been modified exist in both places and need to be merged manually.  Do these one at a time. Open the version of the file in the cookiecutter directory in PyCharm, select `Git|Current File|Show Diff` to see a diff.  Select any changes from the repository history that we don't want to lose.  For many of the files we prefer the cookiecutter version which has undergone extensive cleaning.  When all the changes have been accepted or ignored, then add and commit the modified file. 
     5. Any files that we moved over from the old place, but put into a new location in the new repo, we need to delete them from git.  For example, files that were in `doc/manual/source/` in the old repo but are not `doc/source` we correct by typing `git add doc/manual/source`
    
 ## Workflow for testing diffpy.utils files
