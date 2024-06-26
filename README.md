@@ -18,9 +18,10 @@ but these instructions will be left here in case we need to do this again in the
 desired change in our package structure.
 
 ### DISCLAIMER
-do not delete/remove any files before confirming that it is absolutely not necessary. contact Simon (or Andrew) for assistance.
-most files will only need to be copied over or moved, deleting should only be done if you are absolutely certain there is no need for that file.
-note that the api file folder will have to be repopulated, and the api docs may have to be renamed.
+See the API/documentation workflow below.
+Do not delete/remove any files before confirming that it is absolutely not necessary. contact Simon (or Andrew) for assistance.
+Most files will only need to be copied over or moved, deleting should only be done if you are absolutely certain there is no need for that file.
+Note that the api file folder will have to be repopulated, and the api docs may have to be renamed.
 
 1. In your `dev` folder, fork and clone the package that you are preparing for release
 4. `cd` into the top level directory of that project
@@ -52,6 +53,15 @@ note that the api file folder will have to be repopulated, and the api docs may 
     4. Files that have been modified exist in both places and need to be merged manually.  Do these one at a time. First open the file in pycharm, then select `Git|current file|sho diff` and the differences will show up.  Select anything you want to inherit from the original file.   In many cases we don't want to bring over things that have been polished in the cookiecutter, so you are mostly looking for code specific things, such as extended descriptions of the package in README and things like that.
     5. Any files that we moved over from the old place, but put into a new location in the new repo, we need to delete them from git.  For example, files that were in `doc/manual/source/` in the old repo but are not `doc/source` we correct by typing `git add doc/manual/source`.
    
+#### API workflow
+When copying over documentation files, make sure you include any additional package-specific information that may be in those files.
+For instance, there may be a more verbose description of what the package does, or tutorial/example/utility files. DO NOT REMOVE THEM.
+
+When you see files with `..automodule::` within them, these are API documentation.
+There will be a script on generating the API documentation. Once that is up and running, feel free to delete any API documentation files.
+Then, enter the `api` directory (`root/doc/source/api`) and run the script to auto-populate the documentation.
+
+
 ## Workflow for testing diffpy.utils files
 We are using diffpy.utils as a template
 for building the cookie cutter.  To make sure the cookie cutter
