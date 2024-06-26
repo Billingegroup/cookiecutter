@@ -80,7 +80,7 @@ def get_boost_libraries():
         ldevname = 'LIBRARY_PATH'
         if platform.system() == 'Darwin':
             ldevname = 'DYLD_FALLBACK_LIBRARY_PATH'
-        wmsg = (\"Cannot detect name suffix for the %r library.\"
+        wmsg = (\"Cannot detect name suffix for the %r library. \"
                 \"Consider setting %s.\") % (baselib, ldevname)
         warnings.warn(wmsg)
 
