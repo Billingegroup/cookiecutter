@@ -36,19 +36,9 @@ desired change in our package structure.
 8. Open two terminals and display togther (e.g., above and below).  in one cd to `diffpy.<pkg>` (we will refer to this as the main directory) top level directory, in the other cd to the `diffpy.<pkg>/` directory created by cookiecutter (we will refer to this as the cookiecutter directory)
 9. type `ls -als` in each case and compare the directory structures (ignore files at this point)
 10. move the `.git` directory from the main directory to the cookiecutter directory. From the main directory type `mv -r .git diffpy.<package_name>`
-   1. In the cookiecutter directories, `ls src/<path>` for each sub-directory all the way        down to `tests`.  Each time also do the same from the main directory.  Ignore the          files for now, but if a subdirectory is missing in main but is present in      cookiecutter, add that subdirectory in main.
-   2. do as above in the `doc` tree, `ls doc/<path>` recursing down until you get `api`
-11. The new structure as all the code under a `./src/diffpy/<package_name>` directory.  Some of the old projects have the structure `/diffpy/<package_name>`.  If this applies to you, move the `diffy` tree over to your new `src` directory. e.g., from main dir type `mv diffpy src`.
-12. for every file moved in this way, search it for relative file-paths in the file and update them to account for the new src top-level directory
-13. do a `git commit` and create a PR
-14. redo 10-12 for the `doc` tree.  In this case the new structure has no `manual` directory but old projects did, also we may have a new `api` directory.
-15. e.g., to copy everything from `./manual/source` to `./source` use `cp -r ./manual/source .`.  Then delete `manual/source`.  `rm -r ./manual/source`.  Be careful not to delete other files in there.
-12. do a `git commit` (no need to push unless you want feedback)
-13. Change relative file paths in all the relevant docs.  (recommended to do a global search in PyCharm for `..` and then use your judgement.  Seek help if you are not sure.
-14. To test relative paths in src, run pytest.  To test it in docs, try building the docs.
-15. list all the files at all levels in the cookiecutter
-16. For each file, one at a time, copy the file from cookiecutter to the relevant place in the main directory
-17. run `git diff <filename>`.  Decide which changes you need to make to synchronize them.  Make these changes in PyCharm.  Then make a git commit.  One commit per file, unless files are added with no change.
+11. copy the code from the old repo to the cookiecutter repo, without overwriting files in the destination (i.e., use `cp -n` or `cp --no-clobber`.  e.g., from the cookiecutter directory type `cp -n ../src .` if the old code is already in a directory `src`.
+12. from the cookiecutter directory type `git status`.  You will see a list of files that have been modified, deleted or are untracked.
+    1. add and commit each of the untracked files to the git repo.  Do it one at a time.
    
 ## Workflow for testing diffpy.utils files
 We are using diffpy.utils as a template
