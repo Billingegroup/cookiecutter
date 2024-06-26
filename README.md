@@ -34,11 +34,18 @@ desired change in our package structure.
    9. is_boost_wrapper: no (in general)
 7. You should have created a new directory tree with the cookiecutter version of all the files in a subdirectory with the name `<packagename>`, e.g., `diffpy.pdfmorph`.  Type `ls` to check it is there.
 8. Open two terminals and display togther (e.g., above and below).  in one cd to `diffpy.<pkg>` (we will refer to this as the main directory) top level directory, in the other cd to the `diffpy.<pkg>/` directory created by cookiecutter (we will refer to this as the cookiecutter directory)
-9. type `ls -als` in each case and compare the directory structures (ignore files at this point)
-10. move the `.git` directory from the main directory to the cookiecutter directory. From the main directory type `mv -r .git diffpy.<package_name>`
-11. copy the code from the old repo to the cookiecutter repo, without overwriting files in the destination (i.e., use `cp -n` or `cp --no-clobber`.  e.g., from the cookiecutter directory type `cp -n ../src .` if the old code is already in a directory `src`.
-12. from the cookiecutter directory type `git status`.  You will see a list of files that have been modified, deleted or are untracked.
-    1. add and commit each of the untracked files to the git repo.  Do it one at a time.
+9. type `ls -als` in each case and compare the directory structures (ignore files at this point).  Nothing to do here, just get familiar with the differences.
+10. move the `.git` directory from the main directory to the cookiecutter directory. From the main directory type `mv .git diffpy.<package_name>`
+11. create a new branch for all the changes, e.g., `git checkout -b cookirelease`
+12. copy the code from the old repo to the cookiecutter repo, without overwriting files in the destination (i.e., use `cp -n` or `cp --no-clobber`.  e.g., from the cookiecutter directory type `cp -n -r ../src .` if the old code is already in a directory `src`.
+13. from the cookiecutter directory type `git status`.  You will see a list of files that have been modified, deleted or are untracked.  Untracked files are in the cookiecutter but not in the original repo, deleted files are in the original but haven't been moved over, and modified files are in both but have been changed.
+14. Let's now copy over any documentation, similar to what we did with the src files.  We want to copy over everything in the `doc/<path>/source` file from the old repo to the `doc/source` file in the new repo.  In some old pacakges, <path> will be something like `manual` and in others it will just not exist.
+15. Now we will work on correcting all the things that are wrong.
+    1. add and commit each of the untracked files to the git repo.  These are in cookiecutter but not in the original repo, so can simply be added.  Do it one or a few at a time to make it easier to rewind.
+    2. Make a PR of your cookierelease branch by pushing your fork and opening a PR
+    3. files showing as deleted in a `git status` are in the old repo but not in the new cookiecutter.  We took care of most these by moving over the src tree, but let's do the rest now.  Go down the list and for <filename> in the `git status` "delete" files type `cp -n ../<filepath>/<filename> .`  If there are files there we don't want, don't move them over.
+    4. Files that have been modified exist in both places and need to be merged manually.  Do these one at a time.
+    5. Any files that we moved over from the old place, but put into a new location in the new repo, we need to delete them from git.  For example, files that were in `doc/manual/source/` in the old repo but are not `doc/source` we correct by typing `git add doc/manual/source`
    
 ## Workflow for testing diffpy.utils files
 We are using diffpy.utils as a template
