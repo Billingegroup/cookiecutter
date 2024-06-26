@@ -22,7 +22,6 @@
         :target: https://anaconda.org/conda-forge/{{ cookiecutter.package_dist_name }}
 
 .. |PR| image:: https://img.shields.io/badge/PR-Welcome-29ab47ff
-        :target: https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.repo_name }}/blob/main/CONTRIBUTING.rst
 
 .. |PyPi| image:: https://img.shields.io/pypi/v/{{ cookiecutter.package_dist_name }}
         :target: https://pypi.org/project/{{ cookiecutter.package_dist_name }}/
@@ -92,7 +91,7 @@ directory ::
 
 Improvements and fixes are always appreciated.
 
-To learn more about how to successfully get involved and contributing to {{ cookiecutter.package_dist_name }}, please see our `Contributing guide <https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.repo_name }}/blob/main/CONTRIBUTING.rst>`_ and `Code of Conduct <https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.repo_name }}/blob/main/CODE_OF_CONDUCT.rst>`_.
+To learn more about how to successfully get involved and contributing to {{ cookiecutter.package_dist_name }}, please see our `Code of Conduct <https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.repo_name }}/blob/main/CODE_OF_CONDUCT.rst>`_.
 
 Contact and Citation
 --------------------
