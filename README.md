@@ -18,9 +18,13 @@ but these instructions will be left here in case we need to do this again in the
 desired change in our package structure.
 
 1. In your `dev` folder, fork and clone the package that you are preparing for release
-2. Double check that no bug-fix etc. ull requests are waiting to be merged.  May as well get them
+2. `git pull upstream main` (make sure you are synchronized)
+3. Double check that no bug-fix etc. pull-requests are waiting to be merged.  May as well get them
    merged before doing this
-4. cd into that
+4. cd into the top level directory or that project
+5. run the cookiecutter `cookiecutter https://github.com/billingegroup/cookiecutter`
+6. Answer the questions as:
+   
 
 ## Workflow for testing diffpy.utils files
 We are using diffpy.utils as a template
