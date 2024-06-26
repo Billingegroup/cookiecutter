@@ -23,8 +23,15 @@ desired change in our package structure.
 3. Double check that no bug-fix etc. pull-requests are waiting to be merged.  May as well get them merged before doing this. Check with Simon if not sure.
 5. run the cookiecutter `cookiecutter https://github.com/billingegroup/cookiecutter`
 6. Answer the questions as:
-   1. 
-   
+   1. (May occur if it is not the first time you have installed) Is it okay to delete: (y)
+   2. github_org: diffpy (if diffpy project) or billingegroup
+   3. keywords: current keywords in the `setup.py` or `pyproject.toml`
+   4. project_name: name of project (e.g. `diffpy.pdfmorph`)
+   5. package_dist_name: default
+   6. package_dir_name: default
+   7. minimum_python_version: 3.10 (default)
+   8. maximum_python_version: 3.12 (default)
+   9. is_boost_wrapper: no (in general)
 
 ## Workflow for testing diffpy.utils files
 We are using diffpy.utils as a template
