@@ -32,7 +32,13 @@ desired change in our package structure.
    7. minimum_python_version: 3.10 (default)
    8. maximum_python_version: 3.12 (default)
    9. is_boost_wrapper: no (in general)
+7. You should have created a new directory tree with the cookiecutter version of all the files in a subdirectory with the name `<packagename>`, e.g., `diffpy.pdfmorph`.  Type `ls` to check it is there.
+8. Open two terminals and displace togther.  in one cd to `diffpy.<pkg>` (we will refer to this as the main directory) top level directory, in the other cd to the `diffpy.<pkg>/` directory created by cookiecutter (we will refer to this as the cookiecutter directory)
+9. type `ls` in each case and compare the directory structures (ignore files at this point)
+   1. In the cookiecutter directories, `ls src/<path>` for each sub-directory all the way        down to `tests`.  Each time also do the same from the main directory.  Ignore the          files for now, but if a subdirectory is missing in main but is present in      cookiecutter, add that subdirectory in main.
+   2. do as above in the `doc` tree, `ls doc/<path>` recursing down until you get `api`
 
+   
 ## Workflow for testing diffpy.utils files
 We are using diffpy.utils as a template
 for building the cookie cutter.  To make sure the cookie cutter
