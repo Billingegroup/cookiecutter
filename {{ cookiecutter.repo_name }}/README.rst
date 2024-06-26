@@ -38,6 +38,15 @@
 
 For more information about the {{ cookiecutter.package_dist_name }} library, please consult our `online documentation <https://{{ cookiecutter.github_org }}.github.io/{{ cookiecutter.repo_name }}>`_.
 
+Citation
+--------
+
+If you use {{ cookiecutter.package_dist_name }} in a scientific publication, we would like you to cite this package as
+
+        {{ cookiecutter.package_dist_name }} Package, https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.repo_name }}
+
+        .. REPLACE IT WITH THE CITATION OF THE PUBLICATION THAT INTRODUCED THE PACKAGE
+
 Installation
 ------------
 
@@ -78,7 +87,7 @@ and run the following ::
 Support and Contribute
 ----------------------
 
-`Diffpy user group <https://groups.google.com/g/diffpy-users>`_ is the discussion forum for general questions and discussions about the use of {{ cookiecutter.package_dist_name }}. You can join the {{ cookiecutter.package_dist_name }} users community by joining the Google group. The {{ cookiecutter.package_dist_name }} project welcomes your expertise and enthusiasm!
+`Diffpy user group <https://groups.google.com/g/diffpy-users>`_ is the discussion forum for general questions and discussions about the use of {{ cookiecutter.package_dist_name }}. Please join the {{ cookiecutter.package_dist_name }} users community by joining the Google group. The {{ cookiecutter.package_dist_name }} project welcomes your expertise and enthusiasm!
 
 If you see a bug or want to request a feature, please `report it as an issue <https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.repo_name }}/issues>`_ and/or `submit a fix as a PR <https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.repo_name }}/pulls>`_. You can also post it to the `Diffpy user group <https://groups.google.com/g/diffpy-users>`_. 
 
@@ -89,15 +98,23 @@ directory ::
 
         pip install -e .
 
+To ensure code quality and to prevent accidental commits into the default branch, please set up the use of our pre-commit
+hooks.
+
+1. Install pre-commit in your working environment by running ``conda install pre-commit``.
+
+2. Initialize pre-commit (one time only) ``pre-commit install``.
+
+Thereafter your code will be linted by black and isort and checked against flake8 before you can commit.
+If it fails by black or isort, just rerun and it should pass (black and isort will modify the files so should
+pass after they are modified).  If the flake8 test fails please see the error messages and fix them manually before
+trying to commit again.
+
 Improvements and fixes are always appreciated.
 
-To learn more about how to successfully get involved and contributing to {{ cookiecutter.package_dist_name }}, please see our `Code of Conduct <https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.repo_name }}/blob/main/CODE_OF_CONDUCT.rst>`_.
+Before contribuing, please read our `Code of Conduct <https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.repo_name }}/blob/main/CODE_OF_CONDUCT.rst>`_.
 
-Contact and Citation
---------------------
+Contact
+-------
 
 For more information on {{ cookiecutter.package_dist_name }} please visit the project `web-page <https://{{ cookiecutter.github_org }}.github.io/>`_ or email Prof. Simon Billinge at sb2896@columbia.edu.
-
-If you use {{ cookiecutter.package_dist_name }} in a scientific publication, we would appreciate `citations [ADD LINK] <LINK HERE>`_.  
-
-.. ADD LINK IN <LINK HERE> and delete [ADD LINK]
