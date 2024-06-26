@@ -35,5 +35,8 @@ p.sendline("3.10")
 p.expect("maximum_supported_python_version.*")
 p.sendline("3.12")
 
+p.expect("Select is_boost_wrapper.*")
+p.sendline("2")
+
 # Runs until the cookiecutter is done; then exits.
 p.interact()
