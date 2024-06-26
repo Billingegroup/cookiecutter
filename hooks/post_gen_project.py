@@ -188,7 +188,7 @@ def wrapper_setup():
     # Can occur if user names the package extensions
     except FileExistsError:
         print(f"Duplicate directory names {src_dir} found. You cannot name your project 'extensions*'.")
- 
+
     # Make __init__.py file
     setuppy_file = ROOT / "setup.py"
     with open(setuppy_file, "w") as spfile:
