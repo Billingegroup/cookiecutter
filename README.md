@@ -18,12 +18,12 @@ but these instructions will be left here in case we need to do this again in the
 desired change in our package structure.
 
 1. In your `dev` folder, fork and clone the package that you are preparing for release
+4. cd into the top level directory of that project
 2. `git pull upstream main` (make sure you are synchronized)
-3. Double check that no bug-fix etc. pull-requests are waiting to be merged.  May as well get them
-   merged before doing this
-4. cd into the top level directory or that project
+3. Double check that no bug-fix etc. pull-requests are waiting to be merged.  May as well get them merged before doing this. Check with Simon if not sure.
 5. run the cookiecutter `cookiecutter https://github.com/billingegroup/cookiecutter`
 6. Answer the questions as:
+   1. 
    
 
 ## Workflow for testing diffpy.utils files
