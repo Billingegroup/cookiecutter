@@ -17,6 +17,11 @@ This may only be a one-time deal as we bring all our packages up to the same lev
 but these instructions will be left here in case we need to do this again in the future because of some
 desired change in our package structure.
 
+### DISCLAIMER
+do not delete/remove any files before confirming that it is absolutely not necessary. contact Simon (or Andrew) for assistance.
+most files will only need to be copied over or moved, deleting should only be done if you are absolutely certain there is no need for that file.
+note that the api file folder will have to be repopulated, and the api docs may have to be renamed.
+
 1. In your `dev` folder, fork and clone the package that you are preparing for release
 4. `cd` into the top level directory of that project
 2. `git pull upstream main` (make sure you are synchronized)
