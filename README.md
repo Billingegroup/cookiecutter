@@ -22,8 +22,11 @@ desired change in our package structure.
 3. Double check that no bug-fix etc. pull-requests are waiting to be merged.  May as well get them
    merged before doing this
 4. cd into the top level directory or that project
-5. run the cookiecutter `cookiecutter https://github.com/billingegroup/cookiecutter`
-6. Answer the questions as:
+5. `mamba activate cookiecutter` (activate your cookiecutter conda env, changing this command as needed)
+6. run the cookiecutter `cookiecutter https://github.com/billingegroup/cookiecutter`
+7. Answer the questions as:
+   1. this
+   2. that
    
 
 ## Workflow for testing diffpy.utils files
