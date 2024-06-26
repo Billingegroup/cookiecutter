@@ -37,7 +37,11 @@ desired change in our package structure.
 9. type `ls` in each case and compare the directory structures (ignore files at this point)
    1. In the cookiecutter directories, `ls src/<path>` for each sub-directory all the way        down to `tests`.  Each time also do the same from the main directory.  Ignore the          files for now, but if a subdirectory is missing in main but is present in      cookiecutter, add that subdirectory in main.
    2. do as above in the `doc` tree, `ls doc/<path>` recursing down until you get `api`
-
+10. The new structure as all the code under a `./src/diffpy/<package_name>` directory.  Some of the old projects have the structure `/diffpy/<package_name>`.  If this applies to you, move the `diffy` tree over to your new `src` directory. e.g., from main dir type `mv diffpy src`.
+11. for every file moved in this way, search it for relative file-paths in the file and update them to account for the new src top-level directory
+12. do a `git commit` and create a PR
+13. redo 10-12 for the `doc` tree.  In this case the new structure has no `manual` directory but old projects did, also we may have a new `api` directory.
+14. e.g., to copy everything from `./manual/source` to `./source` use `cp -r ./manual/source .`.  Then delete `manual/source`.  `rm -r ./manual/source`.  Be careful not to delete other files in there.
    
 ## Workflow for testing diffpy.utils files
 We are using diffpy.utils as a template
