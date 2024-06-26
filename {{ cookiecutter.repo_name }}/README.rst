@@ -45,8 +45,6 @@ If you use {{ cookiecutter.package_dist_name }} in a scientific publication, we 
 
         {{ cookiecutter.package_dist_name }} Package, https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.repo_name }}
 
-        .. REPLACE IT WITH THE CITATION OF THE PUBLICATION THAT INTRODUCED THE PACKAGE
-
 Installation
 ------------
 
