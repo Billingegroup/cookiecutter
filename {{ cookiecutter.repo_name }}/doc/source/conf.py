@@ -199,7 +199,7 @@ html_theme_options = {
 # html_file_suffix = None
 
 # Output file base name for HTML help builder.
-basename = "{{ cookiecutter.project_name }}".replace(".", "")
+basename = "{{ cookiecutter.project_name }}".replace(" ", "").replace(".", "")
 htmlhelp_basename = basename + "doc"
 
 
@@ -218,7 +218,7 @@ latex_elements = {
 # (source start file, target name, title,
 # author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    ("index", "{{ cookiecutter.project_name }}.tex", "{{ cookiecutter.project_name }} Documentation", ab_authors, "manual"),
+    ("index", "{{ cookiecutter.package_dist_name }}.tex", "{{ cookiecutter.project_name }} Documentation", ab_authors, "manual"),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -246,7 +246,7 @@ latex_documents = [
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
-man_pages = [("index", "{{ cookiecutter.project_name }}", "{{ cookiecutter.project_name }} Documentation", ab_authors, 1)]
+man_pages = [("index", "{{ cookiecutter.package_dist_name }}", "{{ cookiecutter.project_name }} Documentation", ab_authors, 1)]
 
 # If true, show URL addresses after external links.
 # man_show_urls = False
@@ -260,7 +260,7 @@ man_pages = [("index", "{{ cookiecutter.project_name }}", "{{ cookiecutter.proje
 texinfo_documents = [
     (
         "index",
-        "{{ cookiecutter.project_name }}",
+        "{{ cookiecutter.package_dist_name }}",
         "{{ cookiecutter.project_name }} Documentation",
         ab_authors,
         "{{ cookiecutter.project_name }}",
