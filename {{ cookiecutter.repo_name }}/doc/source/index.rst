@@ -1,15 +1,42 @@
-.. Packaging Scientific Python documentation master file, created by
-   sphinx-quickstart on Thu Jun 28 12:35:56 2018.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+#############################################
+{{ cookiecutter.project_name }} documentation
+#############################################
 
-{{ cookiecutter.project_name }} Documentation
-{{ '=' * (cookiecutter.project_name|length + ' Documentation'|length) }}
+{{ cookiecutter.project_name }} - {{ cookiecutter.project_short_description }}.
 
+| Software version |release|.
+| Last updated |today|.
+
+=======
+Authors
+=======
+
+{{ cookiecutter.project_name }} is developed by Billinge Group
+and its community contributors.
+
+For a detailed list of contributors see
+https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.repo_name }}/graphs/contributors.
+
+============
+Installation
+============
+
+See the `README <https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.repo_name }}#installation>`_
+file included with the distribution.
+
+=================
+Table of contents
+=================
 .. toctree::
-   :maxdepth: 2
+   :titlesonly:
 
-   installation
-   usage
-   release-history
-   min_versions
+   license
+   release
+   Package API <api/{{ cookiecutter.package_dir_name }}>
+
+=======
+Indices
+=======
+
+* :ref:`genindex`
+* :ref:`search`
