@@ -4,20 +4,20 @@
 .. |Icon| image:: https://avatars.githubusercontent.com/{{ cookiecutter.github_org }}
         :target: https://{{ cookiecutter.github_org }}.github.io/{{ cookiecutter.repo_name }}
         :height: 100px
-   
+
 |PyPi| |Forge| |PythonVersion| |PR|
 
 |CI| |Codecov| |Black| |Tracking|
 
 .. |Black| image:: https://img.shields.io/badge/code_style-black-black
         :target: https://github.com/psf/black
-   
+
 .. |CI| image:: https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.repo_name }}/actions/workflows/main.yml/badge.svg
         :target: https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.repo_name }}/actions/workflows/main.yml
 
 .. |Codecov| image:: https://codecov.io/gh/{{ cookiecutter.github_org }}/{{ cookiecutter.repo_name }}/branch/main/graph/badge.svg
         :target: https://codecov.io/gh/{{ cookiecutter.github_org }}/{{ cookiecutter.repo_name }}
-   
+
 .. |Forge| image:: https://img.shields.io/conda/vn/conda-forge/{{ cookiecutter.package_dist_name }}
         :target: https://anaconda.org/conda-forge/{{ cookiecutter.package_dist_name }}
 
@@ -25,7 +25,7 @@
 
 .. |PyPi| image:: https://img.shields.io/pypi/v/{{ cookiecutter.package_dist_name }}
         :target: https://pypi.org/project/{{ cookiecutter.package_dist_name }}/
-   
+
 .. |PythonVersion| image:: https://img.shields.io/pypi/pyversions/{{ cookiecutter.package_dist_name }}
         :target: https://pypi.org/project/{{ cookiecutter.package_dist_name }}/
 
@@ -105,7 +105,7 @@ hooks.
 
 Thereafter your code will be linted by black and isort and checked against flake8 before you can commit.
 If it fails by black or isort, just rerun and it should pass (black and isort will modify the files so should
-pass after they are modified).  If the flake8 test fails please see the error messages and fix them manually before
+pass after they are modified). If the flake8 test fails please see the error messages and fix them manually before
 trying to commit again.
 
 Improvements and fixes are always appreciated.
