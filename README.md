@@ -42,6 +42,12 @@ desired change in our package structure.
 12. do a `git commit` and create a PR
 13. redo 10-12 for the `doc` tree.  In this case the new structure has no `manual` directory but old projects did, also we may have a new `api` directory.
 14. e.g., to copy everything from `./manual/source` to `./source` use `cp -r ./manual/source .`.  Then delete `manual/source`.  `rm -r ./manual/source`.  Be careful not to delete other files in there.
+12. do a `git commit` (no need to push unless you want feedback)
+13. Change relative file paths in all the relevant docs.  (recommended to do a global search in PyCharm for `..` and then use your judgement.  Seek help if you are not sure.
+14. To test relative paths in src, run pytest.  To test it in docs, try building the docs.
+15. list all the files at all levels in the cookiecutter
+16. For each file, one at a time, copy the file from cookiecutter to the relevant place in the main directory
+17. run `git diff <filename>`.  Decide which changes you need to make to synchronize them.  Make these changes in PyCharm.  Then make a git commit.  One commit per file, unless files are added with no change.
    
 ## Workflow for testing diffpy.utils files
 We are using diffpy.utils as a template
