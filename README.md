@@ -11,6 +11,17 @@ cookiecutter https://github.com/billingegroup/cookiecutter
 
 and follow the instructions.
 
+## Workflow for releasing diffpy (and other group) packages using cookiecutter.
+
+This may only be a one-time deal as we bring all our packages up to the same level of uniformity (summer 2024), 
+but these instructions will be left here in case we need to do this again in the future because of some
+desired change in our package structure.
+
+1. In your `dev` folder, fork and clone the package that you are preparing for release
+2. Double check that no bug-fix etc. ull requests are waiting to be merged.  May as well get them
+   merged before doing this
+4. cd into that
+
 ## Workflow for testing diffpy.utils files
 We are using diffpy.utils as a template
 for building the cookie cutter.  To make sure the cookie cutter
