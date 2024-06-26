@@ -13,7 +13,7 @@
 #
 ##############################################################################
 """Convenience module for executing all unit tests with
-python -m {{ cookiecutter.project_name }}.tests.run
+python -m {{ cookiecutter.package_dist_name }}.tests.run
 """
 
 import sys
