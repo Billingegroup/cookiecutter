@@ -18,10 +18,11 @@ but these instructions will be left here in case we need to do this again in the
 desired change in our package structure.
 
 ### DISCLAIMER
-See the API/documentation workflow below. This should be done as the last step after the `Pytest` tests are passing.
 Do not delete/remove any files before confirming that it is absolutely not necessary. contact Simon (or Andrew) for assistance.
-Most files will only need to be copied over or moved, deleting should only be done if you are absolutely certain there is no need for that file.
-Note that the api file folder will have to be repopulated, and the api docs may have to be renamed.
+When copying over documentation files, make sure you include any additional package-specific information that may be in those files.
+For instance, there may be a more verbose description of what the package does, or tutorial/example/utility files. DO NOT REMOVE THEM.
+
+Finally take a glance at the API/documentation workflow below. This should be done as the last step after the `Pytest` tests are passing.
 
 1. In your `dev` folder, fork and clone the package that you are preparing for release
 4. `cd` into the top level directory of that project
@@ -54,14 +55,14 @@ Note that the api file folder will have to be repopulated, and the api docs may 
     5. Any files that we moved over from the old place, but put into a new location in the new repo, we need to delete them from git.  For example, files that were in `doc/manual/source/` in the old repo but are not `doc/source` we correct by typing `git add doc/manual/source`.
    
 #### API workflow
-When copying over documentation files, make sure you include any additional package-specific information that may be in those files.
-For instance, there may be a more verbose description of what the package does, or tutorial/example/utility files. DO NOT REMOVE THEM.
+This should be done only when the above steps are finished.
 
 When you see files with `..automodule::` within them, these are API documentation. However, these are not populated. We will populate them using our release scripts.
 1. Make sure you have our release scripts repository. Go to `dev` and running `git clone https://github.com/Billingegroup/release-scripts.git`.
 2. Enter your package directory (git clone in your `dev`). For example, I would run `cd ./diffpy.pdfmorph`.
-3. Get the path of the package directory proper. In the case of `diffpy.pdfmorph`, this is `./src/diffpy/pdfmorph`. In general, for `a.b.c`, this is `./src/a/b/c`.
-4. Run the API script. This is done by running `python <path_to_auto_api> <package_name> <path_to_package_proper> <path_to_api_directory>`.
+3. Build the package using `python -m build`. You may have to install `python-build` first.
+4. Get the path of the package directory proper. In the case of `diffpy.pdfmorph`, this is `./src/diffpy/pdfmorph`. In general, for `a.b.c`, this is `./src/a/b/c`.
+5. Run the API script. This is done by running `python <path_to_auto_api> <package_name> <path_to_package_proper> <path_to_api_directory>`.
    1. If you have followed the steps above, the command is `python ../release-scripts/auto_api.py <package_name> <path_to_package_proper> ./doc/source/api`.
 
 Make sure you build the documentation by going to `/doc` and running `make html`.
