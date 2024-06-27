@@ -18,7 +18,7 @@ but these instructions will be left here in case we need to do this again in the
 desired change in our package structure.
 
 ### DISCLAIMER
-See the API/documentation workflow below.
+See the API/documentation workflow below. This should be done as the last step after the `Pytest` tests are passing.
 Do not delete/remove any files before confirming that it is absolutely not necessary. contact Simon (or Andrew) for assistance.
 Most files will only need to be copied over or moved, deleting should only be done if you are absolutely certain there is no need for that file.
 Note that the api file folder will have to be repopulated, and the api docs may have to be renamed.
@@ -57,9 +57,16 @@ Note that the api file folder will have to be repopulated, and the api docs may 
 When copying over documentation files, make sure you include any additional package-specific information that may be in those files.
 For instance, there may be a more verbose description of what the package does, or tutorial/example/utility files. DO NOT REMOVE THEM.
 
-When you see files with `..automodule::` within them, these are API documentation.
-There will be a script on generating the API documentation. Once that is up and running, feel free to delete any API documentation files.
-Then, enter the `api` directory (`root/doc/source/api`) and run the script to auto-populate the documentation.
+When you see files with `..automodule::` within them, these are API documentation. However, these are not populated. We will populate them using our release scripts.
+1. Make sure you have our release scripts repository. Go to `dev` and running `git clone https://github.com/Billingegroup/release-scripts.git`.
+2. Enter your package directory (git clone in your `dev`). For example, I would run `cd ./diffpy.pdfmorph`.
+3. Get the path of the package directory proper. In the case of `diffpy.pdfmorph`, this is `./src/diffpy/pdfmorph`. In general, for `a.b.c`, this is `./src/a/b/c`.
+4. Run the API script. This is done by running `python <path_to_auto_api> <package_name> <path_to_package_proper> <path_to_api_directory>`.
+   1. If you have followed the steps above, the command is `python ../release-scripts/auto_api.py <package_name> <path_to_package_proper> ./doc/source/api`.
+
+Make sure you build the documentation by going to `/doc` and running `make html`.
+The error "No module named" (`e.g. WARNING: autodoc: failed to import module 'tools' from module 'diffpy.pdfmorph'; the following exception was raised: No module named 'diffpy.utils'`) can be resolved by adding `autodoc_mock_imports = [<pkg>]` to your `conf.py` right under imports.
+In the case of `PDFmorph`, this was done by adding `autodoc_mock_imports = ["diffpy.utils",]`.
 
 
 ## Workflow for testing diffpy.utils files
