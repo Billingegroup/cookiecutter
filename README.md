@@ -71,6 +71,8 @@ Make sure you build the documentation by going to `/doc` and running `make html`
 The error "No module named" (`e.g. WARNING: autodoc: failed to import module 'tools' from module 'diffpy.pdfmorph'; the following exception was raised: No module named 'diffpy.utils'`) can be resolved by adding `autodoc_mock_imports = [<pkg>]` to your `conf.py` right under imports. This file is located in `/doc/source/conf.py`.
 In the case of `PDFmorph`, this was done by adding `autodoc_mock_imports = ["diffpy.utils",]`.
 
+Congratulations! You may now commit the changes made by `auto_api.py` (and yourself) and push this commit to the cloud!
+Make a PR! It will be merged, trust!
 
 ## Workflow for testing diffpy.utils files
 We are using diffpy.utils as a template
