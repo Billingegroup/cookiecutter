@@ -48,7 +48,7 @@ Finally take a glance at the API/documentation workflow below. This should be do
 13. From the cookiecutter directory type `git status`.  You will see a list of files that have been modified, deleted or are untracked.  Untracked files are in the cookiecutter but not in the original repo, deleted files are in the original but haven't been moved over, and modified files are in both but have been changed.
 14. Let's now copy over any documentation, similar to what we did with the src files.  We want to copy over everything in the `doc/<path>/source` file from the old repo to the `doc/source` file in the new repo.  In some old pacakges, `<path>` will be something like `manual` and in others it will just not exist.
     1. If you see this extra `manual` directory, go to your cookiecutter directory. Then run `cp -n -r ../doc/manual/source/* ./doc/source`.
-    2. Make sure that if files are moved to a different path compared to root, you must check that the files paths referenced within the file are updated.
+    2. Make sure that if files are moved to a different path compared to root, you must check that the files paths referenced within the file are updated. The best way to do this is to open the project in PyCharm and do a global search (ctrl + shift + f) for `../` or `..` and look at all relative path instances.
 15. Now we will work on correcting all the things that are wrong.
     1. Add and commit each of the untracked files to the git repo.  These are in cookiecutter but not in the original repo, so can simply be "git added".  Do it one (or a few) at a time to make it easier to rewind by having multiple commits.
     2. Make a PR of your `cookierelease` branch by pushing your fork and opening a PR.
