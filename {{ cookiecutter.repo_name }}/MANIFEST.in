@@ -8,8 +8,7 @@ recursive-exclude * *.py[co]
 
 recursive-include docs *.rst conf.py Makefile make.bat
 
-include versioneer.py
-include {{ cookiecutter.package_dir_name }}/_version.py
+include {{ cookiecutter.package_dir_name }}/version.py
 
 # If including data files in the package, add them like:
 # include path/to/data_file
