@@ -1,5 +1,8 @@
-|Icon| `{{ cookiecutter.package_dist_name }} <https://{{ cookiecutter.github_org }}.github.io/{{ cookiecutter.repo_name }}>`_
-=========================================================
+|Icon| |title|
+==============
+
+.. |title| replace:: {{ cookiecutter.package_dist_name }}
+.. _title: https://{{ cookiecutter.github_org }}.github.io/{{ cookiecutter.repo_name }}
 
 .. |Icon| image:: https://avatars.githubusercontent.com/{{ cookiecutter.github_org }}
         :target: https://{{ cookiecutter.github_org }}.github.io/{{ cookiecutter.repo_name }}
