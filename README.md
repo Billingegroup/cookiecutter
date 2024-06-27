@@ -65,7 +65,7 @@ When you see files with `..automodule::` within them, these are API documentatio
 3. Build the package using `python -m build`. You may have to install `python-build` first.
 4. Get the path of the package directory proper. In the case of `diffpy.pdfmorph`, this is `./src/diffpy/pdfmorph`. In general, for `a.b.c`, this is `./src/a/b/c`.
 5. Run the API script. This is done by running `python <path_to_auto_api> <package_name> <path_to_package_proper> <path_to_api_directory>`.
-   1. If you have followed the steps above, the command is `python ../release-scripts/auto_api.py <package_name> <path_to_package_proper> ./doc/source/api`.
+   1. If you have followed the steps above, the command is `python ../../release-scripts/auto_api.py <package_name> <path_to_package_proper> ./doc/source/api`.
 
 Make sure you build the documentation by going to `/doc` and running `make html`.
 The error "No module named" (`e.g. WARNING: autodoc: failed to import module 'tools' from module 'diffpy.pdfmorph'; the following exception was raised: No module named 'diffpy.utils'`) can be resolved by adding `autodoc_mock_imports = [<pkg>]` to your `conf.py` right under imports.
