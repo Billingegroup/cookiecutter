@@ -61,7 +61,7 @@ This should be done only when the above steps are finished.
 
 When you see files with `..automodule::` within them, these are API documentation. However, these are not populated. We will populate them using our release scripts.
 1. Make sure you have our release scripts repository. Go to `dev` and running `git clone https://github.com/Billingegroup/release-scripts.git`.
-2. Enter your package directory (git clone in your `dev`). For example, I would run `cd ./diffpy.pdfmorph`.
+2. Enter your cookiecutter package directory. For example, I would run `cd ./diffpy.pdfmorph/diffpy.pdfmorph`.
 3. Build the package using `python -m build`. You may have to install `python-build` first.
 4. Get the path of the package directory proper. In the case of `diffpy.pdfmorph`, this is `./src/diffpy/pdfmorph`. In general, for `a.b.c`, this is `./src/a/b/c`.
 5. Run the API script. This is done by running `python <path_to_auto_api> <package_name> <path_to_package_proper> <path_to_api_directory>`.
