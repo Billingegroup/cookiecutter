@@ -1,6 +1,8 @@
-#############################################
-{{ cookiecutter.project_name }} documentation
-#############################################
+#######
+|title|
+#######
+
+.. |title| replace:: {{ cookiecutter.project_name }} documentation
 
 {{ cookiecutter.project_name }} - {{ cookiecutter.project_short_description }}.
 

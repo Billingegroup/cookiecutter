@@ -13,7 +13,7 @@ and follow the instructions.
 
 ## Workflow for releasing diffpy (and other group) packages using cookiecutter.
 
-This may only be a one-time deal as we bring all our packages up to the same level of uniformity (summer 2024), 
+This may only be a one-time deal as we bring all our packages up to the same level of uniformity (summer 2024),
 but these instructions will be left here in case we need to do this again in the future because of some
 desired change in our package structure.
 
@@ -53,7 +53,7 @@ Finally take a glance at the API/documentation workflow below. This should be do
     3. Files showing as deleted in a `git status` are in the old repo but not in the new cookiecutter.  We took care of most these by moving over the src tree, but let's do the rest now.  Go down the list and for <filename> in the `git status` "delete" files type `cp -n ../<filepath>/<filename> .`  If there are files there we don't want, don't move them over.
     4. Files that have been modified exist in both places and need to be merged manually.  Do these one at a time. First open the file in pycharm, then select `Git|current file|sho diff` and the differences will show up.  Select anything you want to inherit from the original file.   In many cases we don't want to bring over things that have been polished in the cookiecutter, so you are mostly looking for code specific things, such as extended descriptions of the package in README and things like that.
     5. Any files that we moved over from the old place, but put into a new location in the new repo, we need to delete them from git.  For example, files that were in `doc/manual/source/` in the old repo but are not `doc/source` we correct by typing `git add doc/manual/source`.
-   
+
 #### API workflow
 This should be done only when the above steps are finished.
 

@@ -1,7 +1,9 @@
 :tocdepth: -1
 
-{{ cookiecutter.project_name }} package
-=======================================
+|title|
+=======
+
+.. |title| replace:: {{ cookiecutter.project_name }} package
 
 .. automodule:: {{ cookiecutter.package_dir_name }}
     :members:
@@ -17,8 +19,10 @@ Subpackages
 Submodules
 ----------
 
-{{ cookiecutter.package_dir_name }}.example_submodule module
-------------------------------------------------------------
+|module|
+--------
+
+.. |module| replace:: {{ cookiecutter.package_dir_name }}.example_submodule module
 
 .. automodule:: {{ cookiecutter.package_dir_name }}.example_submodule
     :members:
