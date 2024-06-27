@@ -68,7 +68,7 @@ When you see files with `..automodule::` within them, these are API documentatio
    1. If you have followed the steps above, the command is `python ../../release-scripts/auto_api.py <package_name> <path_to_package_proper> ./doc/source/api`.
 
 Make sure you build the documentation by going to `/doc` and running `make html`.
-The error "No module named" (`e.g. WARNING: autodoc: failed to import module 'tools' from module 'diffpy.pdfmorph'; the following exception was raised: No module named 'diffpy.utils'`) can be resolved by adding `autodoc_mock_imports = [<pkg>]` to your `conf.py` right under imports.
+The error "No module named" (`e.g. WARNING: autodoc: failed to import module 'tools' from module 'diffpy.pdfmorph'; the following exception was raised: No module named 'diffpy.utils'`) can be resolved by adding `autodoc_mock_imports = [<pkg>]` to your `conf.py` right under imports. This file is located in `/doc/source/conf.py`.
 In the case of `PDFmorph`, this was done by adding `autodoc_mock_imports = ["diffpy.utils",]`.
 
 
