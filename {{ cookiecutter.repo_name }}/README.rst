@@ -1,5 +1,5 @@
-|Icon| |title|
-==============
+|Icon| |title|_
+===============
 
 .. |title| replace:: {{ cookiecutter.package_dist_name }}
 .. _title: https://{{ cookiecutter.github_org }}.github.io/{{ cookiecutter.repo_name }}
