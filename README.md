@@ -74,6 +74,15 @@ In the case of `PDFmorph`, this was done by adding `autodoc_mock_imports = ["dif
 Congratulations! You may now commit the changes made by `auto_api.py` (and yourself) and push this commit to the cloud!
 Make a PR! It will be merged, trust!
 
+## Final checks and sign-off
+This should be done only when the above steps are finished.
+
+1. make sure tests are all passing
+2. Make sure news is up to date so the changelog will reflect all changes.  For the `cookierelease` activity make a `<branchname>.rst` file by copying `TEMPLATE.rst` in the news folder and under "fixed" put `Repo structure modified to the new diffpy standard`
+3. Check the `README` and make sure that all parts have been filled in and all links resolve correctly.
+4. Run through the documentation online and do the same, fix any last typos and make all the links work.  To do this the documentation must have been correctly built on a merge to main and enabled on the github.io website.  Instructions are here: https://gitlab.thebillingegroup.com/resources/group-wiki/-/wikis/Maintaining-and-Deploying-Documentation
+5. When you are are happy to sign off on the release send a Slack message to Simon saying something like "OK to release diffpy.<package-name>"
+
 ## Workflow for testing diffpy.utils files
 We are using diffpy.utils as a template
 for building the cookie cutter.  To make sure the cookie cutter
