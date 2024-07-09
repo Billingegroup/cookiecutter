@@ -42,7 +42,7 @@ Finally take a glance at the API/documentation workflow below. This should be do
 14. When the PR is merged, update your main and create a new branch called `precommit`.
 15. Make sure that `.pre-commit-config.yaml` is in your current directory. If it is not, copy it over from the cookiecutter.
 16. In an env containing pre-commit, run `pre-commit run --all-files`
-17. Make necessary edits and make periodic commits to make review easier. 
+17. Make necessary edits and make periodic commits to make review easier.
 18. Once complete, open a PR and alert Simon. When merged, you can continue on with the cookiecutter.
 
 #### Cookiecutter workflow
