@@ -32,7 +32,7 @@ Finally take a glance at the API/documentation workflow below. This should be do
 4. Double check that no bug-fix etc. pull-requests are waiting to be merged.  May as well get them merged before doing this. Check with Simon if not sure.
 5. Before running the cookiecutter, we want to run `black` and `flake8` on the top level directory. Create a new branch and call it `black`. Preferrably, do not initialize pre-commit.
 6. Edit the `pyproject.toml` so the section `[tools.black]` is consistent with `pyproject.toml` in `{{ cookiecutter.repo_name }}`.
-7. Activate and env that contains black and from the run `black src` (note: some of the older packages do not have an `src` directory, so you may have to run black on a different directory).
+7. Activate an env that contains black and run `black src` (note: some of the older packages do not have an `src` directory, so you may have to run black on a different directory).
 8. If it runs successfully and makes changes, commit the changes (if your pre-commit is activated you can override it with `-n` to make these commits).
 9. Let's run black on everything else. Run `black .` and commit any edits that are made.
 10. Now, edit the `.flake8` file so it's consistent with `.flake8` in `{{ cookiecutter.repo_name }}`.
@@ -47,8 +47,8 @@ Finally take a glance at the API/documentation workflow below. This should be do
 
 #### Cookiecutter workflow
 
-5. Run the cookiecutter `cookiecutter https://github.com/billingegroup/cookiecutter`
-6. Answer the questions as:
+1. Run the cookiecutter `cookiecutter https://github.com/billingegroup/cookiecutter`
+2. Answer the questions as:
    1. (May occur if it is not the first time you have installed) Is it okay to delete: (y)
    2. github_org: diffpy (if diffpy project) or billingegroup
    3. keywords: current keywords in the `setup.py` or `pyproject.toml` in comma-separated string format, e.g., `diffpy, pdf, something, something else` (no quotes around it)
@@ -58,17 +58,17 @@ Finally take a glance at the API/documentation workflow below. This should be do
    7. minimum_python_version: 3.10 (default)
    8. maximum_python_version: 3.12 (default)
    9. is_boost_wrapper: no (in general, but if there are C++ extensions, this will be yes)
-7. You should have created a new directory tree with the cookiecutter version of all the files in a subdirectory with the name `<package_name>`, e.g., `diffpy.pdfmorph`.  Type `ls` to check it is there.
-8. cd to the `diffpy.<package_name>/` directory created by cookiecutter under the main directory (e.g., in our example `pwd` would return `~/dev/diffpy.pdfmorph/diffpy.pdfmorph`) (we will refer to this as the cookiecutter directory).
-9. Type `ls -als` (if you have the alias, this is `ll`) compare the directory structures in this directory tree to that in the original repo to see what is different (ignore files at this point).  Nothing to do here, just get familiar with the differences.
-10. Move the `.git` directory from the main directory to the cookiecutter directory. From the main directory type `mv ../.git .`.
-11. Create a new branch for all the changes, e.g., `git checkout -b cookierelease`.
-12. Copy the code from the old repo to the cookiecutter repo, without overwriting files in the destination (i.e., use `cp -n` or `cp --no-clobber`.  e.g., from the cookiecutter directory where you currently are, type `cp -n -r ../src .` if the old code is already in a directory `src`.  If there is no src directory, it will be something like `cp -n -r ../diffpy ./src`.
-13. From the cookiecutter directory type `git status`.  You will see a list of files that have been modified, deleted or are untracked.  Untracked files are in the cookiecutter but not in the original repo, deleted files are in the original but haven't been moved over, and modified files are in both but have been changed.
-14. Let's now copy over any documentation, similar to what we did with the src files.  We want to copy over everything in the `doc/<path>/source` file from the old repo to the `doc/source` file in the new repo.  In some old pacakges, `<path>` will be something like `manual` and in others it will just not exist.
+3. You should have created a new directory tree with the cookiecutter version of all the files in a subdirectory with the name `<package_name>`, e.g., `diffpy.pdfmorph`.  Type `ls` to check it is there.
+4. cd to the `diffpy.<package_name>/` directory created by cookiecutter under the main directory (e.g., in our example `pwd` would return `~/dev/diffpy.pdfmorph/diffpy.pdfmorph`) (we will refer to this as the cookiecutter directory).
+5. Type `ls -als` (if you have the alias, this is `ll`) compare the directory structures in this directory tree to that in the original repo to see what is different (ignore files at this point).  Nothing to do here, just get familiar with the differences.
+6. Move the `.git` directory from the main directory to the cookiecutter directory. From the main directory type `mv ../.git .`.
+7. Create a new branch for all the changes, e.g., `git checkout -b cookierelease`.
+8. Copy the code from the old repo to the cookiecutter repo, without overwriting files in the destination (i.e., use `cp -n` or `cp --no-clobber`.  e.g., from the cookiecutter directory where you currently are, type `cp -n -r ../src .` if the old code is already in a directory `src`.  If there is no src directory, it will be something like `cp -n -r ../diffpy ./src`.
+9. From the cookiecutter directory type `git status`.  You will see a list of files that have been modified, deleted or are untracked.  Untracked files are in the cookiecutter but not in the original repo, deleted files are in the original but haven't been moved over, and modified files are in both but have been changed.
+10. Let's now copy over any documentation, similar to what we did with the src files.  We want to copy over everything in the `doc/<path>/source` file from the old repo to the `doc/source` file in the new repo.  In some old pacakges, `<path>` will be something like `manual` and in others it will just not exist.
     1. If you see this extra `manual` directory, go to your cookiecutter directory. Then run `cp -n -r ../doc/manual/source/* ./doc/source`.
     2. Make sure that if files are moved to a different path compared to root, you must check that the files paths referenced within the file are updated. The best way to do this is to open the project in PyCharm and do a global search (ctrl + shift + f) for `../` or `..` and look at all relative path instances.
-15. Now we will work on correcting all the things that are wrong.
+11. Now we will work on correcting all the things that are wrong.
     1. Add and commit each of the untracked files to the git repo.  These are in cookiecutter but not in the original repo, so can simply be "git added".  Do it one (or a few) at a time to make it easier to rewind by having multiple commits.
     2. Make a PR of your `cookierelease` branch by pushing your fork and opening a PR.
     3. Files showing as deleted in a `git status` are in the old repo but not in the new cookiecutter.  We took care of most these by moving over the src tree, but let's do the rest now.  Go down the list and for <filename> in the `git status` "delete" files type `cp -n ../<filepath>/<filename> ./<target_filepath>`. Note that, generally, `<filepath>` and `<target_filepath>` will be the same, but may differ in cases such as `/doc/manual/source` and `/doc/source` respectively. If there are files there we don't want, don't move them over. Whenever files are copied over using the `-n` command, you may delete them in the main repository to keep your file-tree clean.
