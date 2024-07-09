@@ -24,10 +24,29 @@ For instance, there may be a more verbose description of what the package does, 
 
 Finally take a glance at the API/documentation workflow below. This should be done as the last step after the `Pytest` tests are passing.
 
+#### Pre-commit workflow
+
 1. In your `dev` folder, fork and clone the package that you are preparing for release
-4. `cd` into the top level directory of that project
-2. `git pull upstream main` (make sure you are synchronized)
-3. Double check that no bug-fix etc. pull-requests are waiting to be merged.  May as well get them merged before doing this. Check with Simon if not sure.
+2. `cd` into the top level directory of that project
+3. `git pull upstream main` (make sure you are synchronized)
+4. Double check that no bug-fix etc. pull-requests are waiting to be merged.  May as well get them merged before doing this. Check with Simon if not sure.
+5. Before running the cookiecutter, we want to run `black` and `flake8` on the top level directory. Create a new branch and call it `black`. Preferrably, do not initialize pre-commit.
+6. Edit the `pyproject.toml` so the section `[tools.black]` is consistent with `pyproject.toml` in `{{ cookiecutter.repo_name }}`.
+7. Activate and env that contains black and from the run `black src` (note: some of the older packages do not have an `src` directory, so you may have to run black on a different directory).
+8. If it runs successfully and makes changes, commit the changes (if your pre-commit is activated you can override it with `-n` to make these commits).
+9. Let's run black on everything else. Run `black .` and commit any edits that are made.
+10. Now, edit the `.flake8` file so it's consistent with `.flake8` in `{{ cookiecutter.repo_name }}`.
+11. In an env that contains flake8, run `flake8 .`.
+12. Fix any errors and make periodic commits.
+13. When this passes, open a PR and alert Simon.
+14. When the PR is merged, update your main and create a new branch called `precommit`.
+15. Make sure that `.pre-commit-config.yaml` is in your current directory. If it is not, copy it over from the cookiecutter.
+16. In an env containing pre-commit, run `pre-commit run --all-files`
+17. Make necessary edits and make periodic commits to make review easier. 
+18. Once complete, open a PR and alert Simon. When merged, you can continue on with the cookiecutter.
+
+#### Cookiecutter workflow
+
 5. Run the cookiecutter `cookiecutter https://github.com/billingegroup/cookiecutter`
 6. Answer the questions as:
    1. (May occur if it is not the first time you have installed) Is it okay to delete: (y)
