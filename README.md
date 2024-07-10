@@ -47,7 +47,7 @@ Finally take a glance at the API/documentation workflow below. This should be do
 
 #### Cookiecutter workflow
 
-1. Run the cookiecutter `cookiecutter https://github.com/billingegroup/cookiecutter`
+1. At this point, make sure your branch is fully sync'd. Now, from the cloned directory run the cookiecutter `cookiecutter https://github.com/billingegroup/cookiecutter`
 2. Answer the questions as:
    1. (May occur if it is not the first time you have installed) Is it okay to delete: (y)
    2. github_org: diffpy (if diffpy project) or billingegroup
