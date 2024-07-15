@@ -35,15 +35,16 @@ Finally take a glance at the API/documentation workflow below. This should be do
 7. Activate an env that contains black and run `black src` (note: some of the older packages do not have an `src` directory, so you may have to run black on a different directory).
 8. If it runs successfully and makes changes, commit the changes (if your pre-commit is activated you can override it with `-n` to make these commits).
 9. Let's run black on everything else. Run `black .` and commit any edits that are made.
-10. Now, edit the `.flake8` file so it's consistent with `.flake8` in `{{ cookiecutter.repo_name }}`.
-11. In an env that contains flake8, run `flake8 .`.
-12. Fix any errors and make periodic commits.
-13. When this passes, open a PR and alert Simon.
-14. When the PR is merged, update your main and create a new branch called `precommit`.
-15. Make sure that `.pre-commit-config.yaml` is in your current directory. If it is not, copy it over from the cookiecutter.
-16. In an env containing pre-commit, run `pre-commit run --all-files`
-17. Make necessary edits and make periodic commits to make review easier.
-18. Once complete, open a PR and alert Simon. When merged, you can continue on with the cookiecutter.
+19 Now, edit the `.flake8` file so it's consistent with `.flake8` in `{{ cookiecutter.repo_name }}`.
+14. When this passes, open a PR and alert Simon.
+15. When the PR is merged, update your main and create a new branch called `precommit`.
+16. Make sure that `.pre-commit-config.yaml` is in your current directory. If it is not, copy it over from the cookiecutter.
+17. In an env containing pre-commit, run `pre-commit run --all-files`
+18. Make a new PR before doing any manual changes to files and have Simon merge it.  Make sure tests are passing first though
+13. Fix any errors and make periodic commits.
+
+20. Make necessary edits and make periodic commits to make review easier.
+21. Once complete, open a PR and alert Simon. When merged, you can continue on with the cookiecutter.
 
 #### Cookiecutter workflow
 
