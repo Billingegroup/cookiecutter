@@ -14,6 +14,7 @@ repos:
     rev: v4.6.0
     hooks:
       - id: check-yaml
+        exclude: 'environment.yml'
       - id: end-of-file-fixer
       - id: trailing-whitespace
         exclude: '\.(rst|txt)$'
