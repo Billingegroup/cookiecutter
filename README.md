@@ -77,7 +77,9 @@ Finally take a glance at the API/documentation workflow below. This should be do
     5. Any files that we moved over from the old place, but put into a new location in the new repo, we need to delete them from git.  For example, files that were in `doc/manual/source/` in the old repo but are not `doc/source` we correct by typing `git add doc/manual/source`.
 12. Run pytest `python -m diffpy.<package_name>.tests` to make sure everything is working (e.g., `python -m diffpy.pdfmorph.tests`). There should be no errors if all tests passed previously when you were working on pre-commit. You may encounter deprecation warnings. There might be several possibilities:
     1. If you see numpy deprecation warnings, you can either try to fix them (or fix them later) or install `numpy < 2` for now. Remember to add it to Github issue.
-    2. If you see pkg_resources deprecation warnings, you can fix them by migrating to `importlib_resources`. Refer to the [migration guide](https://importlib-resources.readthedocs.io/en/latest/migration.html). Remember to add `importlib_resources` to `requirements/test.txt`.
+    2. If you see pkg_resources deprecation warnings (for `__init__.py` or maybe files like `testutils.py` you moved into the `tests` folder, otherwise you might be doing something wrong), you can fix them by migrating to `importlib_resources`. Refer to the [migration guide](https://importlib-resources.readthedocs.io/en/latest/migration.html). Remember to add `importlib_resources` to `requirements/test.txt`.
+        - If you see 
+        `DeprecationWarning: pkg_resources is deprecated as an API: from pkg_resources import resource_filename`, replace `from pkg_resources import resource_filename` with `import importlib_resources` and change `path = resource_filename(__name__, p)` to `path = str(importlib_resources.files(__name__).joinpath(p))`.
 
 #### API workflow
 This should be done only when the above steps are finished.
