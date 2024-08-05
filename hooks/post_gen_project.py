@@ -55,7 +55,7 @@ ext_kws = {
         'include_dirs' : [],
 }
 
-def create_extensions():
+""" + f"""def create_extensions():
     \"Initialize Extension objects for the setup function.\"
     blibs = []
     ext_kws['libraries'] += blibs
