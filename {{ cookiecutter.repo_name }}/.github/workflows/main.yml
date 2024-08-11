@@ -53,8 +53,3 @@ jobs:
           coverage run -m pytest -vv -s
           coverage report -m
           codecov
-
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v4
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
