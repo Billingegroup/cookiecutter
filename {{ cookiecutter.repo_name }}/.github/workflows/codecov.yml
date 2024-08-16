@@ -5,7 +5,7 @@ on:
     branches:
       - main
   release:
-    types: 
+    types:
       - prereleased
       - published
   workflow_dispatch:
@@ -31,7 +31,7 @@ jobs:
 
       - name: Conda config
         run: >-
-          conda config --set always_yes yes 
+          conda config --set always_yes yes
           --set changeps1 no
 
       - name: Install PROJECT_NAME and requirements

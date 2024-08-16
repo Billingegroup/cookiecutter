@@ -2,7 +2,7 @@ name: Build and Deploy Documentation
 
 on:
   release:
-    types: 
+    types:
       - prereleased
       - published
   workflow_dispatch:
@@ -25,10 +25,10 @@ jobs:
           auto-update-conda: true
           environment-file: environment.yml
           auto-activate-base: false
-      
+
       - name: Conda config
         run: >-
-          conda config --set always_yes yes 
+          conda config --set always_yes yes
           --set changeps1 no
 
       - name: Install PROJECT_NAME and build requirements
