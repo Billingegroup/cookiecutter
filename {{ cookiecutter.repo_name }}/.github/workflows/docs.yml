@@ -20,19 +20,22 @@ jobs:
       - uses: conda-incubator/setup-miniconda@v2
         with:
           activate-environment: build
+          environment-file: ./environment.yml
+          python-version: 3
           auto-update-conda: true
 
       - name: install requirements
-        run: >-
-          conda install -n build -c conda-forge
-          --file requirements/build.txt
-          --file requirements/run.txt
-          --file requirements/docs.txt
-          --file requirements/pip.txt
-          --quiet --yes
-
-      - name: install the package
-        run: python -m pip install . --no-deps
+        run: |
+          conda config --set always_yes yes --set changeps1 no
+          conda config --add channels conda-forge
+          conda create -n build python=3.12
+          conda activate build
+          conda install --file requirements/build.txt
+          conda install --file requirements/run.txt
+          conda install --file requirements/test.txt
+          conda install --file requirements/docs.txt
+          pip install -r requirements/pip.txt
+          python -m pip install . --no-deps
 
       - name: build documents
         run: make -C doc html
@@ -40,7 +43,7 @@ jobs:
       - name: Run tests and upload coverage
         shell: bash -l {0}
         run: |
-          conda activate test
+          conda activate build
           coverage run -m pytest -vv -s
           coverage report -m
           codecov
