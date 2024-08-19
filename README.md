@@ -108,7 +108,7 @@ This should be done only when the above steps are finished.
 6. Make sure that the codecov secret is set in the GH actions repository secrets.  Probably Simon will have to do this [here](https://docs.codecov.com/docs/bitbucket-tutorial))
 
 ## Docker Release Workflow
-You can use docker to build (and optionally release) Python packages for PyPI. Windows and Linux builds are handled via the dockerfiles, 
+You can use docker to build (and optionally release) Python packages for PyPI. Windows and Linux builds are handled via the dockerfiles,
 but Mac builds are done using the [Docker-OSX image](https://github.com/sickcodes/Docker-OSX).
 
 ### Requirements/Install
@@ -122,7 +122,7 @@ Once this is done, clone the repo https://github.com/Billingegroup/release-scrip
 ```
 python docker_release.py <package_name> [-u] [version_number] <min_version> <max_version> <path_to_package>
 ```
-Where `-u` is an optional upload flag that requires `version_number` if it is set, `package_name` is the name 
+Where `-u` is an optional upload flag that requires `version_number` if it is set, `package_name` is the name
 of the Python package as it is to be released, `min_version` is the minimum Python version (i.e. 3.10),
 `max_version` is the maximum Python version (i.e. 3.12), and `path_to_package` is the
 path to the package directory. If there is only one valid version, put the same number twice.
