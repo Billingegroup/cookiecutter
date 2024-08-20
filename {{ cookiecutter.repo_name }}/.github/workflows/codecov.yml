@@ -1,10 +1,13 @@
-name: Test
+name: Gather coverage report and upload to codecov
 
 on:
   push:
     branches:
       - main
-  pull_request:
+  release:
+    types:
+      - prereleased
+      - published
   workflow_dispatch:
 
 defaults:
@@ -12,7 +15,7 @@ defaults:
     shell: bash -l {0}
 
 jobs:
-  validate:
+  coverage:
     runs-on: ubuntu-latest
     steps:
       - name: Check out PROJECT_NAME
@@ -39,4 +42,12 @@ jobs:
           python -m pip install . --no-deps
 
       - name: Validate PROJECT_NAME
-        run: python -m pytest
+        run: |
+          coverage run -m pytest -vv -s
+          coverage report -m
+          codecov
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
