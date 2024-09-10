@@ -147,10 +147,12 @@ include AUTHORS.txt LICENSE*.txt README.rst
 
 Additionally, you can globally exclude static files:
 
+```
 global-exclude *.py[cod]  # Exclude all .pyc, .pyo, and .pyd files.
 global-exclude .DS_Store  # Exclude Mac filesystem artifacts.
 global-exclude __pycache__  # Exclude Python cache directories.
 global-exclude .git*  # Exclude git files and directories.
+```
 
 Reference:
 - [Setuptools - Controlling files in the distribution](https://setuptools.pypa.io/en/latest/userguide/miscellaneous.html)
