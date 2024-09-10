@@ -1,5 +1,6 @@
 graft src
 graft tests
+graft requirements
 
 include AUTHORS.txt LICENSE*.txt README.rst
 
