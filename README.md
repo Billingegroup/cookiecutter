@@ -130,6 +130,30 @@ This shows all the things you have to change in the cookiecutter to get it to cr
 2. When it passes this "test" and the only things left are things we want, push a PR to `cookiecutter`
 3. Paste screenshot of your terminal session showing the result of the copy and git diff.
 
+## How to include/exclude files with `MANIFEST.in`
+
+If you use `graft` and add the folder path, you will include all files in the source distribution when executing `python -m build`. We do want to include tests files so that we can run CI on the conda-forge feedstock.
+
+```
+graft src
+graft tests
+```
+
+You can also specifically include files in the sdist:
+
+```
+include AUTHORS.txt LICENSE*.txt README.rst
+```
+
+Additionally, you can globally exclude static files:
+
+global-exclude *.py[cod]  # Exclude all .pyc, .pyo, and .pyd files.
+global-exclude .DS_Store  # Exclude Mac filesystem artifacts.
+global-exclude __pycache__  # Exclude Python cache directories.
+global-exclude .git*  # Exclude git files and directories.
+
+Reference:
+- [Setuptools - Controlling files in the distribution](https://setuptools.pypa.io/en/latest/userguide/miscellaneous.html)
 
 
 ## Acknowledgements
