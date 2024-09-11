@@ -36,6 +36,7 @@ jobs:
 
       - name: Install PROJECT_NAME and requirements
         run: |
+          conda install --file requirements/build.txt
           conda install --file requirements/run.txt
           conda install --file requirements/test.txt
           python -m pip install -r requirements/pip.txt
