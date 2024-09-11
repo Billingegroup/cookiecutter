@@ -140,7 +140,7 @@ Late update: Sep 10, 2024
 
 ### How to include/exclude files in PyPI source distribution with `MANIFEST.in`
 
-If you use `graft` and add the folder path, you will include all files in the source distribution when executing `python -m build`. 
+If you use `graft` and add the folder path, you will include all files in the source distribution when executing `python -m build`.
 
 ```
 graft src
