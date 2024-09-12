@@ -131,6 +131,40 @@ This shows all the things you have to change in the cookiecutter to get it to cr
 2. When it passes this "test" and the only things left are things we want, push a PR to `cookiecutter`
 3. Paste screenshot of your terminal session showing the result of the copy and git diff.
 
+## Why we decided to include test files in PyPI release
+
+Billinge and Bob have agreed to include tests and the associated data files necessary for running these tests in the PyPI source distribution file. This decision is primarily aimed at enabling continuous integration (CI) on the Conda-Forge feedstock, which uses the PyPI release. You can monitor the CI progress by clicking on any of the PRs here: [Conda-Forge diffpy.utils feedstock](https://github.com/conda-forge/diffpy.utils-feedstock/pulls).
+
+Conversely, we have opted not to include the documentation in the release package, as it is already accessible from the GitHub repository and does not serve a practical purpose in the distribution package itself.
+
+Late update: Sep 10, 2024
+
+### How to include/exclude files in PyPI source distribution with `MANIFEST.in`
+
+If you use `graft` and add the folder path, you will include all files in the source distribution when executing `python -m build`.
+
+```
+graft src
+graft tests
+```
+
+You can also specifically include files in the sdist:
+
+```
+include AUTHORS.txt LICENSE*.txt README.rst
+```
+
+Additionally, you can globally exclude static files:
+
+```
+global-exclude *.py[cod]  # Exclude all .pyc, .pyo, and .pyd files.
+global-exclude .DS_Store  # Exclude Mac filesystem artifacts.
+global-exclude __pycache__  # Exclude Python cache directories.
+global-exclude .git*  # Exclude git files and directories.
+```
+
+Reference:
+- [Setuptools - Controlling files in the distribution](https://setuptools.pypa.io/en/latest/userguide/miscellaneous.html)
 
 
 ## Acknowledgements
