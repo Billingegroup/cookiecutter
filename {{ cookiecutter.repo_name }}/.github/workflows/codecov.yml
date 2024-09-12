@@ -10,45 +10,10 @@ on:
       - published
   workflow_dispatch:
 
-defaults:
-  run:
-    shell: bash -l {0}
-
 jobs:
   coverage:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out PROJECT_NAME
-        uses: actions/checkout@v4
-
-      - name: Initialize miniconda
-        uses: conda-incubator/setup-miniconda@v3
-        with:
-          activate-environment: test
-          auto-update-conda: true
-          environment-file: environment.yml
-          auto-activate-base: false
-
-      - name: Conda config
-        run: >-
-          conda config --set always_yes yes
-          --set changeps1 no
-
-      - name: Install PROJECT_NAME and requirements
-        run: |
-          conda install --file requirements/build.txt
-          conda install --file requirements/run.txt
-          conda install --file requirements/test.txt
-          python -m pip install -r requirements/pip.txt
-          python -m pip install . --no-deps
-
-      - name: Validate PROJECT_NAME
-        run: |
-          coverage run -m pytest -vv -s
-          coverage report -m
-          codecov
-
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v4
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+    uses: Billingegroup/release-scripts/.github/workflows/_codecov.yml@main
+    with:
+      project: PROJECT_NAME
+      c_extension: false
+      headless: false
