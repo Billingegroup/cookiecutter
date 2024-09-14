@@ -165,6 +165,29 @@ global-exclude .git*  # Exclude git files and directories.
 Reference:
 - [Setuptools - Controlling files in the distribution](https://setuptools.pypa.io/en/latest/userguide/miscellaneous.html)
 
+## GitHub Actions
+
+### Difference between pull_request and pull_request_target
+
+In the current CI setup checking for `news`, we use `pull_request_target` instead of `pull_request`.
+
+```yaml
+name: Check News Item
+
+on:
+  pull_request_target:
+    branches:
+    - main
+```
+
+- `pull_request`: This event configures the GITHUB_TOKEN with read-only permissions by default, especially when triggered by forks.
+- `pull_request_target`: This event grants the GITHUB_TOKEN write permissions, enabling it to perform actions that modify the repository, such as posting comments, updating pull request statuses, or merging code.
+
+Another key difference is that when using the `pull_request_target` event in GitHub Actions, the workflow configuration **must already be present** in the base branch at the time the pull request is opened or updated ([diffpy.snmf example PR](https://github.com/diffpy/diffpy.snmf/pull/79))
+
+Reference:
+- [GitHub docs](https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows#pull_request_target)
+
 
 ## Acknowledgements
 Adapted from the NSLS-II scientific cookiecutter, thanks guys!:
