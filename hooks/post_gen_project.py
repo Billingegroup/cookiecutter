@@ -154,7 +154,7 @@ def add_supermodules(ROOT, name):
     cp_dir.rename(c_dir / module_names[-1])
 
 
-# Replace placeholders in main.yml
+# Replace placeholders in pr-tests.yml
 def replace_placeholders():
     project_name = "{{ cookiecutter.project_name }}"
     workflows_path = Path.cwd() / '.github' / 'workflows'
