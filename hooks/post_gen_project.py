@@ -156,26 +156,16 @@ def add_supermodules(ROOT, name):
 
 # Replace placeholders in main.yml
 def replace_placeholders():
-    # Get cookiecutter vars for replacement
-    full_name = "{{ cookiecutter.github_org }}"
     project_name = "{{ cookiecutter.project_name }}"
-    repo_name = f"{full_name}/{project_name}"
+    workflows_path = Path.cwd() / '.github' / 'workflows'
 
-    # Get path to main.yml
-    path = Path.cwd() / '.github' / 'workflows' / 'main.yml'
+    for yml_file in workflows_path.glob('*.yml'):
+        with open(yml_file, 'r') as file:
+            content = file.read()
+        content = content.replace('PROJECT_NAME', project_name)
 
-    # Read main.yml
-    with open(path, 'r') as file:
-        mainyml = file.read()
-
-    # Replace placeholders
-    mainyml = mainyml.replace('REPO_NAME', repo_name)
-    mainyml = mainyml.replace('PROJECT_NAME', project_name)
-
-    # Write modification back to main.yml
-    with open(path, 'w') as file:
-        file.write(mainyml)
-
+        with open(yml_file, 'w') as file:
+            file.write(content)
 
 def wrapper_setup():
     src_dir = ROOT / "src"
