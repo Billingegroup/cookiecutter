@@ -153,8 +153,6 @@ def add_supermodules(ROOT, name):
     # Rename the final destination module
     cp_dir.rename(c_dir / module_names[-1])
 
-
-# Replace placeholders in main.yml
 def replace_placeholders():
     project_name = "{{ cookiecutter.project_name }}"
     workflows_path = Path.cwd() / '.github' / 'workflows'
@@ -185,7 +183,11 @@ def wrapper_setup():
         spfile.write(__gen_setuppy__())
 
 
-add_supermodules(ROOT, "{{ cookiecutter.project_name }}")
-replace_placeholders()
-if "{{ cookiecutter.is_boost_wrapper }}" == "y":
-    wrapper_setup()
+def main():
+    add_supermodules(ROOT, "{{ cookiecutter.project_name }}")
+    replace_placeholders()
+    if "{{ cookiecutter.is_boost_wrapper }}" == "y":
+        wrapper_setup()
+
+if __name__ == '__main__':
+    main()

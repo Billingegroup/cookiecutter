@@ -1,4 +1,4 @@
-name: Test
+name: Tests on PR
 
 on:
   push:
@@ -8,8 +8,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  validate:
-    uses: Billingegroup/release-scripts/.github/workflows/_main.yml@main
+  tests-on-pr:
+    uses: Billingegroup/release-scripts/.github/workflows/_tests-on-pr.yml@v0
     with:
       project: PROJECT_NAME
       c_extension: false

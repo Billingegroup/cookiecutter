@@ -1,4 +1,4 @@
-name: Gather coverage report and upload to codecov
+name: Codecov and matrix
 
 on:
   push:
@@ -11,8 +11,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  coverage:
-    uses: Billingegroup/release-scripts/.github/workflows/_codecov.yml@main
+  coverage-and-matrix:
+    uses: Billingegroup/release-scripts/.github/workflows/_coverage-and-matrix.yml@v0
     with:
       project: PROJECT_NAME
       c_extension: false
