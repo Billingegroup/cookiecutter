@@ -1,7 +1,9 @@
 # cookiecutter
 A cookiecutter for Billinge-group packages.
 
-This repository contains a cookiecutter template for generating a group-standard Python project complete with CI testing and documentation.
+## Purpose
+
+The purpose of cookiecutting is to standardize each repository on GitHub Actions, folder structures, documentation, syntax linting, and running unit tests with Pytest.
 
 ## Installation
 
@@ -13,10 +15,6 @@ pip install cookiecutter
 ```
 
 and follow the instructions provided below.
-
-## Purpose
-
-The purpose of cookiecutting is to standardize each repository on GitHub Actions, folder structures, documentation, syntax linting, and running unit tests with Pytest.
 
 ## Overview
 
