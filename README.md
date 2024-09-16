@@ -51,8 +51,9 @@ For instance, there may be a more verbose description of what the package does, 
 
 ### 2. Cookiecutter workflow
 
-1. At this point, make sure your branch is fully sync'd. Now, from the cloned directory run the cookiecutter `cookiecutter https://github.com/billingegroup/cookiecutter`
-2. Answer the questions as:
+1. At this point, make sure your branch is fully sync'd.
+2. Now, from the cloned directory run the cookiecutter `cookiecutter https://github.com/billingegroup/cookiecutter`
+3. Answer the questions as:
    1. (May occur if it is not the first time you have installed) Is it okay to delete: (y)
    2. github_org: diffpy (if diffpy project) or billingegroup
    3. keywords: current keywords in the `setup.py` or `pyproject.toml` in comma-separated string format, e.g., `diffpy, pdf, something, something else` (no quotes around it)
@@ -62,24 +63,24 @@ For instance, there may be a more verbose description of what the package does, 
    7. minimum_python_version: 3.10 (default)
    8. maximum_python_version: 3.12 (default)
    9. is_boost_wrapper: no (in general, but if there are C++ extensions, this will be yes)
-3. You should have created a new directory tree with the cookiecutter version of all the files in a subdirectory with the name `<package_name>`, e.g., `diffpy.pdfmorph`.  Type `ls` to check it is there.
-4. cd to the `diffpy.<package_name>/` directory created by cookiecutter under the main directory (e.g., in our example `pwd` would return `~/dev/diffpy.pdfmorph/diffpy.pdfmorph`) (we will refer to this as the cookiecutter directory).
-5. Type `ls -als` (if you have the alias, this is `ll`) compare the directory structures in this directory tree to that in the original repo to see what is different (ignore files at this point).  Nothing to do here, just get familiar with the differences.
-6. Move the `.git` directory from the main directory to the cookiecutter directory. From the main directory type `mv ../.git .`.
-7. Create a new branch for all the changes, e.g., `git checkout -b cookierelease`.
-8. If the package has C extensions or is a gui package, look into `.github/workflows` and change `c_extension` or `headless` parameters to `true`.
-9. Copy the code from the old repo to the cookiecutter repo, without overwriting files in the destination (i.e., use `cp -n` or `cp --no-clobber`.  e.g., from the cookiecutter directory where you currently are, type `cp -n -r ../src .` if the old code is already in a directory `src`.  If there is no src directory, it will be something like `cp -n -r ../diffpy ./src`.
-10. From the cookiecutter directory type `git status`.  You will see a list of files that have been modified, deleted or are untracked.  Untracked files are in the cookiecutter but not in the original repo, deleted files are in the original but haven't been moved over, and modified files are in both but have been changed.
-11. Let's now copy over any documentation, similar to what we did with the src files.  We want to copy over everything in the `doc/<path>/source` file from the old repo to the `doc/source` file in the new repo.  In some old pacakges, `<path>` will be something like `manual` and in others it will just not exist.
+4. You should have created a new directory tree with the cookiecutter version of all the files in a subdirectory with the name `<package_name>`, e.g., `diffpy.pdfmorph`.  Type `ls` to check it is there.
+5. cd to the `diffpy.<package_name>/` directory created by cookiecutter under the main directory (e.g., in our example `pwd` would return `~/dev/diffpy.pdfmorph/diffpy.pdfmorph`) (we will refer to this as the cookiecutter directory).
+6. Type `ls -als` (if you have the alias, this is `ll`) compare the directory structures in this directory tree to that in the original repo to see what is different (ignore files at this point).  Nothing to do here, just get familiar with the differences.
+7. Move the `.git` directory from the main directory to the cookiecutter directory. From the main directory type `mv ../.git .`.
+8. Create a new branch for all the changes, e.g., `git checkout -b cookierelease`.
+9. If the package has C extensions or is a gui package, look into `.github/workflows` and change `c_extension` or `headless` parameters to `true`.
+10. Copy the code from the old repo to the cookiecutter repo, without overwriting files in the destination (i.e., use `cp -n` or `cp --no-clobber`.  e.g., from the cookiecutter directory where you currently are, type `cp -n -r ../src .` if the old code is already in a directory `src`.  If there is no src directory, it will be something like `cp -n -r ../diffpy ./src`.
+11. From the cookiecutter directory type `git status`.  You will see a list of files that have been modified, deleted or are untracked.  Untracked files are in the cookiecutter but not in the original repo, deleted files are in the original but haven't been moved over, and modified files are in both but have been changed.
+12. Let's now copy over any documentation, similar to what we did with the src files.  We want to copy over everything in the `doc/<path>/source` file from the old repo to the `doc/source` file in the new repo.  In some old pacakges, `<path>` will be something like `manual` and in others it will just not exist.
     1. If you see this extra `manual` directory, go to your cookiecutter directory. Then run `cp -n -r ../doc/manual/source/* ./doc/source`.
     2. Make sure that if files are moved to a different path compared to root, you must check that the files paths referenced within the file are updated. The best way to do this is to open the project in PyCharm and do a global search (ctrl + shift + f) for `../` or `..` and look at all relative path instances.
-12. Now we will work on correcting all the things that are wrong.
+13. Now we will work on correcting all the things that are wrong.
     1. Add and commit each of the untracked files to the git repo.  These are in cookiecutter but not in the original repo, so can simply be "git added".  Do it one (or a few) at a time to make it easier to rewind by having multiple commits.
     2. Make a PR of your `cookierelease` branch by pushing your fork and opening a PR.
     3. Files showing as deleted in a `git status` are in the old repo but not in the new cookiecutter.  We took care of most these by moving over the src tree, but let's do the rest now.  Go down the list and for <filename> in the `git status` "delete" files type `cp -n ../<filepath>/<filename> ./<target_filepath>`. Note that, generally, `<filepath>` and `<target_filepath>` will be the same, but may differ in cases such as `/doc/manual/source` and `/doc/source` respectively. If there are files there we don't want, don't move them over. Whenever files are copied over using the `-n` command, you may delete them in the main repository to keep your file-tree clean.
     4. Files that have been modified exist in both places and need to be merged manually.  Do these one at a time. First open the file in pycharm, then select `Git|current file|show diff` and the differences will show up.  Select anything you want to inherit from the original file.   In many cases we don't want to bring over things that have been polished in the cookiecutter, so you are mostly looking for code specific things, such as extended descriptions of the package in README and things like that.
     5. Any files that we moved over from the old place, but put into a new location in the new repo, we need to delete them from git.  For example, files that were in `doc/manual/source/` in the old repo but are not `doc/source` we correct by typing `git add doc/manual/source`.
-13. Run pytest `python -m pytest` to make sure everything is working. There should be no errors if all tests passed previously when you were working on pre-commit. You may encounter deprecation warnings. There might be several possibilities:
+14. Run pytest `python -m pytest` to make sure everything is working. There should be no errors if all tests passed previously when you were working on pre-commit. You may encounter deprecation warnings. There might be several possibilities:
     1. If you see numpy deprecation warnings, we won't clean up these deprecations now. Pin numpy to 1.x for now to get tests to pass. Do code fixes separate from cookiecuttering. Remember to add it to Github issue.
     2. Most `pkg_resources` depreation warnings will be fixed by cookiecutter, but if you are in a diffpy package using unittests and see this warning you can fix them by replace `from pkg_resources import resource_filename` with `from importlib import resources` and change `path = resource_filename(__name__, p)` to `path = str(resources.files(__name__).joinpath(p))`. If you see `collected 0 items no tests ran` you might want to rename testing files as `test_*.py`. Refer to the [migration guide](https://importlib-resources.readthedocs.io/en/latest/migration.html).
 
