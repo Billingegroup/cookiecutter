@@ -1,52 +1,63 @@
 # cookiecutter
 A cookiecutter for Billinge-group packages.
 
-This repository contains a cookiecutter template for generating a group-standard
-Python project complete with CI testing and documentation.
+This repository contains a cookiecutter template for generating a group-standard Python project complete with CI testing and documentation.
 
-To do so, in a conda env that includes the cookiecutter package run:
-```
+## Installation
+
+Create a new conda environment that includes the cookiecutter package by running:
+
+```bash
+# Download from PyPI
+pip install cookiecutter
+
+# Initiate cookiecutting from remote repository setup
 cookiecutter https://github.com/billingegroup/cookiecutter
+
+# Initiate cookiecutting from local repository setup
+cookiecutter .
 ```
 
-and follow the instructions.
+and follow the instructions provided below.
 
-## Workflow for releasing diffpy (and other group) packages using cookiecutter.
+## Purpose
 
-This may only be a one-time deal as we bring all our packages up to the same level of uniformity (summer 2024),
-but these instructions will be left here in case we need to do this again in the future because of some
-desired change in our package structure.
+The purpose of cookiecutting is to standardize each repository on GitHub Actions, folder structures, documentation, syntax linting, and running unit tests with Pytest.
 
-### DISCLAIMER
-Do not delete/remove any files before confirming that it is absolutely not necessary. contact Simon (or Andrew) for assistance.
+## Overview
+
+The cookiecutting is divided into three main sections:
+
+1. Pre-commit workflow: Use `black` and `pre-commit` to standardize line lengths and remove flake8 errors.
+2. Cookiecutting workflow: Use the Cookiecutter project setup and move files from an older to a new structure with Pytest passing.
+3. API documentation build workflow: Use a script to build and host API documentation.
+
+### WARNING
+
+**Do not delete/remove** any files before confirming that it is absolutely not necessary. Create an issue or contact Simon (or Andrew) for assistance.
 When copying over documentation files, make sure you include any additional package-specific information that may be in those files.
 For instance, there may be a more verbose description of what the package does, or tutorial/example/utility files. DO NOT REMOVE THEM.
 
-Finally take a glance at the API/documentation workflow below. This should be done as the last step after the `Pytest` tests are passing.
+### 1. Pre-commit workflow
 
-#### Pre-commit workflow
-
-1. In your `dev` folder, fork and clone the package that you are preparing for release
-2. `cd` into the top level directory of that project
-3. `git pull upstream main` (make sure you are synchronized)
-4. Double check that no bug-fix etc. pull-requests are waiting to be merged.  May as well get them merged before doing this. Check with Simon if not sure.
-5. Before running the cookiecutter, we want to run `black` and `flake8` on the top level directory. Create a new branch and call it `black`. Preferrably, do not initialize pre-commit.
+1. In your `dev` folder, fork and clone the package that you are preparing for release.
+2. `cd` into the top level directory of that project.
+3. `git pull upstream main` (make sure you are synchronized).
+4. Double check that no bug-fix etc. pull-requests are waiting to be merged.  May as well get them merged before doing this. Check with Simon if not sure..
+5. Create a new branch called `black`.
 6. Edit the `pyproject.toml` so the section `[tools.black]` is consistent with `pyproject.toml` in `{{ cookiecutter.repo_name }}`.
-7. Activate an env that contains black and run `black src` (note: some of the older packages do not have an `src` directory, so you may have to run black on a different directory).
-8. If it runs successfully and makes changes, commit the changes (if your pre-commit is activated you can override it with `-n` to make these commits).
-9. Let's run black on everything else. Run `black .` and commit any edits that are made.
-19 Now, edit the `.flake8` file so it's consistent with `.flake8` in `{{ cookiecutter.repo_name }}`.
-14. When this passes, open a PR and alert Simon.
-15. When the PR is merged, update your main and create a new branch called `precommit`.
-16. Make sure that `.pre-commit-config.yaml` is in your current directory. If it is not, copy it over from the cookiecutter.
-17. In an env containing pre-commit, run `pre-commit run --all-files`
-18. Make a new PR before doing any manual changes to files and have Simon merge it.  Make sure tests are passing first though
-13. Fix any errors and make periodic commits.
+7. Activate a Conda env that contains black and run `black src` (note: some of the older packages do not have an `src` directory, so you may have to run black on a different directory).
+8. If it runs successfully and makes changes, commit the changes.
+9. Let's run black on everything else. Run `black .` and make a PR.
+11. When the PR is merged, `git checkout main && git pull upstream main` and create a new branch called `precommit`.
+12. Copy and paste the `.flake8` and `.pre-commit-config.yaml` files from `{{ cookiecutter.repo_name }}` to the top directory level. Cross-check with https://github.com/diffpy/diffpy.structure.
+13. In a Conda env containing pre-commit, run `pre-commit run --all-files`.
+14. Make a new PR before making any manual changes to files and have Simon merge it. If you have Pytest or unittests, ensure all tests are running locally.
+15. Fix any errors and make periodic commits to address flake8 issues while ensuring tests pass.
+16. Submit periodic PRs with each containing smaller commits to reduce cognitive overload for the reviewer (Simon).
+17. Only proceed to the next section after all PRs relevant in the pre-commit workflow are addressed.
 
-20. Make necessary edits and make periodic commits to make review easier.
-21. Once complete, open a PR and alert Simon. When merged, you can continue on with the cookiecutter.
-
-#### Cookiecutter workflow
+### 2. Cookiecutter workflow
 
 1. At this point, make sure your branch is fully sync'd. Now, from the cloned directory run the cookiecutter `cookiecutter https://github.com/billingegroup/cookiecutter`
 2. Answer the questions as:
@@ -79,7 +90,7 @@ Finally take a glance at the API/documentation workflow below. This should be do
     1. If you see numpy deprecation warnings, we won't clean up these deprecations now. Pin numpy to 1.x for now to get tests to pass. Do code fixes separate from cookiecuttering. Remember to add it to Github issue.
     2. Most `pkg_resources` depreation warnings will be fixed by cookiecutter, but if you are in a diffpy package using unittests and see this warning you can fix them by replace `from pkg_resources import resource_filename` with `from importlib import resources` and change `path = resource_filename(__name__, p)` to `path = str(resources.files(__name__).joinpath(p))`. If you see `collected 0 items no tests ran` you might want to rename testing files as `test_*.py`. Refer to the [migration guide](https://importlib-resources.readthedocs.io/en/latest/migration.html).
 
-#### API workflow
+### 3. API documentation workflow
 This should be done only when the above steps are finished.
 
 When you see files with `..automodule::` within them, these are API documentation. However, these are not populated. We will populate them using our release scripts.
@@ -100,12 +111,15 @@ Make a PR! It will be merged, trust!
 ## Final checks and sign-off
 This should be done only when the above steps are finished.
 
-1. make sure tests are all passing
+1. Make sure tests are all passing.
 2. Make sure news is up to date so the changelog will reflect all changes.  For the `cookierelease` activity make a `<branchname>.rst` file by copying `TEMPLATE.rst` in the news folder and under "fixed" put `Repo structure modified to the new diffpy standard`
 3. Check the `README` and make sure that all parts have been filled in and all links resolve correctly.
-4. Run through the documentation online and do the same, fix any last typos and make all the links work.  To do this the documentation must have been correctly built on a merge to main and enabled on the github.io website.  Instructions are [here](https://gitlab.thebillingegroup.com/resources/group-wiki/-/wikis/Maintaining-and-Deploying-Documentation)
+4. Run through the documentation online and do the same, fix any last typos and make all the links work.  To do this the documentation must have been correctly built on a merge to main and enabled on the github.io website.  Instructions are [here](https://gitlab.thebillingegroup.com/resources/group-wiki/-/wikis/Maintaining-and-Deploying-Documentation).
 5. When you are are happy to sign off on the release send a Slack message to Simon saying something like "`OK to release diffpy.<package-name>`"
 6. Make sure that the codecov secret is set in the GH actions repository secrets.  Probably Simon will have to do this [here](https://docs.codecov.com/docs/bitbucket-tutorial))
+
+---
+
 ## Workflow for testing diffpy.utils files
 We are using diffpy.utils as a template
 for building the cookie cutter.  To make sure the cookie cutter
