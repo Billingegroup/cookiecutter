@@ -1,4 +1,4 @@
-name: Check News Item
+name: Check for News
 
 on:
   pull_request_target:
@@ -6,7 +6,7 @@ on:
     - main
 
 jobs:
-  build:
+  check-news-item:
     uses: Billingegroup/release-scripts/.github/workflows/_check-news-item.yml@main
     with:
       project: PROJECT_NAME
