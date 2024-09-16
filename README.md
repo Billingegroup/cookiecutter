@@ -10,12 +10,6 @@ Create a new conda environment that includes the cookiecutter package by running
 ```bash
 # Download from PyPI
 pip install cookiecutter
-
-# Initiate cookiecutting from remote repository setup
-cookiecutter https://github.com/billingegroup/cookiecutter
-
-# Initiate cookiecutting from local repository setup
-cookiecutter .
 ```
 
 and follow the instructions provided below.
