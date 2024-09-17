@@ -51,7 +51,7 @@ For instance, there may be a more verbose description of what the package does, 
 
 ### 2. Cookiecutter workflow
 
-1. Run `cookiecutter https://github.com/billingegroup/cookiecutter` inside the package folder.
+1. Type `cookiecutter https://github.com/billingegroup/cookiecutter` inside the package directory.
 3. Answer the questions as:
    1. (May occur if it is not the first time you have installed) Is it okay to delete: (y)
    2. github_org: diffpy (if diffpy project) or billingegroup
@@ -62,8 +62,8 @@ For instance, there may be a more verbose description of what the package does, 
    7. minimum_python_version: 3.10 (default)
    8. maximum_python_version: 3.12 (default)
    9. is_boost_wrapper: no (in general, but if there are C++ extensions, this will be yes)
-4. There should be a new directory in a subdirectory with the name `<package_name>`, e.g., `diffpy.pdfmorph`.  Type `ls` to check it is there.
-5. cd into the new `diffpy.<package_name>/` directory (e.g., in our example `pwd` would return `~/dev/diffpy.pdfmorph/diffpy.pdfmorph`) (we will refer to the nested directory as the "cookiecutter" directory and `~/dev/diffpy.pdfmorph/` as the "main" directory).
+4. There should be a new directory with the name `<package_name>`, e.g., `diffpy.pdfmorph`.  Type `ls` to check it is there.
+5. cd into the new `diffpy.<package_name>/` directory (e.g., in our example `pwd` would return `~/dev/diffpy.pdfmorph/diffpy.pdfmorph`) (we will refer to the nested directory as the "**cookiecutter**" directory and `~/dev/diffpy.pdfmorph/` as the "**main**" directory).
 6. Type `ls -als` (if you have the alias, this is `ll`) compare the directory structures in this directory tree to that in the original repo to see what is different (ignore files at this point).  Nothing to do here, just get familiar with the differences.
 7. Type `mv ../.git .` to move the `.git` directory from the main repo to the cookiecutter repo.
 8. Create a new branch for all the changes, e.g., `git checkout -b cookierelease`.
