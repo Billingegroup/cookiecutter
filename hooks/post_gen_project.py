@@ -1,5 +1,7 @@
 import shutil
 from pathlib import Path
+import re
+import requests
 
 # All cookie-cutter hooks run on project root, but good to enforce
 ROOT = Path.cwd()
@@ -153,18 +155,6 @@ def add_supermodules(ROOT, name):
     # Rename the final destination module
     cp_dir.rename(c_dir / module_names[-1])
 
-def replace_placeholders():
-    project_name = "{{ cookiecutter.project_name }}"
-    workflows_path = Path.cwd() / '.github' / 'workflows'
-
-    for yml_file in workflows_path.glob('*.yml'):
-        with open(yml_file, 'r') as file:
-            content = file.read()
-        content = content.replace('PROJECT_NAME', project_name)
-
-        with open(yml_file, 'w') as file:
-            file.write(content)
-
 def wrapper_setup():
     src_dir = ROOT / "src"
     ext_dir = src_dir / "extensions"
@@ -182,12 +172,74 @@ def wrapper_setup():
     with open(setuppy_file, "w") as spfile:
         spfile.write(__gen_setuppy__())
 
+def update_workflow():
+
+    CENTRAL_REPO_ORG = "Billingegroup"
+    CENTRAL_REPO_NAME = "release-scripts"
+    CENTRAL_WORKFLOW_DIR = ".github/workflows/templates"
+    LOCAL_WORKFLOW_DIR = ROOT / ".github" / "workflows"
+
+    workflow_input = {"PROJECT": "{{ cookiecutter.project_name }}", 
+                      "C_EXTENSION": str("{{ cookiecutter.is_boost_wrapper }}"=="y").lower(), 
+                      "HEADLESS": input(f"Enter value for workflow 'HEADLESS' (default: {'false'}): ").strip().lower() or 'false',
+                      "VERSION": input(f"Enter value for workflow 'VERSION' (default: {'v0'}): ").strip() or "v0"}
+
+    def get_central_workflows():
+        base_url = f"https://api.github.com/repos/{CENTRAL_REPO_ORG}/{CENTRAL_REPO_NAME}/contents/{CENTRAL_WORKFLOW_DIR}"
+        response = requests.get(base_url, timeout=5)
+        if response.status_code != 200:
+            raise Exception(f"Failed to fetch central workflows: {response.status_code}")
+
+        workflows = {}
+        for file in response.json():
+            if file['type'] == 'file' and file['name'].endswith('.yml'):
+                content_response = requests.get(file['download_url'], timeout=5)
+                if content_response.status_code == 200:
+                    workflows[file['name']] = content_response.text
+        return workflows
+
+
+    def update_workflow_params(content):
+
+        def replace_match(match):
+            key = match.group(1)
+            return str(workflow_input[key])
+
+        pattern = re.compile(r"\{\{\s*(\w+)\s*/\s*([^\s\}]+)\s*\}\}")
+        return pattern.sub(replace_match, content)
+
+
+    def update_local_workflows(central_workflows):
+        local_workflows = set(f.name for f in LOCAL_WORKFLOW_DIR.glob("*.yml"))
+        central_workflow_names = set(central_workflows.keys())
+
+        for name, content in central_workflows.items():
+            local_file = LOCAL_WORKFLOW_DIR / name
+
+            content = update_workflow_params(content)
+
+            with open(local_file, "w", encoding="utf-8") as file:
+                file.write(content)
+
+        for name in local_workflows - central_workflow_names:
+            (LOCAL_WORKFLOW_DIR / name).unlink()
+            print(f"Removed workflow {name}")
+
+
+    try:
+        LOCAL_WORKFLOW_DIR.mkdir(parents=True, exist_ok=True)
+        central_workflows = get_central_workflows()
+        update_local_workflows(central_workflows)
+        print("Workflow synchronization completed successfully")
+    except Exception as e:
+        print(f"Error: {str(e)}")
+
 
 def main():
     add_supermodules(ROOT, "{{ cookiecutter.project_name }}")
-    replace_placeholders()
     if "{{ cookiecutter.is_boost_wrapper }}" == "y":
         wrapper_setup()
+    update_workflow()
 
 if __name__ == '__main__':
     main()
