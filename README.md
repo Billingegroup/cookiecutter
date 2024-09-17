@@ -70,7 +70,7 @@ For instance, there may be a more verbose description of what the package does, 
 8. If the package has C extensions or is a gui package, look into `.github/workflows` and change `c_extension` or `headless` parameters to `true`.
 9. Type `cp -n -r ../src .` to copy the source code from the main to the cookiecutter repo, without overwriting exiting files in the destination. If there is no src directory, it will be something like `cp -n -r ../diffpy ./src`.
 10. Type `git status` to see a list of files that have been (1) untracked, (2) deleted, (3) modified.  Untracked files are in the cookiecutter but not in the original repo, deleted files are in the original but haven't been moved over, and modified files are in both but have been changed.
-11. Let's now copy over any documentation, similar to what we did with the src files.  We want to copy over everything in the `doc/<path>/source` file from the old repo to the `doc/source` file in the new repo. 
+11. Let's now copy over any documentation, similar to what we did with the src files.  We want to copy over everything in the `doc/<path>/source` file from the old repo to the `doc/source` file in the new repo.
     1. If you see this extra `manual` directory, run `cp -n -r ../doc/manual/source/* ./doc/source`.
     2. If files are moved to a different path, open the project in PyCharm and do a global search (ctrl + shift + f) for `../` or `..` and modify all relative path instances.
 12. Now we will work on correcting all the things that are wrong.
