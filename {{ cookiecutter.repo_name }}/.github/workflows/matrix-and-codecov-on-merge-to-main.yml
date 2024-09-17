@@ -1,4 +1,4 @@
-name: Codecov and matrix
+name: CI
 
 on:
   push:
