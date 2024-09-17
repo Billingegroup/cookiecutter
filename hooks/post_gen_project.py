@@ -1,6 +1,7 @@
+import re
 import shutil
 from pathlib import Path
-import re
+
 import requests
 
 # All cookie-cutter hooks run on project root, but good to enforce
@@ -179,8 +180,8 @@ def update_workflow():
     CENTRAL_WORKFLOW_DIR = ".github/workflows/templates"
     LOCAL_WORKFLOW_DIR = ROOT / ".github" / "workflows"
 
-    workflow_input = {"PROJECT": "{{ cookiecutter.project_name }}", 
-                      "C_EXTENSION": str("{{ cookiecutter.is_boost_wrapper }}"=="y").lower(), 
+    workflow_input = {"PROJECT": "{{ cookiecutter.project_name }}",
+                      "C_EXTENSION": str("{{ cookiecutter.is_boost_wrapper }}"=="y").lower(),
                       "HEADLESS": input(f"Enter value for workflow 'HEADLESS' (default: {'false'}): ").strip().lower() or 'false',
                       "VERSION": input(f"Enter value for workflow 'VERSION' (default: {'v0'}): ").strip() or "v0"}
 
