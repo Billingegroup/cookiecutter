@@ -71,11 +71,7 @@ Then, to fully install ``{{ cookiecutter.package_dist_name }}`` in our active en
 
 Another option is to use ``pip`` to download and install the latest release from
 `Python Package Index <https://pypi.python.org>`_.
-To install using ``pip`` into your ``{{ cookiecutter.package_dist_name }}_env`` environment, we will also have to install dependencies ::
-
-        pip install -r https://raw.githubusercontent.com/{{ cookiecutter.github_org }}/{{ cookiecutter.repo_name }}/main/requirements/run.txt
-
-and then install the package ::
+To install using ``pip`` into your ``{{ cookiecutter.package_dist_name }}_env`` environment, type ::
 
         pip install {{ cookiecutter.package_dist_name }}
 
