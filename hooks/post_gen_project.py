@@ -57,8 +57,6 @@ ext_kws = {
 
 """ + f"""def create_extensions():
     \"Initialize Extension objects for the setup function.\"
-    blibs = []
-    ext_kws['libraries'] += blibs
     ext = Extension('{{ cookiecutter.package_dir_name }}.{base_module_name}',
                     glob.glob('src/extensions/*.cpp'),
                     **ext_kws)
