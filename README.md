@@ -52,16 +52,17 @@ For instance, there may be a more verbose description of what the package does, 
 ### 2. Cookiecutter workflow
 
 1. Type `cookiecutter https://github.com/billingegroup/cookiecutter` inside the package directory
-2. . Answer the questions as:
+2. . Answer the questions as the following -- note that (default) means to hit enter without modifying anything:
    1. (May occur if it is not the first time you have installed) Is it okay to delete: (y)
    2. github_org: diffpy (if diffpy project) or billingegroup
    3. keywords: current keywords in the `setup.py` or `pyproject.toml` in comma-separated string format, e.g., `diffpy, pdf, something, something else` (no quotes around it)
-   4. project_name: name of project (e.g. `diffpy.pdfmorph`)
-   5. package_dist_name: default
-   6. package_dir_name: default
-   7. minimum_python_version: 3.10 (default)
-   8. maximum_python_version: 3.12 (default)
-   9. is_boost_wrapper: no (in general, but if there are C++ extensions, this will be yes)
+   4. project_name: <name_of_project (e.g. `diffpy.pdfmorph`)>
+   5. package_dist_name: (default)
+   6. package_dir_name: (default)
+   7. repo_name: (default)
+   8. minimum_python_version: (default -- this is 3.10)
+   9. maximum_python_version: (default -- this is 3.12)
+   10. is_cpp_wrapper: no (in general, but if there are C++ extensions, this will be yes)
 3. There should be a new directory with the name `<package_name>`, e.g., `diffpy.pdfmorph`.  Type `ls` to check it is there.
 4. cd into the new `diffpy.<package_name>/` directory (e.g., in our example `pwd` would return `~/dev/diffpy.pdfmorph/diffpy.pdfmorph`) (we will refer to the nested directory as the "**cookiecutter**" directory and `~/dev/diffpy.pdfmorph/` as the "**main**" directory).
 5. Type `ls -als` (if you have the alias, this is `ll`) compare the directory structures in this directory tree to that in the original repo to see what is different (ignore files at this point).  Nothing to do here, just get familiar with the differences.
