@@ -57,46 +57,10 @@ ext_kws = {
         'extra_link_args' : [],
         'include_dirs' : [],
 }
-""" + f"""# Figure out the tagged name of boost_python library.
-def get_boost_libraries():
-    \"\"\"Check for installed boost_python shared library.
 
-    Returns list of required boost_python shared libraries that are installed
-    on the system. If required libraries are not found, an Exception will be
-    thrown.
-    \"\"\"
-    baselib = \"boost_python\"
-    major, minor = (str(x) for x in sys.version_info[:2])
-    pytags = [major + minor, major, '']
-    mttags = ['', '-mt']
-    boostlibtags = [(pt + mt) for mt in mttags for pt in pytags] + ['']
-    from ctypes.util import find_library
-    for tag in boostlibtags:
-        lib = baselib + tag
-        found = find_library(lib)
-        if found: break
-
-    # Show warning when library was not detected.
-    if not found:
-        import platform
-        import warnings
-        ldevname = 'LIBRARY_PATH'
-        if platform.system() == 'Darwin':
-            ldevname = 'DYLD_FALLBACK_LIBRARY_PATH'
-        wmsg = (\"Cannot detect name suffix for the %r library. \"
-                \"Consider setting %s.\") % (baselib, ldevname)
-        warnings.warn(wmsg)
-
-    libs = [lib]
-    return libs
-
-
-def create_extensions():
+""" + f"""def create_extensions():
     \"Initialize Extension objects for the setup function.\"
-    blibs = [n for n in get_boost_libraries()
-            if not n in ext_kws['libraries']]
-    ext_kws['libraries'] += blibs
-    ext = Extension('{{ cookiecutter.package_dir_name }}.{base_module_name}_ext',
+    ext = Extension('{{ cookiecutter.package_dir_name }}.{base_module_name}',
                     glob.glob('src/extensions/*.cpp'),
                     **ext_kws)
     return [ext]
