@@ -21,6 +21,6 @@
 # obtain version information
 from importlib.metadata import version
 
-__version__ = version("{{ cookiecutter.package_dist_name }}")
+__version__ = version("{{ cookiecutter.package_dir_name }}")
 
 # End of file
