@@ -145,8 +145,8 @@ def update_workflow():
     LOCAL_WORKFLOW_DIR = ROOT / ".github" / "workflows"
 
     workflow_input = {"PROJECT": "{{ cookiecutter.project_name }}",
-                      "C_EXTENSION": str("{{ cookiecutter.is_boost_wrapper }}"=="y").lower(),
-                      "HEADLESS": input(f"Enter value for workflow 'HEADLESS' (default: {'false'}): ").strip().lower() or 'false',
+                      "C_EXTENSION": str("{{ cookiecutter.have_c_code }}"=="y").lower(),
+                      "HEADLESS": input(f"Is a GUI application, run 'HEADLESS' tests (default: {'false'}): ").strip().lower() or 'false',
                       "VERSION": input(f"Enter value for workflow 'VERSION' (default: {'v0'}): ").strip() or "v0"}
 
     def get_central_workflows():
@@ -202,7 +202,7 @@ def update_workflow():
 
 def main():
     add_supermodules(ROOT, "{{ cookiecutter.project_name }}")
-    if "{{ cookiecutter.is_boost_wrapper }}" == "y":
+    if "{{ cookiecutter.have_c_code }}" == "y":
         wrapper_setup()
     update_workflow()
 
