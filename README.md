@@ -62,25 +62,26 @@ For instance, there may be a more verbose description of what the package does, 
    7. repo_name: (default)
    8. minimum_python_version: (default -- this is 3.10)
    9. maximum_python_version: (default -- this is 3.12)
-   10. is_cpp_wrapper: no (in general, but if there are C++ extensions, this will be yes)
+   10. have_c_code: no (in general, but if there are C++ extensions, this will be yes)
+   11. Is a GUI application, run 'HEADLESS' tests (default: false): (default). If it is a GUI package, change this to `true`.
+   12. Enter value for workflow 'VERSION' (default: v0): (default). Version of the workflow to use.
 3. There should be a new directory with the name `<package_name>`, e.g., `diffpy.pdfmorph`.  Type `ls` to check it is there.
 4. cd into the new `diffpy.<package_name>/` directory (e.g., in our example `pwd` would return `~/dev/diffpy.pdfmorph/diffpy.pdfmorph`) (we will refer to the nested directory as the "**cookiecutter**" directory and `~/dev/diffpy.pdfmorph/` as the "**main**" directory).
 5. Type `ls -als` (if you have the alias, this is `ll`) compare the directory structures in this directory tree to that in the original repo to see what is different (ignore files at this point).  Nothing to do here, just get familiar with the differences.
 6. Type `mv ../.git .` to move the `.git` directory from the main repo to the cookiecutter repo.
 7. Create a new branch for all the changes, e.g., `git checkout -b cookierelease`.
-8. If the package has C extensions or is a gui package, look into `.github/workflows` and change `c_extension` or `headless` parameters to `true`.
-9. Type `cp -n -r ../src .` to copy the source code from the main to the cookiecutter repo, without overwriting exiting files in the destination. If there is no src directory, it will be something like `cp -n -r ../diffpy ./src`.
-10. Type `git status` to see a list of files that have been (1) untracked, (2) deleted, (3) modified.  Untracked files are in the cookiecutter but not in the original repo, deleted files are in the original but haven't been moved over, and modified files are in both but have been changed.
-11. Let's now copy over any documentation, similar to what we did with the src files.  We want to copy over everything in the `doc/<path>/source` file from the old repo to the `doc/source` file in the new repo.
+8. Type `cp -n -r ../src .` to copy the source code from the main to the cookiecutter repo, without overwriting exiting files in the destination. If there is no src directory, it will be something like `cp -n -r ../diffpy ./src`.
+9. Type `git status` to see a list of files that have been (1) untracked, (2) deleted, (3) modified.  Untracked files are in the cookiecutter but not in the original repo, deleted files are in the original but haven't been moved over, and modified files are in both but have been changed.
+10. Let's now copy over any documentation, similar to what we did with the src files.  We want to copy over everything in the `doc/<path>/source` file from the old repo to the `doc/source` file in the new repo.
     1. If you see this extra `manual` directory, run `cp -n -r ../doc/manual/source/* ./doc/source`.
     2. If files are moved to a different path, open the project in PyCharm and do a global search (ctrl + shift + f) for `../` or `..` and modify all relative path instances.
-12. Now we will work on correcting all the things that are wrong.
+11. Now we will work on correcting all the things that are wrong.
     1. Add and commit each of the (1) untracked files to the git repo.  These files are in the cookiecutter repo but not in the main repo, so can simply be "git added".  Do it one (or a few) at a time to make it easier to rewind by having multiple commits.
     2. Make a PR of your `cookierelease` branch by pushing your fork and opening a PR.
     3. Files showing as (2) "deleted" upon git status are in the main repo but not in the cookiecutter repo.  We took care of most these by moving over the src tree, but let's do the rest now.  Go down the list and for <filename> in the `git status` "delete" files type `cp -n ../<filepath>/<filename> ./<target_filepath>`. Do not move files that we do not want. If you are unsure, feel free to confirm with Simon.
     4. Files that have been (3) modified exist in both places and need to be merged **manually**.  Do these one at a time. First open the file in pycharm, then select `Git|current file|show diff` and the differences will show up.  Select anything you want to inherit from the file in the main repo. For example, you want to copy useful information such as LICENSE and README files from the main repo to the cookiecutter repo.
     5. Any files that we moved over from the old place, but put into a new location in the new repo, we need to delete them from git.  For example, files that were in `doc/manual/source/` in the old repo but are not `doc/source` we correct by typing `git add doc/manual/source`.
-13. Run pytest `python -m pytest` to make sure everything is working. There should be no errors if all tests passed previously when you were working on pre-commit. You may encounter deprecation warnings. There might be several possibilities:
+12. Run pytest `python -m pytest` to make sure everything is working. There should be no errors if all tests passed previously when you were working on pre-commit. You may encounter deprecation warnings. There might be several possibilities:
     1. If you see numpy deprecation warnings, we won't clean up these deprecations now. Pin numpy to 1.x for now to get tests to pass. Do code fixes separate from cookiecuttering. Remember to add it to Github issue.
     2. Most `pkg_resources` depreation warnings will be fixed by cookiecutter, but if you are in a diffpy package using unittests and see this warning you can fix them by replace `from pkg_resources import resource_filename` with `from importlib import resources` and change `path = resource_filename(__name__, p)` to `path = str(resources.files(__name__).joinpath(p))`. If you see `collected 0 items no tests ran` you might want to rename testing files as `test_*.py`. Refer to the [migration guide](https://importlib-resources.readthedocs.io/en/latest/migration.html).
 
