@@ -86,7 +86,7 @@ and run the following ::
 Getting Started
 ---------------
 
-You may consult our `online documentation <https://diffpy.github.io/diffpy.snmf>`_ for tutorials and API references.
+You may consult our `online documentation <https://{{ cookiecutter.github_org }}.github.io/{{ cookiecutter.repo_name }}>`_ for tutorials and API references.
 
 Support and Contribute
 ----------------------
