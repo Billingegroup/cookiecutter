@@ -62,14 +62,16 @@ To add "conda-forge" to the conda channels, run the following in a terminal. ::
 We want to install our packages in a suitable conda environment.
 The following creates and activates a new environment named ``{{ cookiecutter.package_dist_name }}_env`` ::
 
-        conda create -n {{ cookiecutter.package_dist_name }}_env python=3
+        conda create -n {{ cookiecutter.package_dist_name }}_env {{ cookiecutter.package_dist_name }}
         conda activate {{ cookiecutter.package_dist_name }}_env
 
-Then, to fully install ``{{ cookiecutter.package_dist_name }}`` in our active environment, run ::
+To confirm that the installation was successful, type ::
 
-        conda install {{ cookiecutter.package_dist_name }}
+        python -c "import {{ cookiecutter.package_dist_name }}; print({{ cookiecutter.package_dist_name }}.__version__)"
 
-Another option is to use ``pip`` to download and install the latest release from
+The output should print the latest version displayed on the badges above.
+
+If the above does not work, you can use ``pip`` to download and install the latest release from
 `Python Package Index <https://pypi.python.org>`_.
 To install using ``pip`` into your ``{{ cookiecutter.package_dist_name }}_env`` environment, type ::
 
@@ -80,6 +82,11 @@ If you prefer to install from sources, after installing the dependencies, obtain
 and run the following ::
 
         pip install .
+
+Getting Started
+---------------
+
+You may consult our `online documentation <https://diffpy.github.io/diffpy.snmf>`_ for tutorials and API references.
 
 Support and Contribute
 ----------------------
