@@ -10,7 +10,7 @@ assignees: ""
 
 <!--
 For a bug report, please copy and paste any error messages from the application or command-line here.
-For a feature request, Please state how the new functionality could potentially benefit the community.
+For a feature request, please state how the new functionality could benefit the community.
 -->
 
 ### Proposed solution
