@@ -67,7 +67,7 @@ The following creates and activates a new environment named ``{{ cookiecutter.pa
 
 To confirm that the installation was successful, type ::
 
-        python -c "import {{ cookiecutter.package_dist_name }}; print({{ cookiecutter.package_dist_name }}.__version__)"
+        python -c "import {{ cookiecutter.package_dir_name }}; print({{ cookiecutter.package_dir_name }}.__version__)"
 
 The output should print the latest version displayed on the badges above.
 
