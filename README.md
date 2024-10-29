@@ -46,8 +46,9 @@ For instance, there may be a more verbose description of what the package does, 
 11. Type `git checkout main && git pull upstream main` and create a new branch called `precommit`.
 12. Copy and paste the `.flake8` and `.pre-commit-config.yaml` files from `{{ cookiecutter.repo_name }}` to the top directory level. Cross-check with https://github.com/diffpy/diffpy.structure.
 14. Run `pre-commit run --all-files`. Fix any spelling suggestions from Codespell. To ignore a specific word or line, add it under  `.codespell/ignore_words.txt` or `.codespell/ignore_lines.txt`. To ignore specific file types, add the file extensions i.g. `*.gr` in `skip = line` under `[tool.codespell]` in `pyproject.toml`. Include explanations for each addition.
-15. After the PR is merged, create a new branch called `flake8`
-16. Fix flake8 errors manually:
+15. Create a PR to `main`. Mention in the PR that you need to address flake8 errors.
+16. After the  `precommit` branch has been merged, sync with `main` in Step 11, create a new branch called `flake8`
+17. Fix flake8 errors manually:
     - Tip 1: Start with easier error types to fix, such as line-lenghts and "module imported not used", etc.
     - Tip 2: Submit periodic commits within a single PR.
     - Tip 3: Create multiple PRs, each containing a specific theme (e.g., "Fix docstring line-length flake8 errors" using `flake8-lenght` branch, etc.) to reduce cognitive overload for the reviewer (Simon).
