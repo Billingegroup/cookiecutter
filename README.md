@@ -40,7 +40,7 @@ For instance, there may be a more verbose description of what the package does, 
 6. Create `pyproject.toml`. Copy and paste the `[tools.black]` and `[tool.codespell]` sections from `pyproject.toml` in the `{{ cookiecutter.repo_name }}` folder path.
 7. Run `black src` (note: some of the older packages do not have an `src` directory, so you may have to run black on a different directory).
 8. Commit the automatic changes by `black`.
-9. Run `black .` and create a PR into `main`. Follow the group's GitHub worfklow tutorial on GitLab.
+9. Run `black .` and create a PR into `main`. Follow the group's GitHub workflow tutorial on GitLab.
 10. After the `black` branch has been merged, run pytest or unit tests to ensure all tests pass locally. If the code is failing, please consult with Simon before further proceeding.
 11. Type `git checkout main && git pull upstream main` and create a new branch called `precommit`.
 12. Copy and paste the `.flake8` and `.pre-commit-config.yaml` files from `{{ cookiecutter.repo_name }}` to the top directory level. Cross-check with https://github.com/diffpy/diffpy.structure.
