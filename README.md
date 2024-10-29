@@ -51,7 +51,7 @@ For instance, there may be a more verbose description of what the package does, 
 17. Fix flake8 errors manually:
     - Tip 1: Start with easier error types to fix, such as line-lenghts and "module imported not used", etc.
     - Tip 2: Submit periodic commits within a single PR.
-    - Tip 3: Create multiple PRs, each containing a specific theme (e.g., "Fix docstring line-length flake8 errors" using `flake8-lenght` branch, etc.) to reduce cognitive overload for the reviewer (Simon).
+    - Tip 3: Create multiple PRs, each containing a specific theme (e.g., "Fix docstring line-length flake8 errors" using `flake8-length` branch, etc.) to reduce cognitive overload for the reviewer (Simon).
     - Tip 4: Don't hesitate to reach out to group members who have contributed to this repository. They probably have seen those errors before!
 18. Only proceed to the next section after addressing all PRs relevant to the pre-commit workflow.
 
