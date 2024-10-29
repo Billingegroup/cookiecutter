@@ -11,8 +11,7 @@ Create a new conda environment that includes the cookiecutter package by running
 
 ```bash
 # Download from PyPI
-pip install cookiecutter
-pip install black pre-commit
+pip install cookiecutter black pre-commit
 ```
 
 and follow the instructions provided below.
