@@ -58,6 +58,11 @@ namespaces = false  # to disable scanning PEP 420 namespaces (true by default)
 [tool.setuptools.dynamic]
 dependencies = {file = ["requirements/pip.txt"]}
 
+[tool.codespell]
+exclude-file = ".codespell/ignore_lines.txt"
+ignore-words = ".codespell/ignore_words.txt"
+skip = "*.cif,*.dat"
+
 [tool.black]
 line-length = 115
 include = '\.pyi?$'
