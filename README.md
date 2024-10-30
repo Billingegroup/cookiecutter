@@ -11,7 +11,7 @@ Create a new conda environment that includes the cookiecutter package by running
 
 ```bash
 # Download from PyPI
-pip install cookiecutter
+pip install cookiecutter black pre-commit
 ```
 
 and follow the instructions provided below.
@@ -32,22 +32,27 @@ For instance, there may be a more verbose description of what the package does, 
 
 ### 1. Pre-commit workflow
 
-1. In your `dev` folder, fork and clone the package that you are preparing for release.
+1. In your `dev` folder, fork and clone the package
 2. `cd` into the top level directory of that project.
-3. `git pull upstream main` (make sure you are synchronized).
-4. Double check that no bug-fix etc. pull-requests are waiting to be merged.  May as well get them merged before doing this. Check with Simon if not sure..
+3. Type `git pull upstream main` to sync with the main branch.
+4. Double check that no bug-fix etc. pull-requests are waiting to be merged. Check with Simon if not sure.
 5. Create a new branch called `black`.
-6. Edit the `pyproject.toml` so the section `[tools.black]` is consistent with `pyproject.toml` in `{{ cookiecutter.repo_name }}`.
-7. Activate a Conda env that contains black and run `black src` (note: some of the older packages do not have an `src` directory, so you may have to run black on a different directory).
-8. If it runs successfully and makes changes, commit the changes.
-9. Let's run black on everything else. Run `black .` and make a PR.
-11. When the PR is merged, `git checkout main && git pull upstream main` and create a new branch called `precommit`.
+6. Create `pyproject.toml`. Copy and paste the `[tools.black]` and `[tool.codespell]` sections from `pyproject.toml` in the `{{ cookiecutter.repo_name }}` folder path.
+7. Run `black src` (note: some of the older packages do not have an `src` directory, so you may have to run black on a different directory).
+8. Commit the automatic changes by `black`.
+9. Run `black .` and create a PR into `main`. Follow the group's GitHub workflow tutorial on GitLab.
+10. After the `black` branch has been merged, run pytest or unit tests to ensure all tests pass locally. If the code is failing, please consult with Simon before further proceeding.
+11. Type `git checkout main && git pull upstream main` and create a new branch called `precommit`.
 12. Copy and paste the `.flake8` and `.pre-commit-config.yaml` files from `{{ cookiecutter.repo_name }}` to the top directory level. Cross-check with https://github.com/diffpy/diffpy.structure.
-13. In a Conda env containing pre-commit, run `pre-commit run --all-files`.
-14. Make a new PR before making any manual changes to files and have Simon merge it. If you have Pytest or unittests, ensure all tests are running locally.
-15. Fix any errors and make periodic commits to address flake8 issues while ensuring tests pass.
-16. Submit periodic PRs with each containing smaller commits to reduce cognitive overload for the reviewer (Simon).
-17. Only proceed to the next section after all PRs relevant in the pre-commit workflow are addressed.
+14. Run `pre-commit run --all-files`. Fix any spelling suggestions from Codespell. To ignore a specific word or line, add it under  `.codespell/ignore_words.txt` or `.codespell/ignore_lines.txt`. To ignore specific file types, add the file extensions i.g. `*.gr` in `skip = line` under `[tool.codespell]` in `pyproject.toml`. Include explanations for each addition.
+15. Create a PR to `main`. Mention in the PR that you need to address flake8 errors.
+16. After the  `precommit` branch has been merged, sync with `main` in Step 11, create a new branch called `flake8`
+17. Fix flake8 errors manually:
+    - Tip 1: Start with easier error types to fix, such as line-lenghts and "module imported not used", etc.
+    - Tip 2: Submit periodic commits within a single PR.
+    - Tip 3: Create multiple PRs, each containing a specific theme (e.g., "Fix docstring line-length flake8 errors" using `flake8-length` branch, etc.) to reduce cognitive overload for the reviewer (Simon).
+    - Tip 4: Don't hesitate to reach out to group members who have contributed to this repository. They probably have seen those errors before!
+18. Only proceed to the next section after addressing all PRs relevant to the pre-commit workflow.
 
 ### 2. Cookiecutter workflow
 
