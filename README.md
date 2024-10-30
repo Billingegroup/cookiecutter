@@ -34,7 +34,7 @@ For instance, there may be a more verbose description of what the package does, 
 
 1. In your `dev` folder, fork and clone the package
 2. `cd` into the top level directory of that project.
-3. Type `git pull upstream main` to sync with the main brannch.
+3. Type `git pull upstream main` to sync with the main branch.
 4. Double check that no bug-fix etc. pull-requests are waiting to be merged. Check with Simon if not sure.
 5. Create a new branch called `black`.
 6. Create `pyproject.toml`. Copy and paste the `[tools.black]` and `[tool.codespell]` sections from `pyproject.toml` in the `{{ cookiecutter.repo_name }}` folder path.
