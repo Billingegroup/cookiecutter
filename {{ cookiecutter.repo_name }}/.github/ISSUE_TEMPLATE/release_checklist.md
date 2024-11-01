@@ -13,7 +13,7 @@ assignees: ""
 - [ ] License information is verified as correct. If you are unsure, please comment below.
 - [ ] Locally rendered documentation contains all appropriate pages, including API references (check no modules are
   missing), tutorials, and other human written text is up-to-date with any changes in the code.
-- [ ] Installation instructions in the README, documentation and on the website (e.g., diffpy.org) udpated.
+- [ ] Installation instructions in the README, documentation and on the website (e.g., diffpy.org) updated.
 - [ ] Successfully run any tutorial examples or do functional testing with the latest Python version
 - [ ] Grammar and writing quality have been checked (no typos).
 
