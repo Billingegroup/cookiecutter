@@ -5,7 +5,7 @@ coverage:
         target: auto # use the coverage from the base commit, fail if coverage is lower
         threshold: 0%  # allow the coverage to drop by
 
-comment:                  
+comment:
   layout: " diff, flags, files"
   behavior: default
   require_changes: false
