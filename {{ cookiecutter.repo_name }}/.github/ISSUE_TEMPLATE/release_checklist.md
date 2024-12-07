@@ -1,3 +1,11 @@
+---
+name: Release
+about: Checklist and communication channel for PyPI and GitHub release
+title: "Ready for <version-number> PyPI/GitHub release"
+labels: "release"
+assignees: ""
+---
+
 ### PyPI/GitHub rc-release preparation checklist:
 
 - [ ] All PRs/issues attached to the release are merged.
