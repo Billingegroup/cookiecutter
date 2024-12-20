@@ -1,0 +1,18 @@
+name: Tests on PR
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  tests-on-pr:
+    uses: Billingegroup/release-scripts/.github/workflows/_tests-on-pr.yml@v0
+    with:
+      project: bg-cookiecutter
+      c_extension: false
+      headless: false
+    secrets:
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
