@@ -1,3 +1,56 @@
+[build-system]
+requires = ["setuptools>=62.0", "setuptools-git-versioning>=2.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bg-cookiecutter"
+dynamic=['version', 'dependencies']
+authors = [
+  { name="Simon J.L. Billinge group", email="simon.billinge@gmail.com" },
+]
+maintainers = [
+  { name="Simon J.L. Billinge group", email="simon.billinge@gmail.com" },
+]
+description = "A package for using Billinge group Matplotlib style files."
+keywords = []
+readme = "README.rst"
+requires-python = ">=3.11, <3.14"
+classifiers = [
+        'Development Status :: 5 - Production/Stable',
+        'Environment :: Console',
+        'Intended Audience :: Developers',
+        'Intended Audience :: Science/Research',
+        'License :: OSI Approved :: BSD License',
+        'Operating System :: MacOS :: MacOS X',
+        'Operating System :: Microsoft :: Windows',
+        'Operating System :: POSIX',
+        'Operating System :: Unix',
+        'Programming Language :: Python :: 3.11',
+        'Programming Language :: Python :: 3.12',
+        'Programming Language :: Python :: 3.13',
+        'Topic :: Scientific/Engineering :: Physics',
+        'Topic :: Scientific/Engineering :: Chemistry',
+]
+
+[project.urls]
+Homepage = "https://github.com/Billingegroup/cookiecutter/"
+Issues = "https://github.com/Billingegroup/cookiecutter/issues/"
+
+[tool.setuptools-git-versioning]
+enabled = true
+template = "{tag}"
+dev_template = "{tag}"
+dirty_template = "{tag}"
+
+[tool.setuptools.packages.find]
+where = ["src"]  # list of folders that contain the packages (["."] by default)
+include = ["*"]  # package names should match these glob patterns (["*"] by default)
+exclude = []  # exclude packages matching these glob patterns (empty by default)
+namespaces = false  # to disable scanning PEP 420 namespaces (true by default)
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements/pip.txt"]}
+
 [tool.codespell]
 exclude-file = ".codespell/ignore_lines.txt"
 ignore-words = ".codespell/ignore_words.txt"
@@ -8,18 +61,20 @@ line-length = 115
 include = '\.pyi?$'
 exclude = '''
 /(
-    \.git\
+    \.git
+  | \.hg
   | \.mypy_cache
   | \.tox
   | \.venv
-  | _build/
+  | \.rst
+  | \.txt
+  | _build
   | buck-out
   | build
   | dist
+
+  # The following are specific to Black, you probably don't want those.
   | blib2to3
-  | tests/data/
-  | hooks/post_gen_project.py$
-  | .*\.py$
-  | .*\.toml$
+  | tests/data
 )/
 '''
