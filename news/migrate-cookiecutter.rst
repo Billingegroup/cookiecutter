@@ -1,6 +1,6 @@
 **Added:**
 
-* created Sphnix documentation for cookiecutter
+* Sphinx documentation for cookiecutter
 
 **Changed:**
 
