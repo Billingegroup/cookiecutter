@@ -174,6 +174,3 @@ In the case of ``PDFmorph``, this was done by adding ``autodoc_mock_imports = ["
 
 Congratulations! You may now commit the changes made by ``auto_api.py`` (and yourself) and push this commit to the cloud!
 Make a PR! It will be merged, trust!
-
-
-
