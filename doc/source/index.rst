@@ -31,6 +31,7 @@ Table of contents
 .. toctree::
    :titlesonly:
 
+   cookiecutter_guide
    license
    release
 
