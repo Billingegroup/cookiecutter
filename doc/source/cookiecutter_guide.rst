@@ -71,7 +71,7 @@ WARNINGS
 15. After the  ``precommit`` branch has been merged, sync with ``main`` in Step 11, create a new branch called ``flake8``
 
 16. Fix flake8 errors manually:
-    
+
     - Tip 1: Start with easier error types to fix, such as line-lenghts and "module imported not used", etc.
 
     - Tip 2: Submit periodic commits within a single PR.
@@ -136,7 +136,7 @@ Cookiecutter workflow
     1. Add and commit each of the (1) untracked files to the git repo.  These files are in the cookiecutter repo but not in the main repo, so can simply be "git added".  Do it one (or a few) at a time to make it easier to rewind by having multiple commits.
 
     2. Make a PR of your ``cookierelease`` branch by pushing your fork and opening a PR.
-    
+
     3. Files showing as (2) "deleted" upon git status are in the main repo but not in the cookiecutter repo.  We took care of most these by moving over the src tree, but let's do the rest now.  Go down the list and for <filename> in the ``git status`` "delete" files type ``cp -n ../<filepath>/<filename> ./<target_filepath>``. Do not move files that we do not want. If you are unsure, feel free to confirm with Simon.
 
     4. Files that have been (3) modified exist in both places and need to be merged **manually**.  Do these one at a time. First open the file in pycharm, then select ``Git|current file|show diff`` and the differences will show up.  Select anything you want to inherit from the file in the main repo. For example, you want to copy useful information such as LICENSE and README files from the main repo to the cookiecutter repo.
@@ -148,7 +148,7 @@ Cookiecutter workflow
     1. If you see numpy deprecation warnings, we won't clean up these deprecations now. Pin numpy to 1.x for now to get tests to pass. Do code fixes separate from cookiecuttering. Remember to add it to Github issue.
 
     2. Most ``pkg_resources`` deprecation warnings will be fixed by cookiecutter, but if you are in a diffpy package using unittests and see this warning you can fix them by replace ``from pkg_resources import resource_filename`` with ``from importlib import resources`` and change ``path = resource_filename(__name__, p)`` to ``path = str(resources.files(__name__).joinpath(p))``. If you see ``collected 0 items no tests ran`` you might want to rename testing files as ``test_*.py``. Refer to the [migration guide](https://importlib-resources.readthedocs.io/en/latest/migration.html).
-    
+
 3. API documentation workflow
 -----------------------------
 

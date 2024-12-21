@@ -3,7 +3,7 @@ BSD 3-Clause License
 Copyright (c) 2019, Brookhaven National Laboratory.
 Copyright (c) 2024, The Trustees of Columbia University in the City of
 New York.
-All Rights Reserved. 
+All Rights Reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
