@@ -32,6 +32,7 @@ Table of contents
    :titlesonly:
 
    cookiecutter_guide
+   conda_forge_guide
    license
    release
 
