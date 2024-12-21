@@ -127,4 +127,3 @@ In ``meta.yaml``, there are 3 important keywords under the ``requirements`` sect
 To avoid any confusion, there is a separate YAML section called ``build`` above the ``requirements`` section. This section is for setting up the entire operating system.
 
 For more information, please refer to the official documentation: https://conda-forge.org/docs/maintainer/adding_pkgs/#build-host-and-run
-
