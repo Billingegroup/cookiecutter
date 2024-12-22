@@ -1,17 +1,13 @@
 {
-    "github_org": "diffpy",
-    "keywords": "",
-    "project_name": "diffpy.my_project",
-    "package_dist_name": "{{ cookiecutter.project_name|replace(' ', '-')|lower }}",
-    "package_dir_name": "{{ cookiecutter.project_name|replace(' ', '_')|replace('-', '_')|lower }}",
-    "repo_name": "{{ cookiecutter.project_name|replace(' ', '-')|lower }}",
-    "project_short_description": "Python package for doing science.",
-    "minimum_supported_python_version": "3.11",
-    "maximum_supported_python_version": "3.13",
-    "have_c_code": ["n", "y"],
-    "_copy_without_render": [
-        "*.html",
-        "*.js",
-        ".github/*"
-    ]
+  "github_org": "diffpy",
+  "keywords": "",
+  "project_name": "diffpy.my_project",
+  "package_dist_name": "{{ cookiecutter.project_name|replace(' ', '-')|lower }}",
+  "package_dir_name": "{{ cookiecutter.project_name|replace(' ', '_')|replace('-', '_')|lower }}",
+  "repo_name": "{{ cookiecutter.project_name|replace(' ', '-')|lower }}",
+  "project_short_description": "Python package for doing science.",
+  "minimum_supported_python_version": "3.11",
+  "maximum_supported_python_version": "3.13",
+  "have_c_code": ["n", "y"],
+  "_copy_without_render": ["*.html", "*.js", ".github/*"]
 }
