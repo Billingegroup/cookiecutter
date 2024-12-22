@@ -1,8 +1,10 @@
 :tocdepth: -1
 
-======================
+.. index:: cookiecutter_guide
+    
+==================================
 How to migrate an existing package
-======================
+==================================
 
 The following creates and activates a new environment named ``cookiecutter_env`` ::
 

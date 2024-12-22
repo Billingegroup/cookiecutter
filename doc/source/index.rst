@@ -29,9 +29,10 @@ The Billinge Group's cookiecutter has been modified from the NSLS-II scientific 
 Table of contents
 =================
 .. toctree::
-   :titlesonly:
+   :maxdepth: 2
 
    cookiecutter_guide
+   release_guide
    license
    release
 
