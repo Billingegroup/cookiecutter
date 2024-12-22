@@ -87,7 +87,7 @@ Add the generated token to GitHub:
 
 .. image:: ./img/add-pypi-secret.png
    :alt: add-pypi-secret
-..    :width: 600px
+   :width: 600px
 
 .. _appendix_pat_token:
 
@@ -112,7 +112,7 @@ The GitHub workflow needs to link with this privilege through a personal access 
 
 .. image:: ./img/add-personal-access-token.png
    :alt: add-personal-access-token
-..    :width: 600px
+   :width: 600px
 
 Copy and paste the ``PAT_TOKEN`` to your GitHub organization:
 
