@@ -84,8 +84,8 @@ WARNINGS
 
 17. Only proceed to the next section after addressing all PRs relevant to the pre-commit workflow.
 
-Cookiecutter workflow
----------------------
+2. Cookiecutter workflow
+------------------------
 
 1. Type ``cookiecutter https://github.com/billingegroup/cookiecutter`` inside the package directory
 
@@ -105,9 +105,9 @@ Cookiecutter workflow
 
    7. repo_name: (default)
 
-   8. minimum_python_version: (default -- this is 3.10)
+   8. minimum_python_version: (default -- this is 3.11)
 
-   9. maximum_python_version: (default -- this is 3.12)
+   9. maximum_python_version: (default -- this is 3.13)
 
    10. have_c_code: no (in general, but if there are C++ extensions, this will be yes)
 

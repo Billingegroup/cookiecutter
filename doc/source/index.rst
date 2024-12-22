@@ -32,8 +32,8 @@ Table of contents
    :maxdepth: 2
 
    cookiecutter_guide
-   conda_forge_guide
    release_guide
+   conda_forge_guide
    license
    release
 

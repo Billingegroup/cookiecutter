@@ -6,6 +6,18 @@
 How to release a Python package
 ===============================
 
+
+FAQ for PyPI/GitHub release
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Q1. No conda-forge feedstock yet? Create one by following the instructions :ref:`here <create-feedstock>`.
+
+Q2. Not a feedstock admin? Create an issue with the title/comment: ``@conda-forge-admin, please add user @username``. Example `issue <https://github.com/conda-forge/diffpy.pdffit2-feedstock/issues/21>`_.
+
+Q3. Interested in pre-release? Please follow the instructions under the ``conda-forge: pre-release`` section :ref:`here <conda-pre-release>`_.
+
+
+
 Instructions for GitHub repository contributors
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -25,7 +37,7 @@ Instructions for Prof. Billinge for release
 
 1. Review the checklist prepared by the contributor in the issue.
 
-2. Ensure ``PYPI_TOKEN`` and ``PAT_TOKEN`` are configured at the org level. See Appendix 2, 3, respectively.
+2. Ensure ``PYPI_TOKEN`` and ``PAT_TOKEN`` are configured at the org level. See Appendix :ref:`1 <appendix_pypi_token>`, :ref:`2 <appendix_pat_token>`, respectively.
 
 3. In your terminal, run ``git checkout main && git pull upstream main`` to sync with the main branch.
 
@@ -36,7 +48,7 @@ Instructions for Prof. Billinge for release
     git tag <version-number>
     git push upstream <version-number>
 
-4. Done! Once the tag is pushed, visit the ``Actions`` tab in the repository to monitor the CI progress.
+5. Done! Once the tag is pushed, visit the ``Actions`` tab in the repository to monitor the CI progress.
 
 Post GitHub/PyPI release for conda-forge release:
 
@@ -46,50 +58,9 @@ Post GitHub/PyPI release for conda-forge release:
 
 7. Wait for the contributor to test the released package. The issue will be closed by the contributor.
 
+.. _appendix_pypi_token:
 
-    Q1. No conda-forge feedstock yet? Create one by following the instructions `here <https://gitlab.thebillingegroup.com/resources/group-wiki/-/wikis/Release-Python-Package-on-Conda-Forge>`_.
-
-    Q2. Not a feedstock admin? Create an issue with the title/comment: ``@conda-forge-admin, please add user @username``. Example `issue <https://github.com/conda-forge/diffpy.pdffit2-feedstock/issues/21>`_.
-
-    Q3. Interested in pre-release? Please follow the instructions under the ``conda-forge: pre-release`` section `here <https://gitlab.thebillingegroup.com/resources/group-wiki/-/wikis/Release-Python-Package-on-Conda-Forge>`_.
-
-
-Appendix 1. Instructions for Conda-forge Release (Assuming There Is a Feedstock Already)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Obtain the ``SHA256`` value from `pypi.org <http://pypi.org>`_:
-
-1. Visit the project on PyPI at ``https://pypi.org/project/<package-name>``
-
-2. Click ``Download files`` under ``Navigation``
-
-3. Click ``view hashes`` under ``Source Distribution``
-
-4. Copy the ``SHA256`` value
-
-Create a PR to your conda-forge feedstock:
-
-1. Fork the feedstock repository i.g. https://github.com/conda-forge/diffpy.snmf-feedstock.
-
-2. Clone the forked repository.
-
-3. Run ``git checkout main && git pull upstream main`` to sync with the main branch.
-
-4. Run ``git checkout -b <version-number>`` to create a new branch.
-
-5. Open ``recipe/meta.yaml``, modify 1) ``set version`` and 2) ``sha256``.
-
-6. Run ``git add recipe/meta.yaml && git commit -m "Release <version-number>"``.
-
-7. Run ``git push --set-upstream origin <version-number>``.
-
-8. Create a PR to ``main``, complete the relevant checklists generated in the PR comment, and modify ``meta.yaml`` as needed.
-
-9. Wait for the CI to pass and tag Prof. Billinge for review.
-
-10. Once the PR is merged, verify the latest conda-forge package version from the README badge.
-
-Appendix 2. Setup ``PYPI_TOKEN``
+Appendix 1. Setup ``PYPI_TOKEN``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Generate a PyPI API token from ``pypi.org``:
@@ -116,9 +87,11 @@ Add the generated token to GitHub:
 
 .. image:: ./img/add-pypi-secret.png
    :alt: add-pypi-secret
-   :width: 600px
+..    :width: 600px
 
-Appendix 3. Setup ``PAT_TOKEN``
+.. _appendix_pat_token:
+
+Appendix 2. Setup ``PAT_TOKEN``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The GitHub workflow needs to link with this privilege through a personal access token (PAT) of the admin (Prof. Billinge).
@@ -139,7 +112,7 @@ The GitHub workflow needs to link with this privilege through a personal access 
 
 .. image:: ./img/add-personal-access-token.png
    :alt: add-personal-access-token
-   :width: 600px
+..    :width: 600px
 
 Copy and paste the ``PAT_TOKEN`` to your GitHub organization:
 
