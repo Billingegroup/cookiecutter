@@ -64,7 +64,7 @@ WARNINGS
 
 11. Type ``git checkout main && git pull upstream main`` and create a new branch called ``precommit``.
 
-12. Copy and paste the ``.flake8`` and ``.pre-commit-config.yaml`` files from ``{{ cookiecutter.repo_name }}`` to the top directory level. Cross-check with https://github.com/diffpy/diffpy.structure.
+12. Copy and paste the ``.flake8`` and ``.pre-commit-config.yaml`` files from ``{{ cookiecutter.repo_name }}`` to the top directory level. Cross-check with https://github.com/diffpy/diffpy.utils.
 
 13. Run ``pre-commit run --all-files``. Fix any spelling suggestions from Codespell. To ignore a specific word or line, add it under  ``.codespell/ignore_words.txt`` or ``.codespell/ignore_lines.txt``. To ignore specific file types, add the file extensions i.g. ``*.gr`` in ``skip = line`` under ``[tool.codespell]`` in ``pyproject.toml``. Include explanations for each addition.
 

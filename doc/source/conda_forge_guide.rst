@@ -46,12 +46,12 @@ Step 1. Prepare ``meta.yaml``. See Appendix 1 to learn more about ``meta.yaml``
         
     12. runtime_requirements (python >=3.11, numpy,):
     
-        1.  copy ``requirements/run.txt``
+        1.  copy ``requirements/conda.txt``
 
     13. testing_requirements (pip, pytest,):
         1.  copy ``requirements/test.txt``
 
-As an example, check https://github.com/conda-forge/diffpy.snmf-feedstock/blob/main/recipe/meta.yaml
+As an example, check https://github.com/conda-forge/diffpy.utils-feedstock/blob/main/recipe/meta.yaml
 
 4. Now, ``recipes/<package-name>/meta.yaml`` is generated.
 
