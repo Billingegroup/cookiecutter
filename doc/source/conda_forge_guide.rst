@@ -166,11 +166,11 @@ Appendix 1. Background info on ``meta.yml``
 
 The ``meta.yaml`` file contains information about dependencies, the package version, the license, the documentation link, and the maintainer(s) of the package. In ``meta.yaml``, there are 3 important keywords under the ``requirements`` section: ``build``, ``host``, and ``run`` that are used to specify dependencies.
 
-- ``build`` are used for compiling but are not needed on the host where the package will be used. Examples include compilers, CMake, Make, pkg-config, etc.
+- ``build`` dependencies used for compiling but are not needed on the host where the package will be used. Examples include compilers, CMake, Make, pkg-config, etc.
 
-- ``host`` are required during the building of the package. Examples include setuptools, pip, etc.
+- ``host`` dependencies are required during the building of the package. Examples include setuptools, pip, etc.
 
-- ``run`` are required during runtime. Examples include matplotlib-base, numpy, etc.
+- ``run`` dependencies are required during runtime. Examples include matplotlib-base, numpy, etc.
 
 To avoid any confusion, there is a separate YAML section called ``build`` above the ``requirements`` section. This section is for setting up the entire operating system.
 
