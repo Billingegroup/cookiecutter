@@ -4,15 +4,25 @@
 How to release conda-forge package
 ==================================
 
-conda-forge: release for the first time
----------------------------------------
+.. _create-feedstock:
+
+I am new to conda-forge. How do I create a conda package?
+---------------------------------------------------------
+
+Here, you will learn how to release a conda package distributed through the conda-forge channel in 10-15 minutes. This guide assumes you are familiar with a basic clone, fork, and pull request (PR) workflow on GitHub. 
 
 Step 1. Prepare ``meta.yaml``. See Appendix 1 to learn more about ``meta.yaml``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Run ``pip install cookiecutter`` and ``cookiecutter https://github.com/billingegroup/staged-recipes-cookiecutter``
+To generate a package, we first need to generate a "recipe" for the package. The recipe contains the type of programming language, the package version, the source code, the dependencies, and license, etc. This recipe is stored in a file called ``meta.yaml``.
 
-1. Answer the following questions. Default values in parentheses are used if no value is provided.
+Hence, in Step 1, we will generate ``meta.yaml`` using the Billinge group's template. See https://github.com/conda-forge/diffpy.utils-feedstock/blob/main/recipe/meta.yaml as an example of a ``meta.yaml`` used in production.
+
+If you are interested in learning more about each component within ``meta.yaml``, read :ref:`Appendix 1 <appendix1>` located at the end of this document.
+
+1. Install ``cookiecutter`` via ``pip install cookiecutter`` and run ``cookiecutter https://github.com/billingegroup/staged-recipes-cookiecutter``
+
+2. Answer the following questions. Default values in parentheses are used if no value is provided.
 
     1. github_org (diffpy):
     
@@ -46,24 +56,21 @@ Step 1. Prepare ``meta.yaml``. See Appendix 1 to learn more about ``meta.yaml``
         
     12. runtime_requirements (python >=3.11, numpy,):
     
-        1.  copy ``requirements/run.txt``
+        1.  copy ``requirements/conda.txt``
 
     13. testing_requirements (pip, pytest,):
         1.  copy ``requirements/test.txt``
+    
 
-As an example, check https://github.com/conda-forge/diffpy.snmf-feedstock/blob/main/recipe/meta.yaml
+Now, you have ``recipes/<package-name>/meta.yaml`` is generated. 
 
-4. Now, ``recipes/<package-name>/meta.yaml`` is generated.
+- [ ] For a pure python package, have you removed the ``build`` section under the ``requirements``? See https://github.com/conda-forge/diffpy.utils-feedstock/blob/main/recipe/meta.yaml for example.
 
-Checklist for ``meta.yaml`` file (extremely important)
-
-- [ ] For pure python packages, the ``build`` section under the ``requirements`` will be empty. Remove that section. Ex) https://github.com/conda-forge/diffpy.utils-feedstock/blob/main/recipe/meta.yaml
-
-- [ ] Double-check the license file name in ``meta.yaml`` against the license files in the project repository. If you are unsure, please confirm with Prof. Billinge.
+- [ ] Have you double-checked the license file name in ``meta.yaml`` against the license files in the project repository. If you are unsure, please confirm with the repository owner (Prof. Billinge).
 
 
 Step 2. Upload ``meta.yaml``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Fork https://github.com/conda-forge/staged-recipes and clone your forked repository
 
@@ -86,13 +93,54 @@ Step 2. Upload ``meta.yaml``
 10. After the CI passes, create a new comment: ``@conda-forge/help-python Hello Team, ready for review!``
 
 Step 3. Wait for review and merge
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Wait for a ``conda-forge`` reviewer to review your submission (may take up to one week)
+1. Wait for a ``conda-forge`` volunteer reviewer to review your submission. It may take up to one week.
 
 2. Once the PR is merged by the reviewer (1) your package is available on conda-forge, and (2) a new repository will be created under https://github.com/conda-forge/package-name-feedstock/. Example: https://github.com/conda-forge/diffpy.structure-feedstock.
 
-## conda-forge: pre-release
+
+I already have a conda package. How do I distribute a new package version?
+--------------------------------------------------------------------------
+
+This step assumes there is a new version of Python package released to PyPI. We will use that PyPI source code to generate a new conda package.
+
+Obtain the ``SHA256`` value from `pypi.org <http://pypi.org>`_:
+
+1. Visit the project on PyPI at ``https://pypi.org/project/<package-name>``
+
+2. Click ``Download files`` under ``Navigation``
+
+3. Click ``view hashes`` under ``Source Distribution``
+
+4. Copy the ``SHA256`` value
+
+Create a PR to your conda-forge feedstock:
+
+1. Fork the feedstock repository i.g. https://github.com/conda-forge/diffpy.utils-feedstock.
+
+2. Clone the forked repository.
+
+3. Run ``git checkout main && git pull upstream main`` to sync with the main branch.
+
+4. Run ``git checkout -b <version-number>`` to create a new branch.
+
+5. Open ``recipe/meta.yaml``, modify 1) ``set version`` and 2) ``sha256``.
+
+6. Run ``git add recipe/meta.yaml && git commit -m "Release <version-number>"``.
+
+7. Run ``git push --set-upstream origin <version-number>``.
+
+8. Create a PR to ``main``, complete the relevant checklists generated in the PR comment, and modify ``meta.yaml`` as needed.
+
+9. Wait for the CI to pass and tag Prof. Billinge for review.
+
+10. Once the PR is merged, verify the latest conda-forge package version from the README badge.
+
+.. _conda-pre-release:
+
+I am familiar with the regular conda release process. How do I do pre-release?
+------------------------------------------------------------------------------
 
 Generate ``meta.yaml`` by following ``Step 1`` and ``Step 2`` under ``conda-forge: release for the first time`` above. Here are two differences required for pre-release:
 
@@ -111,18 +159,18 @@ To install the pre-release build::
 
 For more, read the documentation for pre-release: https://conda-forge.org/docs/maintainer/knowledge_base/#pre-release-builds
 
+.. _appendix1:
+
 Appendix 1. Background info on ``meta.yml``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------------------------
 
-The ``meta.yaml`` file contains information about dependencies, the package version, the license, the documentation link, and the maintainer(s) of the package.
+The ``meta.yaml`` file contains information about dependencies, the package version, the license, the documentation link, and the maintainer(s) of the package. In ``meta.yaml``, there are 3 important keywords under the ``requirements`` section: ``build``, ``host``, and ``run`` that are used to specify dependencies.
 
-In ``meta.yaml``, there are 3 important keywords under the ``requirements`` section: ``build``, ``host``, and ``run``.
+- ``build`` dependencies used for compiling but are not needed on the host where the package will be used. Examples include compilers, CMake, Make, pkg-config, etc.
 
-- **Build dependencies** are used for compiling but are not needed on the host where the package will be used. Examples include compilers, CMake, Make, pkg-config, etc.
+- ``host`` dependencies are required during the building of the package. Examples include setuptools, pip, etc.
 
-- **Host dependencies** are required during the building of the package. Examples include setuptools, pip, etc.
-
-- **Run dependencies** are required during runtime. Examples include matplotlib-base, numpy, etc.
+- ``run`` dependencies are required during runtime. Examples include matplotlib-base, numpy, etc.
 
 To avoid any confusion, there is a separate YAML section called ``build`` above the ``requirements`` section. This section is for setting up the entire operating system.
 
