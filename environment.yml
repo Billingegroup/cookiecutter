@@ -1,0 +1,6 @@
+name: bg-cookiecutter
+channels:
+  - conda-forge
+dependencies:
+  - python=3
+  - pip
