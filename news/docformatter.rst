@@ -1,6 +1,6 @@
 **Added:**
 
-* automatic docstring linting with PEP 257 compliance with docformatter in pre-commit for
+* automatic docstring linting with PEP 257 compliance with docformatter in pre-commit
 
 **Changed:**
 
