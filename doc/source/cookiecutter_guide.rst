@@ -2,9 +2,9 @@
 
 .. index:: cookiecutter_guide
     
-==================================
-How to migrate an existing package
-==================================
+===============================
+How to migrate existing package
+===============================
 
 The following creates and activates a new environment named ``cookiecutter_env`` ::
 
@@ -21,13 +21,15 @@ Install packages ::
 Overview
 --------
 
-The cookiecutting is divided into three main sections:
+The cookiecutting is divided into four sections:
 
 1. Pre-commit workflow: Use ``black`` and ``pre-commit`` to standardize line lengths and remove flake8 errors.
 
 2. Cookiecutting workflow: Use the Cookiecutter project setup and move files from an older to a new structure with Pytest passing.
 
 3. API documentation build workflow: Use a script to build and host API documentation.
+
+4. Codecov token setup for the repository.
 
 WARNINGS
 --------
@@ -42,13 +44,13 @@ WARNINGS
 1. Pre-commit workflow
 ----------------------
 
-1. In your ``dev`` folder, fork and clone the package
+1. In your ``dev`` folder, fork and clone the package.
 
-2. ``cd`` into the top level directory of that project.
+2. ``cd`` into the top-level directory of that project.
 
 3. Type ``git pull upstream main`` to sync with the main branch.
 
-4. Double check that no bug-fix etc. pull-requests are waiting to be merged. Check with Simon if not sure.
+4. Double-check that no bug-fix etc. pull-requests are waiting to be merged. Check with Simon if not sure.
 
 5. Create a new branch called ``black``.
 
@@ -66,15 +68,15 @@ WARNINGS
 
 12. Copy and paste the ``.flake8`` and ``.pre-commit-config.yaml`` files from ``{{ cookiecutter.repo_name }}`` to the top directory level. Cross-check with https://github.com/diffpy/diffpy.utils.
 
-13. Run ``pre-commit run --all-files``. Fix any spelling suggestions from Codespell. To ignore a specific word or line, add it under  ``.codespell/ignore_words.txt`` or ``.codespell/ignore_lines.txt``. To ignore specific file types, add the file extensions i.g. ``*.gr`` in ``skip = line`` under ``[tool.codespell]`` in ``pyproject.toml``. Include explanations for each addition.
+13. Run ``pre-commit run --all-files``. Fix any spelling suggestions from Codespell. To ignore a specific word or line, add it under  ``.codespell/ignore_words.txt`` or ``.codespell/ignore_lines.txt``. To ignore specific file types, add the file extensions i.e. ``*.gr`` in ``skip = line`` under ``[tool.codespell]`` in ``pyproject.toml``. Include explanations for each addition.
 
 14. Create a PR to ``main``. Mention in the PR that you need to address flake8 errors.
 
-15. After the  ``precommit`` branch has been merged, sync with ``main`` in Step 11, create a new branch called ``flake8``
+15. After the ``precommit`` branch has been merged, sync with ``main`` in Step 11, create a new branch called ``flake8``.
 
 16. Fix flake8 errors manually:
 
-    - Tip 1: Start with easier error types to fix, such as line-lenghts and "module imported not used", etc.
+    - Tip 1: Start with easier error types to fix, such as line-lengths and "module imported not used", etc.
 
     - Tip 2: Submit periodic commits within a single PR.
 
@@ -87,9 +89,9 @@ WARNINGS
 2. Cookiecutter workflow
 ------------------------
 
-1. Type ``cookiecutter https://github.com/billingegroup/cookiecutter`` inside the package directory
+1. Type ``cookiecutter https://github.com/billingegroup/cookiecutter`` inside the package directory.
 
-2. . Answer the questions as the following -- note that (default) means to hit enter without modifying anything:
+2. Answer the questions as the following -- note that (default) means to hit enter without modifying anything:
 
    1. (May occur if it is not the first time you have installed) Is it okay to delete: (y)
 
@@ -117,17 +119,17 @@ WARNINGS
 
 4. cd into the new ``diffpy.<package_name>/`` directory (e.g., in our example ``pwd`` would return ``~/dev/diffpy.pdfmorph/diffpy.pdfmorph``) (we will refer to the nested directory as the "**cookiecutter**" directory and ``~/dev/diffpy.pdfmorph/`` as the "**main**" directory).
 
-5. Type ``ls -als`` (if you have the alias, this is ``ll``) compare the directory structures in this directory tree to that in the original repo to see what is different (ignore files at this point).  Nothing to do here, just get familiar with the differences.
+5. Type ``ls -als`` (if you have the alias, this is ``ll``) compare the directory structures in this directory tree to that in the original repo to see what is different (ignore files at this point). Nothing to do here, just get familiar with the differences.
 
 6. Type ``mv ../.git .`` to move the ``.git`` directory from the main repo to the cookiecutter repo.
 
 7. Create a new branch for all the changes, e.g., ``git checkout -b cookierelease``.
 
-8. Type ``cp -n -r ../src .`` to copy the source code from the main to the cookiecutter repo, without overwriting exiting files in the destination. If there is no src directory, it will be something like ``cp -n -r ../diffpy ./src``.
+8. Type ``cp -n -r ../src .`` to copy the source code from the main to the cookiecutter repo, without overwriting existing files in the destination. If there is no src directory, it will be something like ``cp -n -r ../diffpy ./src``.
 
-9. Type ``git status`` to see a list of files that have been (1) untracked, (2) deleted, (3) modified.  Untracked files are in the cookiecutter but not in the original repo, deleted files are in the original but haven't been moved over, and modified files are in both but have been changed.
+9. Type ``git status`` to see a list of files that have been (1) untracked, (2) deleted, (3) modified. Untracked files are in the cookiecutter but not in the original repo, deleted files are in the original but haven't been moved over, and modified files are in both but have been changed.
 
-10. Let's now copy over any documentation, similar to what we did with the src files.  We want to copy over everything in the ``doc/<path>/source`` file from the old repo to the ``doc/source`` file in the new repo.
+10. Let's now copy over any documentation, similar to what we did with the src files. We want to copy over everything in the ``doc/<path>/source`` file from the old repo to the ``doc/source`` file in the new repo.
 
     1. If you see this extra ``manual`` directory, run ``cp -n -r ../doc/manual/source/* ./doc/source``.
 
@@ -135,21 +137,21 @@ WARNINGS
 
 11. Now we will work on correcting all the things that are wrong.
 
-    1. Add and commit each of the (1) untracked files to the git repo.  These files are in the cookiecutter repo but not in the main repo, so can simply be "git added".  Do it one (or a few) at a time to make it easier to rewind by having multiple commits.
+    1. Add and commit each of the (1) untracked files to the git repo. These files are in the cookiecutter repo but not in the main repo, so can simply be "git added". Do it one (or a few) at a time to make it easier to rewind by having multiple commits.
 
     2. Make a PR of your ``cookierelease`` branch by pushing your fork and opening a PR.
 
-    3. Files showing as (2) "deleted" upon git status are in the main repo but not in the cookiecutter repo.  We took care of most these by moving over the src tree, but let's do the rest now.  Go down the list and for <filename> in the ``git status`` "delete" files type ``cp -n ../<filepath>/<filename> ./<target_filepath>``. Do not move files that we do not want. If you are unsure, feel free to confirm with Simon.
+    3. Files showing as (2) "deleted" upon git status are in the main repo but not in the cookiecutter repo. We took care of most of these by moving over the src tree, but let's do the rest now. Go down the list and for <filename> in the ``git status`` "delete" files type ``cp -n ../<filepath>/<filename> ./<target_filepath>``. Do not move files that we do not want. If you are unsure, feel free to confirm with Simon.
 
-    4. Files that have been (3) modified exist in both places and need to be merged **manually**.  Do these one at a time. First open the file in pycharm, then select ``Git|current file|show diff`` and the differences will show up.  Select anything you want to inherit from the file in the main repo. For example, you want to copy useful information such as LICENSE and README files from the main repo to the cookiecutter repo.
+    4. Files that have been (3) modified exist in both places and need to be merged **manually**. Do these one at a time. First open the file in PyCharm, then select ``Git|current file|show diff`` and the differences will show up. Select anything you want to inherit from the file in the main repo. For example, you want to copy useful information such as LICENSE and README files from the main repo to the cookiecutter repo.
 
-    5. Any files that we moved over from the old place, but put into a new location in the new repo, we need to delete them from git.  For example, files that were in ``doc/manual/source/`` in the old repo but are not ``doc/source`` we correct by typing ``git add doc/manual/source``.
+    5. Any files that we moved over from the old place, but put into a new location in the new repo, we need to delete them from git. For example, files that were in ``doc/manual/source/`` in the old repo but are not ``doc/source`` we correct by typing ``git add doc/manual/source``.
 
 12. Run pytest ``python -m pytest`` to make sure everything is working. There should be no errors if all tests passed previously when you were working on pre-commit. You may encounter deprecation warnings. There might be several possibilities:
 
     1. If you see numpy deprecation warnings, we won't clean up these deprecations now. Pin numpy to 1.x for now to get tests to pass. Do code fixes separate from cookiecuttering. Remember to add it to Github issue.
 
-    2. Most ``pkg_resources`` deprecation warnings will be fixed by cookiecutter, but if you are in a diffpy package using unittests and see this warning you can fix them by replace ``from pkg_resources import resource_filename`` with ``from importlib import resources`` and change ``path = resource_filename(__name__, p)`` to ``path = str(resources.files(__name__).joinpath(p))``. If you see ``collected 0 items no tests ran`` you might want to rename testing files as ``test_*.py``. Refer to the [migration guide](https://importlib-resources.readthedocs.io/en/latest/migration.html).
+    2. Most ``pkg_resources`` deprecation warnings will be fixed by cookiecutter, but if you are in a diffpy package using unittests and see this warning you can fix them by replacing ``from pkg_resources import resource_filename`` with ``from importlib import resources`` and change ``path = resource_filename(__name__, p)`` to ``path = str(resources.files(__name__).joinpath(p))``. If you see ``collected 0 items no tests ran`` you might want to rename testing files as ``test_*.py``. Refer to the [migration guide](https://importlib-resources.readthedocs.io/en/latest/migration.html).
 
 3. API documentation workflow
 -----------------------------
@@ -158,7 +160,7 @@ This should be done only when the above steps are finished.
 
 When you see files with ``..automodule::`` within them, these are API documentation. However, these are not populated. We will populate them using our release scripts.
 
-1. Make sure you have our release scripts repository. Go to ``dev`` and running ``git clone https://github.com/Billingegroup/release-scripts.git``.
+1. Make sure you have our release scripts repository. Go to ``dev`` and run ``git clone https://github.com/Billingegroup/release-scripts.git``.
 
 2. Enter your cookiecutter package directory. For example, I would run ``cd ./diffpy.pdfmorph/diffpy.pdfmorph``.
 
@@ -176,3 +178,41 @@ In the case of ``PDFmorph``, this was done by adding ``autodoc_mock_imports = ["
 
 Congratulations! You may now commit the changes made by ``auto_api.py`` (and yourself) and push this commit to the cloud!
 Make a PR! It will be merged, trust!
+
+4. Codecov token setup for the repository
+-----------------------------------------
+
+For each PR, we use ``Codecov`` to report the test coverage percentage change as shown below.
+
+.. image:: ./img/codecov-pr.png
+   :alt: codecov-in-pr-comment
+
+To do so, the repository owner (Prof. Billinge) needs to provide a ``CODECOV_TOKEN`` at the repository level. This token is used to authenticate the GitHub CI with Codecov. Please follow the step-by-step guide below.
+
+1. Visit https://app.codecov.io/
+
+2. Connect your repository or organization with Codecov by clicking ``Configure Codecov's GitHub app``, shown below:
+
+.. image:: ./img/codecov-configure.png
+   :alt: codecov-configure-github-project-button
+
+3. Scroll down, find your repository of interest, and click ``Configure``, shown below:
+
+.. image:: ./img/codecov-projects.png
+    :alt: codecov-list-github-projects
+
+4. Scroll down again, copy ``CODECOV_TOKEN``, shown below:
+
+.. image:: ./img/codecov-token.png
+    :alt: codecov-list-github-projects
+
+5. In your GitHub repository, go to ``Settings``, then click ``Actions`` under the ``Secrets and Variables`` tab.
+
+6. Click ``New repository secret``.
+
+7. Paste the token value and name it as ``CODECOV_TOKEN`` secret as shown below:
+
+.. image:: ./img/codecov-github.png
+    :alt: codecov-list-github-projects
+
+8. Done. The Codecov token is now set up for the repository. A comment will be generated on each PR with the Codecov status automatically.

@@ -3,7 +3,7 @@
 .. index:: release_guide
     
 ===============================
-How to release a Python package
+How to release Python package
 ===============================
 
 
