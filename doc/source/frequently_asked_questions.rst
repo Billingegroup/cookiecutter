@@ -20,6 +20,21 @@ Three files need to be modified:
 2. In ``.flake8``, modify ``max-line-length``
 3. In ``pyproject.toml``, modify ``line-length`` under ``[tool.black]``.
 
+How do I ignore words/lines/files in automatic spelling checks in pre-commit?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To ignore a word, add it to ``.codespell/ignore_words.txt``.
+
+To ignore a specific line, add it to ``.codespell/ignore_lines.txt``:
+
+.. code-block:: text
+
+    ;; src/translation.py
+    ;; The following single-line comment is written in German.
+    # Hallo Welt
+
+To ignore a specific file extension, add ``*.ext`` to the ``skip`` section under ``[tool.codespell]`` in ``pyproject.toml``. For example, to ignore ``.cif`` and ``.dat`` files, use ``skip = "*.cif,*.dat"``.
+
 How do I include/exclude files in PyPI release?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
