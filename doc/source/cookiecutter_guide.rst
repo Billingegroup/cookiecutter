@@ -216,3 +216,22 @@ To do so, the repository owner (Prof. Billinge) needs to provide a ``CODECOV_TOK
     :alt: codecov-list-github-projects
 
 8. Done. The Codecov token is now set up for the repository. A comment will be generated on each PR with the Codecov status automatically.
+
+Congratulations! You may now commit the changes made by ``auto_api.py`` (and yourself) and push this commit to the GitHub repository!
+
+
+4. Final sign-off
+-----------------
+
+1. For the ``cookierelease`` activity make a ``<branchname>.rst`` file by copying ``TEMPLATE.rst`` in the news folder and under "fixed" put ``Repo structure modified to the new diffpy standard``
+   
+2. If a new Python version has been added under "added" add `Python 3.xx, 3,xx support`. If a previous version has been removed, under "fixed", add a new item `Python 3.xx, 3.xx, support`.
+
+3. Check the `README` and make sure that all parts have been filled in and all links resolve correctly.
+
+4. Run through the documentation online and do the same, fix any last typos and make all the links work. To do this the documentation must have been correctly built on a merge to main and enabled on the github.io website. Instructions are [here](https://gitlab.thebillingegroup.com/resources/group-wiki/-/wikis/Maintaining-and-Deploying-Documentation).
+
+5. When you are are happy to sign off on the release send a Slack message to Simon saying something like "`OK to release diffpy.<package-name>`"
+
+6. Make sure that the codecov secret is set in the GH actions repository secrets. Probably Simon will have to do this [here](https://docs.codecov.com/docs/bitbucket-tutorial))
+
