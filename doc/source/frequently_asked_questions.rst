@@ -51,7 +51,7 @@ Release
 -------
 
 Why have we decided to include test files in the PyPI source distribution?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We decided to include test files in the PyPI source distribution to facilitate unit testing with a newly built Conda package.
 

@@ -190,4 +190,19 @@ Congratulations! You may now commit the changes made by ``auto_api.py`` (and you
 
 5. When you are are happy to sign off on the release send a Slack message to Simon saying something like "`OK to release diffpy.<package-name>`"
 
-6. Make sure that the codecov secret is set in the GH actions repository secrets. Probably Simon will have to do this [here](https://docs.codecov.com/docs/bitbucket-tutorial))
+6. Make sure that the codecov secret is set in the GH actions repository secrets.
+
+Appendix 2. Configure pre-commit CI via GitHub Apps
+---------------------------------------------------
+
+``Pre-commit CI`` is available as a GitHub app that executes pre-commit hooks in each pull request, as shown in the image below. While it is recommended to run ``precommit run --all-files`` locally before making a PR, this GitHub app will automatically attempt to lint code and format docstrings according to the hooks provided in ``.pre-commit-config.yaml``. If all passes, it will give you a green checkmark as shown below.
+
+.. image:: ./img/precommit-PR.png
+   :alt: pre-commit-PR-automatic-check
+
+To configure ``pre-commit CI``, follow the simple steps below:
+
+1. Visit https://github.com/apps/pre-commit-ci and click "Configure".
+2. Select the repository(s).
+3. Done!
+
