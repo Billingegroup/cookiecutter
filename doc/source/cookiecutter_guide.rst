@@ -234,4 +234,3 @@ Congratulations! You may now commit the changes made by ``auto_api.py`` (and you
 5. When you are are happy to sign off on the release send a Slack message to Simon saying something like "`OK to release diffpy.<package-name>`"
 
 6. Make sure that the codecov secret is set in the GH actions repository secrets. Probably Simon will have to do this [here](https://docs.codecov.com/docs/bitbucket-tutorial))
-
