@@ -78,6 +78,50 @@ The conda-forge CI uses the source code distributed via PyPI to build a Conda pa
 GitHub Actions
 --------------
 
+How do I set different Python versions for GitHub CI?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The default is Python 3.13 for ``_tests-on-pr.yml`` and ``_publish-docs-on-release.yml``. Python 3.11, 3.12, and 3.13 are used for ``_matrix-and-codecov-on-merge-to-main.yml``. To override the default, modify the three ``.yml`` files above in ``.github/workflows/`` as shown below:
+
+1. Add ``python_version`` in ``.github/workflows/tests-on-pr.yml``:
+
+.. code-block:: yaml
+
+    jobs:
+      tests-on-pr:
+        uses: Billingegroup/release-scripts/.github/workflows/_tests-on-pr.yml@v0
+      with:
+        project: package-name
+        c_extension: false
+        headless: false
+        python_version: 3.12
+      secrets:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
+2. Add ``python_version`` in ``.github/workflows/_publish-docs-on-release.yml``:
+
+.. code-block:: yaml
+
+    jobs:
+      docs:
+        uses: Billingegroup/release-scripts/.github/workflows/_tests-on-pr.yml@v0
+      with:
+        project: package-name
+        c_extension: false
+        headless: false
+        python_version: 3.12
+
+3. Add ``python_versions`` in ``.github/workflows/_matrix-and-codecov-on-merge-to-main.yml``: 
+
+.. code-block:: yaml
+
+    jobs:
+      matrix-coverage:
+        uses: Billingegroup/release-scripts/.github/workflows/_matrix-and-codecov-on-merge-to-main.yml@v0
+      with:
+        ...
+        python_versions: "3.11, 3.12"
+
 What is the difference between ``pull_request`` and ``pull_request_target``?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
