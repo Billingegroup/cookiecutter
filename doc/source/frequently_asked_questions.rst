@@ -1,6 +1,6 @@
 :tocdepth: -1
 
-.. index:: FAQ
+.. index:: frequently_asked_questions
 
 ================================
 Frequently asked questions (FAQ)
@@ -20,12 +20,15 @@ Three files need to be modified:
 2. In ``.flake8``, modify ``max-line-length``
 3. In ``pyproject.toml``, modify ``line-length`` under ``[tool.black]``.
 
+Pre-commit
+----------
+
 How do I ignore words/lines/files in automatic spelling checks in pre-commit?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To ignore a word, add it to ``.codespell/ignore_words.txt``.
 
-To ignore a specific line, add it to ``.codespell/ignore_lines.txt``:
+To ignore a specific line, add it to ``.codespell/ignore_lines.txt``. See the example below:
 
 .. code-block:: text
 
@@ -34,6 +37,9 @@ To ignore a specific line, add it to ``.codespell/ignore_lines.txt``:
     # Hallo Welt
 
 To ignore a specific file extension, add ``*.ext`` to the ``skip`` section under ``[tool.codespell]`` in ``pyproject.toml``. For example, to ignore ``.cif`` and ``.dat`` files, use ``skip = "*.cif,*.dat"``.
+
+Release
+-------
 
 How do I include/exclude files in PyPI release?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -61,9 +67,6 @@ To exclude files globally, use ``globally-exclude``:
     global-exclude .DS_Store  # Exclude Mac filesystem artifacts.
     global-exclude __pycache__  # Exclude Python cache directories.
     global-exclude .git*  # Exclude git files and directories.
-
-Release
--------
 
 Why have we decided to include test files in the PyPI source distribution?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

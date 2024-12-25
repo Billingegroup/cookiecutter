@@ -192,7 +192,7 @@ Congratulations! You may now commit the changes made by ``auto_api.py`` (and you
 
 6. Make sure that the codecov secret is set in the GH actions repository secrets.
 
-Appendix 2. Configure pre-commit CI via GitHub Apps
+Appendix 2. How to configure pre-commit CI via GitHub Apps
 ---------------------------------------------------
 
 ``Pre-commit CI`` is available as a GitHub app that executes pre-commit hooks in each pull request, as shown in the image below. While it is recommended to run ``precommit run --all-files`` locally before making a PR, this GitHub app will automatically attempt to lint code and format docstrings according to the hooks provided in ``.pre-commit-config.yaml``. If all passes, it will give you a green checkmark as shown below.
@@ -205,4 +205,49 @@ To configure ``pre-commit CI``, follow the simple steps below:
 1. Visit https://github.com/apps/pre-commit-ci and click "Configure".
 2. Select the repository(s).
 3. Done!
+
+Appendix 3. How to Test the Package Locally Before Making a PR
+--------------------------------------------------------------
+
+We will use the ``diffpy.utils`` package as an example. In the package directory, follow these instructions:
+
+.. code-block:: bash
+
+    # Create a new environment, specify the Python version and install packages
+    conda create -n diffpy_utils_env python=3.13 \
+        --file requirements/test.txt \
+        --file requirements/conda.txt \
+        --file requirements/build.txt
+
+    # Activate the environment
+    conda activate diffpy_utils_env
+
+    # Install your package locally
+    # `--no-deps` to NOT install packages again from `requirements.pip.txt` 
+    pip install -e . --no-deps
+
+    # Run pytest locally 
+    pytest
+
+    # ... run example tutorials
+
+Appendix 4. How to build documentation locally
+---------------------------------------------------
+
+Follow these steps sequentially:
+
+.. code-block:: bash
+
+    cd doc
+    make html
+    open build/html/index.html
+
+To run as a single command:
+
+.. code-block:: bash
+
+    cd doc && make html && open build/html/index.html && cd ..
+
+Alternatively, you may render the Sphinx documentation by installing the `Esbonio <https://marketplace.visualstudio.com/items?itemName=swyddfa.esbonio>`_ extension in VS Code. This will allow you to see the changes in real-time and increase productivity.
+
 
