@@ -9,8 +9,8 @@
 
 Welcome to Billinge Group's Python cookiecutter documentation!
 
-Benefits
---------
+How is ``bg-cookiecutter`` useful?
+----------------------------------
 
 ``bg-cookiecutter`` is a Python project template designed for scientific software development. The template allows you to save time and prioritize the scientific content of your package by providing the following features:
 
