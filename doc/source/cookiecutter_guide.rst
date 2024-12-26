@@ -233,4 +233,95 @@ Congratulations! You may now commit the changes made by ``auto_api.py`` (and you
 
 5. When you are are happy to sign off on the release send a Slack message to Simon saying something like "`OK to release diffpy.<package-name>`"
 
-6. Make sure that the codecov secret is set in the GH actions repository secrets. Probably Simon will have to do this [here](https://docs.codecov.com/docs/bitbucket-tutorial))
+6. Make sure that the codecov secret is set in the GH actions repository secrets.
+
+Appendix 2. How to configure pre-commit CI via GitHub Apps
+---------------------------------------------------
+
+``Pre-commit CI`` is available as a GitHub app that executes pre-commit hooks in each pull request, as shown in the image below. While it is recommended to run ``precommit run --all-files`` locally before making a PR, this GitHub app will automatically attempt to lint code and format docstrings according to the hooks provided in ``.pre-commit-config.yaml``. If all passes, it will give you a green checkmark as shown below.
+
+.. image:: ./img/precommit-PR.png
+   :alt: pre-commit-PR-automatic-check
+
+To configure ``pre-commit CI``, follow the simple steps below:
+
+1. Visit https://github.com/apps/pre-commit-ci and click "Configure".
+2. Select the repository(s).
+3. Done!
+
+Appendix 3. How to test your package locally before making a PR
+--------------------------------------------------------------
+
+We will use the ``diffpy.utils`` package as an example. In the package directory, follow these instructions:
+
+.. code-block:: bash
+
+    # Create a new environment, specify the Python version and install packages
+    conda create -n diffpy_utils_env python=3.13 \
+        --file requirements/test.txt \
+        --file requirements/conda.txt \
+        --file requirements/build.txt
+
+    # Activate the environment
+    conda activate diffpy_utils_env
+
+    # Install your package locally
+    # `--no-deps` to NOT install packages again from `requirements.pip.txt` 
+    pip install -e . --no-deps
+
+    # Run pytest locally 
+    pytest
+
+    # ... run example tutorials
+
+Appendix 4. How to build documentation locally
+----------------------------------------------
+
+Follow these steps sequentially:
+
+.. code-block:: bash
+
+    cd doc
+    make html
+    open build/html/index.html
+
+To run as a single command:
+
+.. code-block:: bash
+
+    cd doc && make html && open build/html/index.html && cd ..
+
+Alternatively, you may render the Sphinx documentation by installing the `Esbonio <https://marketplace.visualstudio.com/items?itemName=swyddfa.esbonio>`_ extension in VS Code. This will allow you to see the changes in real-time and increase productivity.
+
+
+Appendix 5. How to write ``<branch-name>.rst`` news file
+-----------------------------------------------------------------
+
+We require that each PR includes a news item of ``<branch-name>.rst`` file under the ``news`` directory.
+
+Motivation and audience
+^^^^^^^^^^^^^^^^^^^^^^^
+
+``.rst`` files under the ``news`` directory are used to compile and update the ``CHANGELOG.rst`` file during releases. Hence, these news items are of interest to both developers and technical users looking for specific keywords.
+
+Guidelines for writing news items
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- Do not remove ``news/TEMPLATE.rst``. Make a copy called ``<branch-name>.rst``.
+- Do not modify other section headers in the rst file. Replace ``* <news item>`` only. See example news files in `Example 1 <https://github.com/bobleesj/diffpy.utils/blob/ba4b985df971440325442a50ac6de63eaad05fa5/news/no-empty-object.rst>`_ and `Example 2 <https://github.com/bobleesj/diffpy.utils/blob/f79e88eadfcd7b58e84c6caa591a960d79689ba9/news/prettier-pre-commit.rst>`_.
+- Begin with "No news", "no news", or "no news added" for trivial changes with the following format:
+
+.. code-block:: text
+
+    **Added:**
+
+    * No news: <brief reason>
+
+Where to place the news item in ``<branch-name>.rst``?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- ``**Added:**`` includes features or functionality of interest to users and developers, such as support for a new Python version or the addition of a useful feature.
+- ``**Changed:**`` includes modifications that affect end-users or developers, such as API changes or dependencies replaced.
+- ``**Fixed:**`` includes bug fixes or refactoring.
+- ``**Deprecated:**`` includes methods, classes, or workflows that are no longer supported in the future release.
+- ``**Removed:**`` includes the opposite of the "Added" section, referring to features or functionality that have been removed.

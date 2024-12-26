@@ -1,6 +1,6 @@
 :tocdepth: -1
 
-.. index:: FAQ
+.. index:: frequently_asked_questions
 
 ================================
 Frequently asked questions (FAQ)
@@ -19,6 +19,27 @@ Three files need to be modified:
 1. In ``.isort.cfg``, modify ``line_length``
 2. In ``.flake8``, modify ``max-line-length``
 3. In ``pyproject.toml``, modify ``line-length`` under ``[tool.black]``.
+
+Pre-commit
+----------
+
+How do I ignore words/lines/files in automatic spelling checks in pre-commit?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To ignore a word, add it to ``.codespell/ignore_words.txt``.
+
+To ignore a specific line, add it to ``.codespell/ignore_lines.txt``. See the example below:
+
+.. code-block:: text
+
+    ;; src/translation.py
+    ;; The following single-line comment is written in German.
+    # Hallo Welt
+
+To ignore a specific file extension, add ``*.ext`` to the ``skip`` section under ``[tool.codespell]`` in ``pyproject.toml``. For example, to ignore ``.cif`` and ``.dat`` files, use ``skip = "*.cif,*.dat"``.
+
+Release
+-------
 
 How do I include/exclude files in PyPI release?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -47,11 +68,8 @@ To exclude files globally, use ``globally-exclude``:
     global-exclude __pycache__  # Exclude Python cache directories.
     global-exclude .git*  # Exclude git files and directories.
 
-Release
--------
-
 Why have we decided to include test files in the PyPI source distribution?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We decided to include test files in the PyPI source distribution to facilitate unit testing with a newly built Conda package.
 
@@ -59,6 +77,50 @@ The conda-forge CI uses the source code distributed via PyPI to build a Conda pa
 
 GitHub Actions
 --------------
+
+How do I set different Python versions for GitHub CI?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The default is Python 3.13 for ``_tests-on-pr.yml`` and ``_publish-docs-on-release.yml``. Python 3.11, 3.12, and 3.13 are used for ``_matrix-and-codecov-on-merge-to-main.yml``. To override the default, modify the three ``.yml`` files above in ``.github/workflows/`` as shown below:
+
+1. Add ``python_version`` in ``.github/workflows/tests-on-pr.yml``:
+
+.. code-block:: yaml
+
+    jobs:
+      tests-on-pr:
+        uses: Billingegroup/release-scripts/.github/workflows/_tests-on-pr.yml@v0
+      with:
+        project: package-name
+        c_extension: false
+        headless: false
+        python_version: 3.12
+      secrets:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
+2. Add ``python_version`` in ``.github/workflows/_publish-docs-on-release.yml``:
+
+.. code-block:: yaml
+
+    jobs:
+      docs:
+        uses: Billingegroup/release-scripts/.github/workflows/_tests-on-pr.yml@v0
+      with:
+        project: package-name
+        c_extension: false
+        headless: false
+        python_version: 3.12
+
+3. Add ``python_versions`` in ``.github/workflows/_matrix-and-codecov-on-merge-to-main.yml``: 
+
+.. code-block:: yaml
+
+    jobs:
+      matrix-coverage:
+        uses: Billingegroup/release-scripts/.github/workflows/_matrix-and-codecov-on-merge-to-main.yml@v0
+      with:
+        ...
+        python_versions: "3.11, 3.12"
 
 What is the difference between ``pull_request`` and ``pull_request_target``?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
