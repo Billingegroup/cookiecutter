@@ -2,6 +2,8 @@
 
 .. index:: release_guide
     
+.. _release_guide:
+
 ===============================
 How to release Python package
 ===============================
