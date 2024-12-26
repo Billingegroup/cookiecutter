@@ -21,4 +21,3 @@ Are you here for release?
 -------------------------
 
 You already have a bg-cookiecuttered package. Do you want to release your package to ``GitHub``, ``PyPI``, and ``conda-forge`` by creating a tag to your GitHub repository? Start from :ref:`here <release_guide>`.
-
