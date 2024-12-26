@@ -2,9 +2,14 @@
 
 .. index:: cookiecutter_guide
     
+
+.. _cookiecutter-title:
+
 ===============================
-How to migrate existing package
+How to cookiecut Python package
 ===============================
+
+.. _cookiecutter-installation:
 
 The following creates and activates a new environment named ``cookiecutter_env`` ::
 
@@ -86,8 +91,12 @@ WARNINGS
 
 17. Only proceed to the next section after addressing all PRs relevant to the pre-commit workflow.
 
-2. Cookiecutter workflow
-------------------------
+.. _cookiecutter-workflow-main:
+
+1. Cookiecutter main workflow
+-----------------------------
+
+Please follow the instructions in the `installation <_cookiecutter-installation>`_ section.
 
 1. Type ``cookiecutter https://github.com/billingegroup/cookiecutter`` inside the package directory.
 
@@ -116,6 +125,8 @@ WARNINGS
    11. Is a GUI application, run 'HEADLESS' tests (default: false): (default). If it is a GUI package, change this to ``true``.
 
    12. Enter value for workflow 'VERSION' (default: v0): (default). Version of the workflow to use.
+
+If you are starting a new project, you can skip the following sections and proceed to the API documentation workflow below.
 
 4. cd into the new ``diffpy.<package_name>/`` directory (e.g., in our example ``pwd`` would return ``~/dev/diffpy.pdfmorph/diffpy.pdfmorph``) (we will refer to the nested directory as the "**cookiecutter**" directory and ``~/dev/diffpy.pdfmorph/`` as the "**main**" directory).
 
@@ -153,6 +164,8 @@ WARNINGS
 
     2. Most ``pkg_resources`` deprecation warnings will be fixed by cookiecutter, but if you are in a diffpy package using unittests and see this warning you can fix them by replacing ``from pkg_resources import resource_filename`` with ``from importlib import resources`` and change ``path = resource_filename(__name__, p)`` to ``path = str(resources.files(__name__).joinpath(p))``. If you see ``collected 0 items no tests ran`` you might want to rename testing files as ``test_*.py``. Refer to the [migration guide](https://importlib-resources.readthedocs.io/en/latest/migration.html).
 
+.. _cookiecutter-workflow-api:
+
 3. API documentation workflow
 -----------------------------
 
@@ -179,8 +192,23 @@ In the case of ``PDFmorph``, this was done by adding ``autodoc_mock_imports = ["
 Congratulations! You may now commit the changes made by ``auto_api.py`` (and yourself) and push this commit to the cloud!
 Make a PR! It will be merged, trust!
 
-4. Codecov token setup for the repository
------------------------------------------
+4. Final sign-off
+-----------------
+
+1. For the ``cookierelease`` activity make a ``<branchname>.rst`` file by copying ``TEMPLATE.rst`` in the news folder and under "fixed" put ``Repo structure modified to the new diffpy standard``
+   
+2. If a new Python version has been added under "added" add `Python 3.xx, 3,xx support`. If a previous version has been removed, under "fixed", add a new item `Python 3.xx, 3.xx, support`.
+
+3. Check the `README` and make sure that all parts have been filled in and all links resolve correctly.
+
+4. Run through the documentation online and do the same, fix any last typos and make all the links work. To do this the documentation must have been correctly built on a merge to main and enabled on the github.io website. Instructions are [here](https://gitlab.thebillingegroup.com/resources/group-wiki/-/wikis/Maintaining-and-Deploying-Documentation).
+
+5. When you are are happy to sign off on the release send a Slack message to Simon saying something like "`OK to release diffpy.<package-name>`"
+
+6. Make sure that the codecov secret is set in the GH actions repository secrets.
+
+Appendix 1. Codecov token setup for the repository
+--------------------------------------------------
 
 For each PR, we use ``Codecov`` to report the test coverage percentage change as shown below.
 
@@ -217,26 +245,8 @@ To do so, the repository owner (Prof. Billinge) needs to provide a ``CODECOV_TOK
 
 8. Done. The Codecov token is now set up for the repository. A comment will be generated on each PR with the Codecov status automatically.
 
-Congratulations! You may now commit the changes made by ``auto_api.py`` (and yourself) and push this commit to the GitHub repository!
-
-
-4. Final sign-off
------------------
-
-1. For the ``cookierelease`` activity make a ``<branchname>.rst`` file by copying ``TEMPLATE.rst`` in the news folder and under "fixed" put ``Repo structure modified to the new diffpy standard``
-   
-2. If a new Python version has been added under "added" add `Python 3.xx, 3,xx support`. If a previous version has been removed, under "fixed", add a new item `Python 3.xx, 3.xx, support`.
-
-3. Check the `README` and make sure that all parts have been filled in and all links resolve correctly.
-
-4. Run through the documentation online and do the same, fix any last typos and make all the links work. To do this the documentation must have been correctly built on a merge to main and enabled on the github.io website. Instructions are [here](https://gitlab.thebillingegroup.com/resources/group-wiki/-/wikis/Maintaining-and-Deploying-Documentation).
-
-5. When you are are happy to sign off on the release send a Slack message to Simon saying something like "`OK to release diffpy.<package-name>`"
-
-6. Make sure that the codecov secret is set in the GH actions repository secrets.
-
 Appendix 2. How to configure pre-commit CI via GitHub Apps
----------------------------------------------------
+----------------------------------------------------------
 
 ``Pre-commit CI`` is available as a GitHub app that executes pre-commit hooks in each pull request, as shown in the image below. While it is recommended to run ``precommit run --all-files`` locally before making a PR, this GitHub app will automatically attempt to lint code and format docstrings according to the hooks provided in ``.pre-commit-config.yaml``. If all passes, it will give you a green checkmark as shown below.
 
@@ -249,8 +259,8 @@ To configure ``pre-commit CI``, follow the simple steps below:
 2. Select the repository(s).
 3. Done!
 
-Appendix 3. How to test your package locally before making a PR
---------------------------------------------------------------
+Appendix 3. How to test your package locally
+--------------------------------------------
 
 We will use the ``diffpy.utils`` package as an example. In the package directory, follow these instructions:
 
