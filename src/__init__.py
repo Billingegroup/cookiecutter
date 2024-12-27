@@ -12,8 +12,7 @@
 # See LICENSE.rst for license information.
 #
 ##############################################################################
-
-"""A package for using Billinge group style files"""
+"""A package for using Billinge group style files."""
 
 # package version
 from src.version import __version__

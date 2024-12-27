@@ -1,7 +1,7 @@
 :tocdepth: -1
 
 .. index:: release_guide
-    
+
 .. _release_guide:
 
 ===============================
@@ -45,7 +45,7 @@ Instructions for Prof. Billinge for release
 
 4. Run the following::
 
-    # For pre-release, use *.*.*rc* i.g. 1.0.0rc0 
+    # For pre-release, use *.*.*rc* i.g. 1.0.0rc0
     # For release, use *.*.* i.g. 1.0.0
     git tag <version-number>
     git push upstream <version-number>

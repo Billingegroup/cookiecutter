@@ -1,7 +1,7 @@
 :tocdepth: -1
 
 .. index:: cookiecutter_guide
-    
+
 
 .. _cookiecutter-title:
 
@@ -196,7 +196,7 @@ Make a PR! It will be merged, trust!
 -----------------
 
 1. For the ``cookierelease`` activity make a ``<branchname>.rst`` file by copying ``TEMPLATE.rst`` in the news folder and under "fixed" put ``Repo structure modified to the new diffpy standard``
-   
+
 2. If a new Python version has been added under "added" add `Python 3.xx, 3,xx support`. If a previous version has been removed, under "fixed", add a new item `Python 3.xx, 3.xx, support`.
 
 3. Check the `README` and make sure that all parts have been filled in and all links resolve correctly.
@@ -276,10 +276,10 @@ We will use the ``diffpy.utils`` package as an example. In the package directory
     conda activate diffpy_utils_env
 
     # Install your package locally
-    # `--no-deps` to NOT install packages again from `requirements.pip.txt` 
+    # `--no-deps` to NOT install packages again from `requirements.pip.txt`
     pip install -e . --no-deps
 
-    # Run pytest locally 
+    # Run pytest locally
     pytest
 
     # ... run example tutorials

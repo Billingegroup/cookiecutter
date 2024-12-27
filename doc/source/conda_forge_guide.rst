@@ -9,7 +9,7 @@ How to release conda-forge package
 I am new to conda-forge. How do I create a conda package?
 ---------------------------------------------------------
 
-Here, you will learn how to release a conda package distributed through the conda-forge channel in 10-15 minutes. This guide assumes you are familiar with a basic clone, fork, and pull request (PR) workflow on GitHub. 
+Here, you will learn how to release a conda package distributed through the conda-forge channel in 10-15 minutes. This guide assumes you are familiar with a basic clone, fork, and pull request (PR) workflow on GitHub.
 
 Step 1. Prepare ``meta.yaml``. See Appendix 1 to learn more about ``meta.yaml``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -25,44 +25,44 @@ If you are interested in learning more about each component within ``meta.yaml``
 2. Answer the following questions. Default values in parentheses are used if no value is provided.
 
     1. github_org (diffpy):
-    
+
     2. module_name (diffpy.my_project): diffpy.srreal
-    
+
     3. repo_name (diffpy.srreal):
-    
+
     4. version (1.0.0): 1.3.1
-    
+
     5. Select source 1 - PyPi or 2 - GitHub: 1
-    
+
        1. Choose 1. Conda package can be built using PyPI's ``sdist`` containing requirements files, src/tests, and ``pyproject.toml``
-       
+
     6. project_short_description (Python package for doing science.):
-    
+
     7. project_full_description (This is a Python package for doing science.):
-    
+
     8. license_file (LICENSE.rst):
-    
+
     9.  recipe_maintainers (sbillinge,):
-    
+
     10. build_requirements ():
-    
+
         1.  copy ``requirements/build.txt`` from the project repo.
-        
+
         2.  Empty for pure Python packages, otherwise compilers will be required.
-        
+
     11. host_requirements (python >=3.11, setuptools, setuptools-git-versioning >=2.0, pip,):
-    
+
         1.  copy ``requirements/host.txt``
-        
+
     12. runtime_requirements (python >=3.11, numpy,):
-    
+
         1.  copy ``requirements/conda.txt``
 
     13. testing_requirements (pip, pytest,):
         1.  copy ``requirements/test.txt``
-    
 
-Now, you have ``recipes/<package-name>/meta.yaml`` is generated. 
+
+Now, you have ``recipes/<package-name>/meta.yaml`` is generated.
 
 - [ ] For a pure python package, have you removed the ``build`` section under the ``requirements``? See https://github.com/conda-forge/diffpy.utils-feedstock/blob/main/recipe/meta.yaml for example.
 
@@ -86,7 +86,7 @@ Step 2. Upload ``meta.yaml``
 
 7. Push the changes: ``git push -u origin <project_name>``
 
-8. Visit https://github.com/conda-forge/staged-recipes and create a PR. 
+8. Visit https://github.com/conda-forge/staged-recipes and create a PR.
 
 9. Read through the pre-filled text in the PR message and follow the instructions.
 
