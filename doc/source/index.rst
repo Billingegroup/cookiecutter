@@ -9,10 +9,17 @@
 
 Welcome to Billinge Group's Python cookiecutter documentation!
 
-How is ``bg-cookiecutter`` useful?
-----------------------------------
+Statement of need
+-----------------
 
-``bg-cookiecutter`` is a Python project template designed for scientific software development. The template allows you to save time and prioritize the scientific content of your package by providing the following features:
+Your research impact can be amplified by distributing your contributions through well-documented software packages. However, creating these packages requires time dedicated to software infrastructure and ongoing maintenance. ``bg-cookiecutter`` is a Python package standard and generator that helps you launch new scientific code or migrate existing ones.
+
+``bg-cookiecutter`` provides research-quality documents suitable for open-source development and supports Python versions compatible with the `SPEC0 <https://scientific-python.org/specs/spec-0000/>`_ proposal through automated workflows. Additionally, it offers a streamlined process for building and distributing your scientific software, ensuring reproducibility across all major operating systems. With ``bg-cookiecutter``, you can focus on developing your scientific code while ensuring it reaches a broader audience.
+
+What are the useful features?
+-----------------------------
+
+To help increase your research impact, ``bg-cookiecutter`` offers the following features:
 
 - Automated `PEP8 <https://peps.python.org/pep-0008/>`_ and `PEP256 <https://peps.python.org/pep-0256/>`_ standard checks.
 - Automated PyPI/GitHub release, testing, documentation, and CHANGELOG updates.
@@ -75,7 +82,6 @@ https://github.com/Billingegroup/cookiecutter/graphs/contributors.
 Acknowledgements
 ================
 
-The Billinge Group's cookiecutter has been modified from the
 The Billinge Group's cookiecutter has been modified from the NSLS-II scientific cookiecutter: https://github.com/nsls-ii/scientific-python-cookiecutter
 
 =================
