@@ -12,7 +12,6 @@
 # See LICENSE.rst for license information.
 #
 ##############################################################################
-
 """{{ cookiecutter.project_short_description }}"""
 
 # package version

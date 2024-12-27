@@ -12,7 +12,7 @@ maintainers = [
   { name="Simon J.L. Billinge group", email="simon.billinge@gmail.com" },
 ]
 description = "A Python package standard and generator for scientific code. Use bg-cookiecutter to launch a new project or migrate existing ones to support the latest Python versions and streamline the process of distributing and maintaining your software package."
-keywords = []
+keywords = ['Package template', 'open-source software']
 readme = "README.rst"
 requires-python = ">=3.11, <3.14"
 classifiers = [
@@ -72,9 +72,13 @@ exclude = '''
   | buck-out
   | build
   | dist
-
   # The following are specific to Black, you probably don't want those.
   | blib2to3
   | tests/data
 )/
 '''
+
+[tool.pytest.ini_options]
+addopts = [
+    "--ignore={{ cookiecutter.repo_name }}",
+]

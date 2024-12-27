@@ -14,23 +14,24 @@ repos:
     rev: v4.6.0
     hooks:
       - id: check-yaml
-        exclude: "environment.yml"
+        exclude: '^{{ cookiecutter.repo_name }}/.*\.yml$' # {{ cookiecutter.repo_name }} contains jinja variables in .yml, hook fails
       - id: end-of-file-fixer
       - id: trailing-whitespace
-        exclude: '\.(rst|txt)$'
       - id: check-case-conflict
       - id: check-merge-conflict
+      - id: check-toml
+        exclude: '^{{ cookiecutter.repo_name }}/.*\.toml$' # {{ cookiecutter.repo_name }} contains jinja variables in pyproject.toml, hook fails
       - id: check-added-large-files
-
   - repo: https://github.com/psf/black
     rev: 24.4.2
     hooks:
       - id: black
-        exclude: '.*\.py'
+        exclude: '^({{ cookiecutter.repo_name }}/.*\.py|hooks/post_gen_project\.py)$' # {{ cookiecutter.repo_name }} contains jinja variables in .py, hook fails. hooks/post_gen_project.py contains jinja variables of # (c) {% now 'utc', '%Y' %} which is not a valid black format
   - repo: https://github.com/pycqa/flake8
     rev: 7.0.0
     hooks:
       - id: flake8
+        exclude: '^({{ cookiecutter.repo_name }}/.*\.py|hooks/post_gen_project\.py)$' # Same comment as black above
   - repo: https://github.com/pycqa/isort
     rev: 5.13.2
     hooks:
@@ -60,3 +61,10 @@ repos:
       - id: prettier
         additional_dependencies:
           - "prettier@^3.2.4"
+  # docformatter - PEP 257 compliant docstring formatter
+  - repo: https://github.com/s-weigand/docformatter
+    rev: 5757c5190d95e5449f102ace83df92e7d3b06c6c
+    hooks:
+      - id: docformatter
+        additional_dependencies: [tomli]
+        args: [--in-place, --config, ./pyproject.toml]
