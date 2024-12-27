@@ -12,8 +12,12 @@
 # See LICENSE.rst for license information.
 #
 ##############################################################################
+"""A Python package standard and generator for scientific code.
 
-"""A Python package standard and generator for scientific code. Use bg-cookiecutter to launch a new project or migrate existing ones to support the latest Python versions and streamline the process of distributing and maintaining your software package."""
+Use bg-cookiecutter to launch a new project or migrate existing ones to
+support the latest Python versions and streamline the process of
+distributing and maintaining your software package.
+"""
 
 # package version
 from bg_cookiecutter.version import __version__

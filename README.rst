@@ -35,9 +35,7 @@
 .. |Tracking| image:: https://img.shields.io/badge/issue_tracking-github-blue
         :target: https://github.com/Billingegroup/cookiecutter/issues
 
-``bg-cookiecutter`` is a Python package standard and generator for scientific code. Use ``bg-cookiecutter`` to launch a new project or migrate existing ones to support the latest Python versions and streamline the process of distributing and maintaining your software package. 
-
-The features include:
+``bg-cookiecutter`` is a Python package standard and generator for scientific code. Use ``bg-cookiecutter`` to launch a new project or migrate existing ones to support the latest Python versions and streamline the process of distributing and maintaining your software package.
 
 - Automated `PEP8 <https://peps.python.org/pep-0008/>`_ and `PEP256 <https://peps.python.org/pep-0256/>`_ standard checks.
 - Automated PyPI/GitHub release, testing, documentation, and CHANGELOG updates.
@@ -46,13 +44,4 @@ The features include:
 - Rich README template containing badges, installation, support, and contribution guide.
 - Automatic spelling check, linting for .json, .yml, and .md files.
 
-For more technical details, it includes:
-
-- Pull requests with coverage reports using ``Codecov`` and checks with ``pre-commit CI``.
-- Namespace package support, e.g., ``import diffpy.utils``.
-- conda-package ``meta.yaml`` generation with a template.
-- Support for non-pure Python package releases with ``cibuildwheel``.
-- Support for headless GitHub CI testing for GUI applications.
-- Reusable GitHub Actions workflows located in `Billingegroup/release-scripts <https://github.com/Billingegroup/release-scripts/tree/main/.github/workflows>`_.
-
-Are you interested in cookiecutting your Python package? Begin with the ``Getting started`` page in our online documentation at https://Billingegroup.github.io/cookiecutter!
+Are you interested in amplifying your scientific contribution by standarlizing and distributing your Python code? Begin with the ``Getting started`` page in our online documentation at https://Billingegroup.github.io/cookiecutter!

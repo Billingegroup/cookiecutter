@@ -118,7 +118,7 @@ The default is Python 3.13 for ``_tests-on-pr.yml`` and ``_publish-docs-on-relea
         headless: false
         python_version: 3.12
 
-3. Add ``python_versions`` in ``.github/workflows/_matrix-and-codecov-on-merge-to-main.yml``: 
+3. Add ``python_versions`` in ``.github/workflows/_matrix-and-codecov-on-merge-to-main.yml``:
 
 .. code-block:: yaml
 
