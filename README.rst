@@ -45,3 +45,10 @@
 - Automatic spelling check, linting for .json, .yml, and .md files.
 
 Are you interested in amplifying your scientific contribution by standarlizing and distributing your Python code? Begin with the ``Getting started`` page in our online documentation at https://Billingegroup.github.io/cookiecutter!
+
+How to cite bg-cookiecutter
+---------------------------
+
+If you use ``bg-cookiecutter`` to standardized your Python software, we would like you to cite bg-cookiecutter as follows:
+
+   bg-cookiecutter, https://github.com/Billingegroup/cookiecutter
