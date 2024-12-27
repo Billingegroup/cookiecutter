@@ -14,19 +14,16 @@ repos:
     rev: v4.6.0
     hooks:
       - id: check-yaml
-        exclude: "environment.yml"
       - id: end-of-file-fixer
       - id: trailing-whitespace
-        exclude: '\.(rst|txt)$'
       - id: check-case-conflict
       - id: check-merge-conflict
+      - id: check-toml
       - id: check-added-large-files
-
   - repo: https://github.com/psf/black
     rev: 24.4.2
     hooks:
       - id: black
-        exclude: '.*\.py'
   - repo: https://github.com/pycqa/flake8
     rev: 7.0.0
     hooks:
@@ -60,3 +57,10 @@ repos:
       - id: prettier
         additional_dependencies:
           - "prettier@^3.2.4"
+  # docformatter - PEP 257 compliant docstring formatter
+  - repo: https://github.com/s-weigand/docformatter
+    rev: 5757c5190d95e5449f102ace83df92e7d3b06c6c
+    hooks:
+      - id: docformatter
+        additional_dependencies: [tomli]
+        args: [--in-place, --config, ./pyproject.toml]
