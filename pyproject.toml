@@ -11,7 +11,7 @@ authors = [
 maintainers = [
   { name="Simon J.L. Billinge group", email="simon.billinge@gmail.com" },
 ]
-description = "A package for using Billinge group Matplotlib style files."
+description = "A Python package standard and generator for scientific code. Use bg-cookiecutter to launch a new project or migrate existing ones to support the latest Python versions and streamline the process of distributing and maintaining your software package."
 keywords = []
 readme = "README.rst"
 requires-python = ">=3.11, <3.14"
