@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-# cookiecutter documentation build configuration file, created by
+# bg-cookiecutter documentation build configuration file, created by
 # sphinx-quickstart on Thu Jan 30 15:49:41 2014.
 #
 # This file is execfile()d with the current directory set to its
@@ -221,7 +221,13 @@ latex_elements = {
 # (source start file, target name, title,
 # author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    ("index", "bg-cookiecutter.tex", "bg-cookiecutter Documentation", ab_authors, "manual"),
+    (
+        "index",
+        "bg-cookiecutter.tex",
+        "bg-cookiecutter Documentation",
+        ab_authors,
+        "manual",
+    ),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -249,7 +255,15 @@ latex_documents = [
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
-man_pages = [("index", "bg-cookiecutter", "cookiecutter Documentation", ab_authors, 1)]
+man_pages = [
+    (
+        "index",
+        "bg-cookiecutter",
+        "bg-cookiecutter Documentation",
+        ab_authors,
+        1,
+    )
+]
 
 # If true, show URL addresses after external links.
 # man_show_urls = False
