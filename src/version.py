@@ -21,6 +21,6 @@
 # obtain version information
 from importlib.metadata import version
 
-__version__ = version("bg-cookiebutter")
+__version__ = version("bg_cookiebutter")
 
 # End of file
