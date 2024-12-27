@@ -72,10 +72,13 @@ exclude = '''
   | buck-out
   | build
   | dist
-  | {{ cookiecutter.repo_name }
-
   # The following are specific to Black, you probably don't want those.
   | blib2to3
   | tests/data
 )/
 '''
+
+[tool.pytest.ini_options]
+addopts = [
+    "--ignore={{ cookiecutter.repo_name }}",
+]
