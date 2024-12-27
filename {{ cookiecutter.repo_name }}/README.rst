@@ -62,14 +62,16 @@ To add "conda-forge" to the conda channels, run the following in a terminal. ::
 We want to install our packages in a suitable conda environment.
 The following creates and activates a new environment named ``{{ cookiecutter.package_dist_name }}_env`` ::
 
-        conda create -n {{ cookiecutter.package_dist_name }}_env python=3
+        conda create -n {{ cookiecutter.package_dist_name }}_env {{ cookiecutter.package_dist_name }}
         conda activate {{ cookiecutter.package_dist_name }}_env
 
-Then, to fully install ``{{ cookiecutter.package_dist_name }}`` in our active environment, run ::
+To confirm that the installation was successful, type ::
 
-        conda install {{ cookiecutter.package_dist_name }}
+        python -c "import {{ cookiecutter.package_dir_name }}; print({{ cookiecutter.package_dir_name }}.__version__)"
 
-Another option is to use ``pip`` to download and install the latest release from
+The output should print the latest version displayed on the badges above.
+
+If the above does not work, you can use ``pip`` to download and install the latest release from
 `Python Package Index <https://pypi.python.org>`_.
 To install using ``pip`` into your ``{{ cookiecutter.package_dist_name }}_env`` environment, type ::
 
@@ -81,12 +83,17 @@ and run the following ::
 
         pip install .
 
+Getting Started
+---------------
+
+You may consult our `online documentation <https://{{ cookiecutter.github_org }}.github.io/{{ cookiecutter.repo_name }}>`_ for tutorials and API references.
+
 Support and Contribute
 ----------------------
 
 `Diffpy user group <https://groups.google.com/g/diffpy-users>`_ is the discussion forum for general questions and discussions about the use of {{ cookiecutter.package_dist_name }}. Please join the {{ cookiecutter.package_dist_name }} users community by joining the Google group. The {{ cookiecutter.package_dist_name }} project welcomes your expertise and enthusiasm!
 
-If you see a bug or want to request a feature, please `report it as an issue <https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.repo_name }}/issues>`_ and/or `submit a fix as a PR <https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.repo_name }}/pulls>`_. You can also post it to the `Diffpy user group <https://groups.google.com/g/diffpy-users>`_. 
+If you see a bug or want to request a feature, please `report it as an issue <https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.repo_name }}/issues>`_ and/or `submit a fix as a PR <https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.repo_name }}/pulls>`_. You can also post it to the `Diffpy user group <https://groups.google.com/g/diffpy-users>`_.
 
 Feel free to fork the project and contribute. To install {{ cookiecutter.package_dist_name }}
 in a development mode, with its sources being directly used by Python
@@ -109,7 +116,7 @@ trying to commit again.
 
 Improvements and fixes are always appreciated.
 
-Before contribuing, please read our `Code of Conduct <https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.repo_name }}/blob/main/CODE_OF_CONDUCT.rst>`_.
+Before contributing, please read our `Code of Conduct <https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.repo_name }}/blob/main/CODE_OF_CONDUCT.rst>`_.
 
 Contact
 -------

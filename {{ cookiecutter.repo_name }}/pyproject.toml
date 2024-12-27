@@ -19,7 +19,7 @@ description = "{{ cookiecutter.project_short_description }}"
 {%- endfor %}
 keywords = {{ ns.keywords_trim }}
 readme = "README.rst"
-requires-python = ">={{ cookiecutter.minimum_supported_python_version }}"
+requires-python = ">={{ cookiecutter.minimum_supported_python_version }}, <{{ '{:.2f}'.format(cookiecutter.maximum_supported_python_version | float + 0.01) }}"
 classifiers = [
         'Development Status :: 5 - Production/Stable',
         'Environment :: Console',
@@ -56,7 +56,12 @@ exclude = []  # exclude packages matching these glob patterns (empty by default)
 namespaces = false  # to disable scanning PEP 420 namespaces (true by default)
 
 [tool.setuptools.dynamic]
-dependencies = {file = ["requirements/run.txt"]}
+dependencies = {file = ["requirements/pip.txt"]}
+
+[tool.codespell]
+exclude-file = ".codespell/ignore_lines.txt"
+ignore-words = ".codespell/ignore_words.txt"
+skip = "*.cif,*.dat"
 
 [tool.black]
 line-length = 115

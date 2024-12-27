@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-# {{ cookiecutter.project_name }} documentation build configuration file, created by
+# cookiecutter documentation build configuration file, created by
 # sphinx-quickstart on Thu Jan 30 15:49:41 2014.
 #
 # This file is execfile()d with the current directory set to its
@@ -61,7 +61,7 @@ source_suffix = [".rst", ".md"]
 master_doc = "index"
 
 # General information about the project.
-project = "{{ cookiecutter.project_name }}"
+project = "bg-cookiecutter"
 copyright = "%Y, The Trustees of Columbia University in the City of New York"
 
 # The version info for the project you're documenting, acts as replacement for
@@ -111,7 +111,7 @@ exclude_patterns = ["build"]
 pygments_style = "sphinx"
 
 # A list of ignored prefixes for module index sorting.
-modindex_common_prefix = ["{{ cookiecutter.project_name }}"]
+modindex_common_prefix = ["bg-cookiecutter"]
 
 # Display all warnings for missing links.
 nitpicky = True
@@ -202,7 +202,7 @@ html_theme_options = {
 # html_file_suffix = None
 
 # Output file base name for HTML help builder.
-basename = "{{ cookiecutter.project_name }}".replace(" ", "").replace(".", "")
+basename = "bg-cookiecutter".replace(" ", "").replace(".", "")
 htmlhelp_basename = basename + "doc"
 
 
@@ -221,13 +221,7 @@ latex_elements = {
 # (source start file, target name, title,
 # author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (
-        "index",
-        "{{ cookiecutter.package_dist_name }}.tex",
-        "{{ cookiecutter.project_name }} Documentation",
-        ab_authors,
-        "manual",
-    ),
+    ("index", "bg-cookiecutter.tex", "bg-cookiecutter Documentation", ab_authors, "manual"),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -255,15 +249,7 @@ latex_documents = [
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
-man_pages = [
-    (
-        "index",
-        "{{ cookiecutter.package_dist_name }}",
-        "{{ cookiecutter.project_name }} Documentation",
-        ab_authors,
-        1,
-    )
-]
+man_pages = [("index", "bg-cookiecutter", "cookiecutter Documentation", ab_authors, 1)]
 
 # If true, show URL addresses after external links.
 # man_show_urls = False
@@ -277,10 +263,10 @@ man_pages = [
 texinfo_documents = [
     (
         "index",
-        "{{ cookiecutter.package_dist_name }}",
-        "{{ cookiecutter.project_name }} Documentation",
+        "bg-cookiecutter",
+        "bg-cookiecutter Documentation",
         ab_authors,
-        "{{ cookiecutter.project_name }}",
+        "bg-cookiecutter",
         "One line description of project.",
         "Miscellaneous",
     ),
