@@ -77,7 +77,7 @@ If you are here to migrate your existing Python repository, you may find them us
 9. Run ``black .`` and create a PR into ``main``.
 
 10. After the ``black`` branch has been merged, run unit tests to ensure your tests, if there are any, pass locally.
-    
+
 11. Type ``git checkout main && git pull upstream main`` and create a new branch called ``precommit``.
 
 12. Copy and paste the ``.flake8`` and ``.pre-commit-config.yaml`` files from ``{{ cookiecutter.repo_name }}`` to the top directory level. Cross-check with https://github.com/diffpy/diffpy.utils.
@@ -112,7 +112,7 @@ If you are migrating an existing project,
     - Do NOT delete/remove any files before confirming that it is absolutely unnecessary. Create an issue or contact the maintainer.
 
     - Do NOT delete project-specific content such as project descriptions in README, license information, authors, tutorials, examples.
-  
+
     If you are unsure, please ask for help.
 
 If you are here starting a new project, The :ref:`1, Pre-commit workflow <cookiecutter-workflow-pre-commit>` section has been taken care for you already in the group's Python structure. Next, visit `installation <_cookiecutter-installation>`_ section and download the dependencies that we will be using.

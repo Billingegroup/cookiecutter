@@ -24,42 +24,31 @@ If you are interested in learning more about each component within ``meta.yaml``
 
 2. Answer the following questions. Default values in parentheses are used if no value is provided.
 
-    1. github_org (diffpy):
+    :github_org: The GitHub organization name. For example, ``diffpy``.
 
-    2. module_name (diffpy.my_project): diffpy.srreal
+    :repo_name: The name of the repository.
 
-    3. repo_name (diffpy.srreal):
+    :module_name: The name of the module.
 
-    4. version (1.0.0): 1.3.1
+    :version: The version of the package.
 
-    5. Select source 1 - PyPi or 2 - GitHub: 1
+    :Select: Choose PyPI.  PyPI's ``sdist`` containing requirements files, src/tests, and ``pyproject.toml``
 
-       1. Choose 1. Conda package can be built using PyPI's ``sdist`` containing requirements files, src/tests, and ``pyproject.toml``
+    :project_short_description: A short description of the project
 
-    6. project_short_description (Python package for doing science.):
+    :project_full_description: A full description of the project
 
-    7. project_full_description (This is a Python package for doing science.):
+    :license_file: The license file that is located in your project repository. i.g., ``LICENSE.rst``.
 
-    8. license_file (LICENSE.rst):
+    :recipe_maintainers: You may have multiple maintianers ``sbillinge, bobleesj`` or just ``sbillinge``
 
-    9.  recipe_maintainers (sbillinge,):
+    :build_requirements: copy ``requirements/build.txt`` from the project repo. It should be empty for pure Python packages, otherwise compilers will be required.
 
-    10. build_requirements ():
+    :host_requirements: Copy the following for the ``python >=3.11, setuptools, setuptools-git-versioning >=2.0, pip``. Copy ``requirements/host.txt``
 
-        1.  copy ``requirements/build.txt`` from the project repo.
+    :runtime_requirements: copy ``requirements/conda.txt``:
 
-        2.  Empty for pure Python packages, otherwise compilers will be required.
-
-    11. host_requirements (python >=3.11, setuptools, setuptools-git-versioning >=2.0, pip,):
-
-        1.  copy ``requirements/host.txt``
-
-    12. runtime_requirements (python >=3.11, numpy,):
-
-        1.  copy ``requirements/conda.txt``
-
-    13. testing_requirements (pip, pytest,):
-        1.  copy ``requirements/test.txt``
+    :testing_requirements: copy ``requirements/test.txt``
 
 
 Now, you have ``recipes/<package-name>/meta.yaml`` is generated.
@@ -93,7 +82,6 @@ Step 2. Upload ``meta.yaml``
 10. After the CI passes, create a new comment: ``@conda-forge/help-python Hello Team, ready for review!``
 
 Step 3. Wait for review and merge
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Wait for a ``conda-forge`` volunteer reviewer to review your submission. It may take up to one week.
 
