@@ -30,15 +30,26 @@ You are now ready to cookiecut a Python package!
 Overview
 --------
 
-We have divided into three workflows to guide you through the process of cookiecutting your package:
+We have divided the process into four workflows to guide you through cookiecutting your package:
 
-1. :ref:`Pre-commit workflow: <cookiecutter-workflow-pre-commit>` You will use automatic formating tools to standardize your package with PEP8 and PEP257. It is great to format your package before migrating your package to the Billinge group's project structure.
+1. :ref:`Pre-commit workflow: <cookiecutter-workflow-pre-commit>` You will use automatic formatting tools to standardize package with PEP8 and PEP257 before migrating it to the Billinge group's project structure with ``cookiecutter`` you've installed. We will utilize the ``pre-commit`` library installed above to check the code is in good shape!
 
-2. :ref:`Cookiecutting workflow: <cookiecutter-workflow-main>` After your package is formatted, you will use the Billinge group's project structure and move files from an older to a new structure using Git and also we will configure how to setup the package on GitHub. This step will require a basic knoledge of GitHub. If you need any help, feel free to reach out for help by creating issues!
+2. :ref:`Cookiecutting workflow: <cookiecutter-workflow-main>` After your package is formatted, you will use the ``cookiecutter`` library installed to use our group's structure and move files from the old to the new structure using Git. We will also configure how to set up the package on GitHub. This step requires basic knowledge of GitHub.
 
-3. :ref:`API documentation build workflow: <cookiecutter-workflow-api>` Use a our script to automatically generate API documentation for your package.
+3. :ref:`API documentation build workflow: <cookiecutter-workflow-api>` Once we have the package standardized, you will use our Python script to automatically generate API documentation for your package.
 
-4. :ref:`Final sign-off: <cookiecutter-workflow-final>` we will double-check documentation is correctly setup, your docs are hosted online, and there are no broken links.
+4. :ref:`Final sign-off: <cookiecutter-workflow-final>` Finally you are done! You will check your licenses, documentations, and host documentation online. If you are then, we will then guide you how to release your package in a separate page :ref:`here <release_guide>`.
+
+Tips and how to receive support
+-------------------------------
+
+If you are here to migrate your existing Python repository, you may find them useful as they are used internally in the group as well.
+
+1. Cross-check with the Billinge Group's up-to-date package, ``diffpy.utils``: https://github.com/diffpy/diffpy.utils
+
+2. If you have any questions, first read the :ref:`FAQ <frequently_asked_questions>` page if you are wondering about certain implementations or have questions on how to customize for your project's needs.
+
+3. After you've cross-checked and searched through the FAQ, please feel free to ask questions by creating an issue on the Cookiecutter repository.
 
 Warnings
 --------
