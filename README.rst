@@ -49,6 +49,6 @@ Are you interested in amplifying your scientific contribution by standarlizing a
 How to cite bg-cookiecutter
 ---------------------------
 
-If you use ``bg-cookiecutter`` to standardized your Python software, we would like you to cite bg-cookiecutter as follows:
+If you use ``bg-cookiecutter`` to standardize your Python software, we would like you to cite bg-cookiecutter as follows:
 
    bg-cookiecutter, https://github.com/Billingegroup/cookiecutter

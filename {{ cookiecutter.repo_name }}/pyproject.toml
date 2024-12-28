@@ -6,10 +6,10 @@ build-backend = "setuptools.build_meta"
 name = "{{ cookiecutter.package_dist_name }}"
 dynamic=['version', 'dependencies']
 authors = [
-  { name="Simon J.L. Billinge group", email="simon.billinge@gmail.com" },
+  { name="{{ cookiecutter.project_owner_name }}", email="{{ cookiecutter.project_owner_email }}" },
 ]
 maintainers = [
-  { name="Simon J.L. Billinge group", email="simon.billinge@gmail.com" },
+  { name="{{ cookiecutter.project_owner_name }}", email="{{ cookiecutter.project_owner_email }}" },
 ]
 description = "{{ cookiecutter.project_short_description }}"
 {%- set keywords_list = (cookiecutter.keywords.split(',') if cookiecutter.keywords.strip() else []) -%}
@@ -40,8 +40,8 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.project_name }}/"
-Issues = "https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.project_name }}/issues/"
+Homepage = "https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.repo_name }}/"
+Issues = "https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.repo_name }}/issues/"
 
 [tool.setuptools-git-versioning]
 enabled = true
