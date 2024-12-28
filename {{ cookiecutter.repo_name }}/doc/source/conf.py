@@ -26,7 +26,7 @@ sys.path.insert(0, str(Path("../..").resolve()))
 sys.path.insert(0, str(Path("../../src").resolve()))
 
 # abbreviations
-ab_authors = "Billinge Group members and community contributors"
+ab_authors = "{{ cookiecutter.contributors }}"
 
 # -- General configuration ------------------------------------------------
 
@@ -62,7 +62,7 @@ master_doc = "index"
 
 # General information about the project.
 project = "{{ cookiecutter.project_name }}"
-copyright = "%Y, The Trustees of Columbia University in the City of New York"
+copyright = "%Y, {{ cookiecutter.license_holders }}"
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the

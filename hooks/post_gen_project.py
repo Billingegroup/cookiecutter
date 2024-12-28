@@ -145,6 +145,7 @@ def update_workflow():
     LOCAL_WORKFLOW_DIR = ROOT / ".github" / "workflows"
 
     workflow_input = {"PROJECT": "{{ cookiecutter.project_name }}",
+                      "GITHUB_ADMIN_USERNAME": "{{ cookiecutter.project_owner_github_username }}",
                       "C_EXTENSION": str("{{ cookiecutter.have_c_code }}"=="y").lower(),
                       "HEADLESS": input(f"Is a GUI application, run 'HEADLESS' tests (default: {'false'}): ").strip().lower() or 'false',
                       "VERSION": input(f"Enter value for workflow 'VERSION' (default: {'v0'}): ").strip() or "v0"}

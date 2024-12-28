@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 ##############################################################################
 #
-# (c) {% now 'utc', '%Y' %} The Trustees of Columbia University in the City of New York.
+# (c) {% now 'utc', '%Y' %} {{ cookiecutter.license_holders }}.
 # All rights reserved.
 #
-# File coded by: Billinge Group members and community contributors.
+# File coded by: {{ cookiecutter.contributors }}.
 #
 # See GitHub contributions for a more detailed list of contributors.
 # https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.repo_name }}/graphs/contributors
