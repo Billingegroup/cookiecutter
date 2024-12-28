@@ -121,4 +121,4 @@ Before contributing, please read our `Code of Conduct <https://github.com/{{ coo
 Contact
 -------
 
-For more information on {{ cookiecutter.package_dist_name }} please visit the project `web-page <https://{{ cookiecutter.github_org }}.github.io/>`_ or email Prof. Simon Billinge at sb2896@columbia.edu.
+For more information on {{ cookiecutter.package_dist_name }} please visit the project `web-page <https://{{ cookiecutter.github_org }}.github.io/>`_ or email Prof. {{ cookiecutter.project_owner_name }} at sb2896@columbia.edu.
