@@ -2,7 +2,6 @@
 
 .. index:: cookiecutter_guide
 
-
 .. _cookiecutter-title:
 
 ===============================
@@ -11,32 +10,37 @@ How to cookiecut Python package
 
 .. _cookiecutter-installation:
 
-The following creates and activates a new environment named ``cookiecutter_env`` ::
+Installation
+------------
+
+Create a new environment named ``cookiecutter_env``: ::
 
         conda create -n cookiecutter_env python=3.13
 
-Activate the environment ::
+Activate the environment: ::
 
         conda activate cookiecutter_env
 
-Install packages ::
+Install three packages: ::
 
         pip install cookiecutter black pre-commit
+
+You are now ready to cookiecut a Python package!
 
 Overview
 --------
 
-The cookiecutting is divided into four sections:
+We have divided into three workflows to guide you through the process of cookiecutting your package:
 
-1. Pre-commit workflow: Use ``black`` and ``pre-commit`` to standardize line lengths and remove flake8 errors.
+1. :ref:`Pre-commit workflow: <cookiecutter-workflow-pre-commit>` You will use automatic formating tools to standardize your package with PEP8 and PEP257. It is great to format your package before migrating your package to the Billinge group's project structure.
 
-2. Cookiecutting workflow: Use the Cookiecutter project setup and move files from an older to a new structure with Pytest passing.
+2. :ref:`Cookiecutting workflow: <cookiecutter-workflow-main>` After your package is formatted, you will use the Billinge group's project structure and move files from an older to a new structure using Git and also we will configure how to setup the package on GitHub.
 
-3. API documentation build workflow: Use a script to build and host API documentation.
+3. :ref:`API documentation build workflow: <cookiecutter-workflow-api>` Use a our script to automatically generate API documentation for your package.
 
-4. Codecov token setup for the repository.
+4. :ref:`Final sign-off: <cookiecutter-workflow-final>` Here you will ensure all documentation is correctly setup and no broken links are present.
 
-WARNINGS
+Warnings
 --------
 
 - Do not delete/remove any files before confirming that it is absolutely not necessary. Create an issue or contact the maintainer for assistance.
@@ -45,6 +49,7 @@ WARNINGS
 
 - For instance, there may be a more verbose description of what the package does, or tutorial/example/utility files.
 
+.. _cookiecutter-workflow-pre-commit:
 
 1. Pre-commit workflow
 ----------------------
@@ -93,7 +98,7 @@ WARNINGS
 
 .. _cookiecutter-workflow-main:
 
-1. Cookiecutter main workflow
+2. Cookiecutter main workflow
 -----------------------------
 
 Please follow the instructions in the `installation <_cookiecutter-installation>`_ section.
@@ -192,6 +197,8 @@ In the case of ``PDFmorph``, this was done by adding ``autodoc_mock_imports = ["
 Congratulations! You may now commit the changes made by ``auto_api.py`` (and yourself) and push this commit to the cloud!
 Make a PR! It will be merged, trust!
 
+.. _cookiecutter-workflow-final:
+
 4. Final sign-off
 -----------------
 
@@ -206,6 +213,8 @@ Make a PR! It will be merged, trust!
 5. When you are are happy to sign off on the release send a Slack message to Simon saying something like "`OK to release diffpy.<package-name>`"
 
 6. Make sure that the codecov secret is set in the GH actions repository secrets.
+
+.. _codecov-token-setup:
 
 Appendix 1. Codecov token setup for the repository
 --------------------------------------------------
@@ -245,6 +254,8 @@ To do so, the repository owner (Prof. Billinge) needs to provide a ``CODECOV_TOK
 
 8. Done. The Codecov token is now set up for the repository. A comment will be generated on each PR with the Codecov status automatically.
 
+.. _pre-commit-github-repo-setup:
+
 Appendix 2. How to configure pre-commit CI via GitHub Apps
 ----------------------------------------------------------
 
@@ -258,6 +269,8 @@ To configure ``pre-commit CI``, follow the simple steps below:
 1. Visit https://github.com/apps/pre-commit-ci and click "Configure".
 2. Select the repository(s).
 3. Done!
+
+.. _test-package-locally:
 
 Appendix 3. How to test your package locally
 --------------------------------------------
@@ -284,6 +297,8 @@ We will use the ``diffpy.utils`` package as an example. In the package directory
 
     # ... run example tutorials
 
+.. _build-documentation-locally:
+
 Appendix 4. How to build documentation locally
 ----------------------------------------------
 
@@ -303,6 +318,7 @@ To run as a single command:
 
 Alternatively, you may render the Sphinx documentation by installing the `Esbonio <https://marketplace.visualstudio.com/items?itemName=swyddfa.esbonio>`_ extension in VS Code. This will allow you to see the changes in real-time and increase productivity.
 
+.. _write-news-file:
 
 Appendix 5. How to write ``<branch-name>.rst`` news file
 -----------------------------------------------------------------
