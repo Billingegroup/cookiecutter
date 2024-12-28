@@ -34,11 +34,11 @@ We have divided into three workflows to guide you through the process of cookiec
 
 1. :ref:`Pre-commit workflow: <cookiecutter-workflow-pre-commit>` You will use automatic formating tools to standardize your package with PEP8 and PEP257. It is great to format your package before migrating your package to the Billinge group's project structure.
 
-2. :ref:`Cookiecutting workflow: <cookiecutter-workflow-main>` After your package is formatted, you will use the Billinge group's project structure and move files from an older to a new structure using Git and also we will configure how to setup the package on GitHub.
+2. :ref:`Cookiecutting workflow: <cookiecutter-workflow-main>` After your package is formatted, you will use the Billinge group's project structure and move files from an older to a new structure using Git and also we will configure how to setup the package on GitHub. This step will require a basic knoledge of GitHub. If you need any help, feel free to reach out for help by creating issues!
 
 3. :ref:`API documentation build workflow: <cookiecutter-workflow-api>` Use a our script to automatically generate API documentation for your package.
 
-4. :ref:`Final sign-off: <cookiecutter-workflow-final>` Here you will ensure all documentation is correctly setup and no broken links are present.
+4. :ref:`Final sign-off: <cookiecutter-workflow-final>` we will double-check documentation is correctly setup, your docs are hosted online, and there are no broken links.
 
 Warnings
 --------
