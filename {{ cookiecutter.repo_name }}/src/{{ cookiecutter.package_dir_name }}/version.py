@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 ##############################################################################
 #
-# (c) {% now 'utc', '%Y' %} {{ cookiecutter.license_holder }}.
+# (c) {% now 'utc', '%Y' %} {{ cookiecutter.license_holders }}.
 # All rights reserved.
 #
 # File coded by: {{ cookiecutter.contributors }}.

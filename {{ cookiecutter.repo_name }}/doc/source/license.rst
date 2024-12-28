@@ -9,7 +9,7 @@ OPEN SOURCE LICENSE AGREEMENT
 =============================
 BSD 3-Clause License
 
-Copyright (c) {% now 'utc', '%Y' %}, {{ cookiecutter.license_holder }}.
+Copyright (c) {% now 'utc', '%Y' %}, {{ cookiecutter.license_holders }}.
 All Rights Reserved.
 
 Redistribution and use in source and binary forms, with or without
