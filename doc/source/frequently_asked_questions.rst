@@ -25,6 +25,8 @@ Three files need to be modified:
 Pre-commit
 ----------
 
+.. codespell-add-word:
+
 How do I ignore words/lines/files in automatic spelling checks in pre-commit?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

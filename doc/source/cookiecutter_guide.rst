@@ -51,19 +51,12 @@ If you are here to migrate your existing Python repository, you may find them us
 
 3. After you've cross-checked and searched through the FAQ, please feel free to ask questions by creating an issue on the Cookiecutter repository.
 
-Warnings
---------
-
-- Do not delete/remove any files before confirming that it is absolutely not necessary. Create an issue or contact the maintainer for assistance.
-
-- When copying over documentation files, make sure you include any additional package-specific information that may be in those files.
-
-- For instance, there may be a more verbose description of what the package does, or tutorial/example/utility files.
-
 .. _cookiecutter-workflow-pre-commit:
 
 1. Pre-commit workflow
 ----------------------
+
+.. Important:: Skip Pre-commit workflow if you are starting a new project!
 
 1. In your ``dev`` folder, fork and clone the package.
 
@@ -75,21 +68,21 @@ Warnings
 
 5. Create a new branch called ``black``.
 
-6. Create ``pyproject.toml``. Copy and paste the ``[tools.black]`` and ``[tool.codespell]`` sections from ``pyproject.toml`` in the ``{{ cookiecutter.repo_name }}`` folder path.
+6. Create ``pyproject.toml``. Copy and paste the ``[tools.black]`` sections from ``pyproject.toml`` in the ``{{ cookiecutter.repo_name }}`` folder path.
 
 7. Run ``black src`` (note: some of the older packages do not have an ``src`` directory, so you may have to run black on a different directory).
 
 8. Commit the automatic changes by ``black``.
 
-9. Run ``black .`` and create a PR into ``main``. Follow the group's GitHub workflow tutorial on GitLab.
+9. Run ``black .`` and create a PR into ``main``.
 
-10. After the ``black`` branch has been merged, run pytest or unit tests to ensure all tests pass locally. If the code is failing, please consult with Simon before further proceeding.
-
+10. After the ``black`` branch has been merged, run unit tests to ensure your tests, if there are any, pass locally.
+    
 11. Type ``git checkout main && git pull upstream main`` and create a new branch called ``precommit``.
 
 12. Copy and paste the ``.flake8`` and ``.pre-commit-config.yaml`` files from ``{{ cookiecutter.repo_name }}`` to the top directory level. Cross-check with https://github.com/diffpy/diffpy.utils.
 
-13. Run ``pre-commit run --all-files``. Fix any spelling suggestions from Codespell. To ignore a specific word or line, add it under  ``.codespell/ignore_words.txt`` or ``.codespell/ignore_lines.txt``. To ignore specific file types, add the file extensions i.e. ``*.gr`` in ``skip = line`` under ``[tool.codespell]`` in ``pyproject.toml``. Include explanations for each addition.
+13. Run ``pre-commit run --all-files``.
 
 14. Create a PR to ``main``. Mention in the PR that you need to address flake8 errors.
 
@@ -103,66 +96,75 @@ Warnings
 
     - Tip 3: Create multiple PRs, each containing a specific theme (e.g., "Fix docstring line-length flake8 errors" using ``flake8-length`` branch, etc.) to reduce cognitive overload for the reviewer (Simon).
 
-    - Tip 4: Don't hesitate to reach out to group members who have contributed to this repository. They probably have seen those errors before!
+    - Tip 4: Don't hesitate to reach out for help.
 
-17. Only proceed to the next section after addressing all PRs relevant to the pre-commit workflow.
+Once all flake8 errors are fixed, create a pull request to ``main``. Mention in the PR that you need to address the ``pre-commit`` errors.
 
 .. _cookiecutter-workflow-main:
 
 2. Cookiecutter main workflow
 -----------------------------
 
-Please follow the instructions in the `installation <_cookiecutter-installation>`_ section.
+If you are migrating an existing project,
+
+.. Attention:: Ensure no files are overwritten or lost.
+
+    - Do NOT delete/remove any files before confirming that it is absolutely unnecessary. Create an issue or contact the maintainer.
+
+    - Do NOT delete project-specific content such as project descriptions in README, license information, authors, tutorials, examples.
+  
+    If you are unsure, please ask for help.
+
+If you are here starting a new project, The :ref:`1, Pre-commit workflow <cookiecutter-workflow-pre-commit>` section has been taken care for you already in the group's Python structure. Next, visit `installation <_cookiecutter-installation>`_ section and download the dependencies that we will be using.
+
 
 1. Type ``cookiecutter https://github.com/billingegroup/cookiecutter`` inside the package directory.
 
 2. Answer the questions as the following -- note that (default) means to hit enter without modifying anything:
 
-   1. (May occur if it is not the first time you have installed) Is it okay to delete: (y)
+   :github_org: diffpy
 
-   2. github_org: diffpy (if diffpy project) or billingegroup
+   :keywords: current keywords in the ``setup.py`` or ``pyproject.toml`` in comma-separated string format, e.g., ``diffpy, pdf, diffraction``
 
-   3. keywords: current keywords in the ``setup.py`` or ``pyproject.toml`` in comma-separated string format, e.g., ``diffpy, pdf, something, something else`` (no quotes around it)
+   :project_name: <name_of_project (e.g. ``diffpy.pdfmorph``)>
 
-   4. project_name: <name_of_project (e.g. ``diffpy.pdfmorph``)>
+   :package_dist_name: the default value is diffpy.my_project
 
-   5. package_dist_name: (default)
+   :package_dir_name: the default value is diffpy.my_project
 
-   6. package_dir_name: (default)
+   :repo_name: default is diffpy.my_project
 
-   7. repo_name: (default)
+   :minimum_python_version: the default is 3.11
 
-   8. minimum_python_version: (default -- this is 3.11)
+   :maximum_python_version: the default is 3.13
 
-   9. maximum_python_version: (default -- this is 3.13)
+   :have_c_code: no (in general, but if there are C++ extensions, this will be yes)
 
-   10. have_c_code: no (in general, but if there are C++ extensions, this will be yes)
+   :Is a GUI application: run 'HEADLESS' tests (default: false): (default). If it is a GUI package, change this to ``true``.
 
-   11. Is a GUI application, run 'HEADLESS' tests (default: false): (default). If it is a GUI package, change this to ``true``.
+   :workflow VERSION: (default). Version of the workflow to use.
 
-   12. Enter value for workflow 'VERSION' (default: v0): (default). Version of the workflow to use.
+.. Important:: Skip the rest of Cookiecutter main workflow if you are starting a new project! Proceed to the :ref:` API documentation workflow<cookiecutter-workflow-api>` below.
 
-If you are starting a new project, you can skip the following sections and proceed to the API documentation workflow below.
+1. cd into the new ``diffpy.<package_name>/`` directory (e.g., in our example ``pwd`` would return ``~/dev/diffpy.pdfmorph/diffpy.pdfmorph``) (we will refer to the nested directory as the "**cookiecutter**" directory and ``~/dev/diffpy.pdfmorph/`` as the "**main**" directory).
 
-4. cd into the new ``diffpy.<package_name>/`` directory (e.g., in our example ``pwd`` would return ``~/dev/diffpy.pdfmorph/diffpy.pdfmorph``) (we will refer to the nested directory as the "**cookiecutter**" directory and ``~/dev/diffpy.pdfmorph/`` as the "**main**" directory).
+2. Type ``ls -als`` (if you have the alias, this is ``ll``) compare the directory structures in this directory tree to that in the original repo to see what is different (ignore files at this point). Nothing to do here, just get familiar with the differences.
 
-5. Type ``ls -als`` (if you have the alias, this is ``ll``) compare the directory structures in this directory tree to that in the original repo to see what is different (ignore files at this point). Nothing to do here, just get familiar with the differences.
+3. Type ``mv ../.git .`` to move the ``.git`` directory from the main repo to the cookiecutter repo.
 
-6. Type ``mv ../.git .`` to move the ``.git`` directory from the main repo to the cookiecutter repo.
+4. Create a new branch for all the changes, e.g., ``git checkout -b cookierelease``.
 
-7. Create a new branch for all the changes, e.g., ``git checkout -b cookierelease``.
+5. Type ``cp -n -r ../src .`` to copy the source code from the main to the cookiecutter repo, without overwriting existing files in the destination. If there is no src directory, it will be something like ``cp -n -r ../diffpy ./src``.
 
-8. Type ``cp -n -r ../src .`` to copy the source code from the main to the cookiecutter repo, without overwriting existing files in the destination. If there is no src directory, it will be something like ``cp -n -r ../diffpy ./src``.
+6. Type ``git status`` to see a list of files that have been (1) untracked, (2) deleted, (3) modified. Untracked files are in the cookiecutter but not in the original repo, deleted files are in the original but haven't been moved over, and modified files are in both but have been changed.
 
-9. Type ``git status`` to see a list of files that have been (1) untracked, (2) deleted, (3) modified. Untracked files are in the cookiecutter but not in the original repo, deleted files are in the original but haven't been moved over, and modified files are in both but have been changed.
-
-10. Let's now copy over any documentation, similar to what we did with the src files. We want to copy over everything in the ``doc/<path>/source`` file from the old repo to the ``doc/source`` file in the new repo.
+7.  Let's now copy over any documentation, similar to what we did with the src files. We want to copy over everything in the ``doc/<path>/source`` file from the old repo to the ``doc/source`` file in the new repo.
 
     1. If you see this extra ``manual`` directory, run ``cp -n -r ../doc/manual/source/* ./doc/source``.
 
     2. If files are moved to a different path, open the project in PyCharm and do a global search (ctrl + shift + f) for ``../`` or ``..`` and modify all relative path instances.
 
-11. Now we will work on correcting all the things that are wrong.
+8.  Now we will work on correcting all the things that are wrong.
 
     1. Add and commit each of the (1) untracked files to the git repo. These files are in the cookiecutter repo but not in the main repo, so can simply be "git added". Do it one (or a few) at a time to make it easier to rewind by having multiple commits.
 
@@ -174,9 +176,9 @@ If you are starting a new project, you can skip the following sections and proce
 
     5. Any files that we moved over from the old place, but put into a new location in the new repo, we need to delete them from git. For example, files that were in ``doc/manual/source/`` in the old repo but are not ``doc/source`` we correct by typing ``git add doc/manual/source``.
 
-12. Run pytest ``python -m pytest`` to make sure everything is working. There should be no errors if all tests passed previously when you were working on pre-commit. You may encounter deprecation warnings. There might be several possibilities:
+9.  Run pytest ``python -m pytest`` or ``pytest`` to make sure everything is working. There should be no errors if all tests passed previously when you were working on pre-commit. You may encounter deprecation warnings. There might be several possibilities:
 
-    1. If you see numpy deprecation warnings, we won't clean up these deprecations now. Pin numpy to 1.x for now to get tests to pass. Do code fixes separate from cookiecuttering. Remember to add it to Github issue.
+ fixes separate from cookiecuttering. Remember to add it to Github issue.
 
     2. Most ``pkg_resources`` deprecation warnings will be fixed by cookiecutter, but if you are in a diffpy package using unittests and see this warning you can fix them by replacing ``from pkg_resources import resource_filename`` with ``from importlib import resources`` and change ``path = resource_filename(__name__, p)`` to ``path = str(resources.files(__name__).joinpath(p))``. If you see ``collected 0 items no tests ran`` you might want to rename testing files as ``test_*.py``. Refer to the [migration guide](https://importlib-resources.readthedocs.io/en/latest/migration.html).
 
@@ -225,9 +227,89 @@ Make a PR! It will be merged, trust!
 
 6. Make sure that the codecov secret is set in the GH actions repository secrets.
 
+Appendix 1. How to test your package locally
+--------------------------------------------
+
+We will use the ``diffpy.utils`` package as an example. In the package directory, follow these instructions:
+
+.. code-block:: bash
+
+    # Create a new environment, specify the Python version and install packages
+    conda create -n diffpy_utils_env python=3.13 \
+        --file requirements/test.txt \
+        --file requirements/conda.txt \
+        --file requirements/build.txt
+
+    # Activate the environment
+    conda activate diffpy_utils_env
+
+    # Install your package locally
+    # `--no-deps` to NOT install packages again from `requirements.pip.txt`
+    pip install -e . --no-deps
+
+    # Run pytest locally
+    pytest
+
+    # ... run example tutorials
+
+.. _build-documentation-locally:
+
+Appendix 2. How to build documentation locally
+----------------------------------------------
+
+Follow these steps sequentially:
+
+.. code-block:: bash
+
+    cd doc
+    make html
+    open build/html/index.html
+
+To run as a single command:
+
+.. code-block:: bash
+
+    cd doc && make html && open build/html/index.html && cd ..
+
+Alternatively, you may render the Sphinx documentation by installing the `Esbonio <https://marketplace.visualstudio.com/items?itemName=swyddfa.esbonio>`_ extension in VS Code. This will allow you to see the changes in real-time and increase productivity.
+
+.. _news-file-guide:
+
+Appendix 3. How to write ``<branch-name>.rst`` news file
+-----------------------------------------------------------------
+
+We require that each PR includes a news item of ``<branch-name>.rst`` file under the ``news`` directory.
+
+Motivation and audience
+^^^^^^^^^^^^^^^^^^^^^^^
+
+``.rst`` files under the ``news`` directory are used to compile and update the ``CHANGELOG.rst`` file during releases. Hence, these news items are of interest to both developers and technical users looking for specific keywords.
+
+Guidelines for writing news items
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- Do not remove ``news/TEMPLATE.rst``. Make a copy called ``<branch-name>.rst``.
+- Do not modify other section headers in the rst file. Replace ``* <news item>`` only. See example news files in `Example 1 <https://github.com/bobleesj/diffpy.utils/blob/ba4b985df971440325442a50ac6de63eaad05fa5/news/no-empty-object.rst>`_ and `Example 2 <https://github.com/bobleesj/diffpy.utils/blob/f79e88eadfcd7b58e84c6caa591a960d79689ba9/news/prettier-pre-commit.rst>`_.
+- Begin with "No news", "no news", or "no news added" for trivial changes with the following format:
+
+.. code-block:: text
+
+    **Added:**
+
+    * No news: <brief reason>
+
+Where to place the news item in ``<branch-name>.rst``?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- ``**Added:**`` includes features or functionality of interest to users and developers, such as support for a new Python version or the addition of a useful feature.
+- ``**Changed:**`` includes modifications that affect end-users or developers, such as API changes or dependencies replaced.
+- ``**Fixed:**`` includes bug fixes or refactoring.
+- ``**Deprecated:**`` includes methods, classes, or workflows that are no longer supported in the future release.
+- ``**Removed:**`` includes the opposite of the "Added" section, referring to features or functionality that have been removed.
+
 .. _codecov-token-setup:
 
-Appendix 1. Codecov token setup for the repository
+Appendix 4. Codecov token setup for the repository
 --------------------------------------------------
 
 For each PR, we use ``Codecov`` to report the test coverage percentage change as shown below.
@@ -267,7 +349,7 @@ To do so, the repository owner (Prof. Billinge) needs to provide a ``CODECOV_TOK
 
 .. _pre-commit-github-repo-setup:
 
-Appendix 2. How to configure pre-commit CI via GitHub Apps
+Appendix 5. How to configure pre-commit CI via GitHub Apps
 ----------------------------------------------------------
 
 ``Pre-commit CI`` is available as a GitHub app that executes pre-commit hooks in each pull request, as shown in the image below. While it is recommended to run ``precommit run --all-files`` locally before making a PR, this GitHub app will automatically attempt to lint code and format docstrings according to the hooks provided in ``.pre-commit-config.yaml``. If all passes, it will give you a green checkmark as shown below.
@@ -282,83 +364,3 @@ To configure ``pre-commit CI``, follow the simple steps below:
 3. Done!
 
 .. _test-package-locally:
-
-Appendix 3. How to test your package locally
---------------------------------------------
-
-We will use the ``diffpy.utils`` package as an example. In the package directory, follow these instructions:
-
-.. code-block:: bash
-
-    # Create a new environment, specify the Python version and install packages
-    conda create -n diffpy_utils_env python=3.13 \
-        --file requirements/test.txt \
-        --file requirements/conda.txt \
-        --file requirements/build.txt
-
-    # Activate the environment
-    conda activate diffpy_utils_env
-
-    # Install your package locally
-    # `--no-deps` to NOT install packages again from `requirements.pip.txt`
-    pip install -e . --no-deps
-
-    # Run pytest locally
-    pytest
-
-    # ... run example tutorials
-
-.. _build-documentation-locally:
-
-Appendix 4. How to build documentation locally
-----------------------------------------------
-
-Follow these steps sequentially:
-
-.. code-block:: bash
-
-    cd doc
-    make html
-    open build/html/index.html
-
-To run as a single command:
-
-.. code-block:: bash
-
-    cd doc && make html && open build/html/index.html && cd ..
-
-Alternatively, you may render the Sphinx documentation by installing the `Esbonio <https://marketplace.visualstudio.com/items?itemName=swyddfa.esbonio>`_ extension in VS Code. This will allow you to see the changes in real-time and increase productivity.
-
-.. _write-news-file:
-
-Appendix 5. How to write ``<branch-name>.rst`` news file
------------------------------------------------------------------
-
-We require that each PR includes a news item of ``<branch-name>.rst`` file under the ``news`` directory.
-
-Motivation and audience
-^^^^^^^^^^^^^^^^^^^^^^^
-
-``.rst`` files under the ``news`` directory are used to compile and update the ``CHANGELOG.rst`` file during releases. Hence, these news items are of interest to both developers and technical users looking for specific keywords.
-
-Guidelines for writing news items
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-- Do not remove ``news/TEMPLATE.rst``. Make a copy called ``<branch-name>.rst``.
-- Do not modify other section headers in the rst file. Replace ``* <news item>`` only. See example news files in `Example 1 <https://github.com/bobleesj/diffpy.utils/blob/ba4b985df971440325442a50ac6de63eaad05fa5/news/no-empty-object.rst>`_ and `Example 2 <https://github.com/bobleesj/diffpy.utils/blob/f79e88eadfcd7b58e84c6caa591a960d79689ba9/news/prettier-pre-commit.rst>`_.
-- Begin with "No news", "no news", or "no news added" for trivial changes with the following format:
-
-.. code-block:: text
-
-    **Added:**
-
-    * No news: <brief reason>
-
-Where to place the news item in ``<branch-name>.rst``?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-- ``**Added:**`` includes features or functionality of interest to users and developers, such as support for a new Python version or the addition of a useful feature.
-- ``**Changed:**`` includes modifications that affect end-users or developers, such as API changes or dependencies replaced.
-- ``**Fixed:**`` includes bug fixes or refactoring.
-- ``**Deprecated:**`` includes methods, classes, or workflows that are no longer supported in the future release.
-- ``**Removed:**`` includes the opposite of the "Added" section, referring to features or functionality that have been removed.
