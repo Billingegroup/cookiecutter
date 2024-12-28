@@ -3,7 +3,7 @@
   "project_owner_email": "sbillinge@columbia.edu",
   "project_owner_github_username": "sbillinge",
   "contributors": "Billinge Group members and community contributors",
-  "License_holders": "The Trustees of Columbia University in the City of New York",
+  "license_holders": "The Trustees of Columbia University in the City of New York",
   "github_org": "diffpy",
   "project_name": "diffpy.my-project",
   "package_dist_name": "{{ cookiecutter.project_name|replace(' ', '-')|lower }}",
