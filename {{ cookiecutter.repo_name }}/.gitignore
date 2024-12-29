@@ -90,10 +90,3 @@ target/
 
 # Ipython Notebook
 .ipynb_checkpoints
-
-# version information
-setup.cfg
-/src/{{ cookiecutter.github_org }}/*/version.cfg
-
-# Rever
-rever/

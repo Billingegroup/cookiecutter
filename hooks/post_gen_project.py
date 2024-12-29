@@ -202,7 +202,8 @@ def update_workflow():
 
 
 def main():
-    add_supermodules(ROOT, "{{ cookiecutter.project_name }}")
+    if "." in "{{ cookiecutter.project_name }}":
+        add_supermodules(ROOT, "{{ cookiecutter.project_name }}")
     if "{{ cookiecutter.have_c_code }}" == "y":
         wrapper_setup()
     update_workflow()
