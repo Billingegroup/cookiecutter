@@ -9,7 +9,7 @@ How to release conda-forge package
 I am new to conda-forge. How do I create a conda package?
 ---------------------------------------------------------
 
-Here, you will learn how to release a conda package distributed through the conda-forge channel in 10-15 minutes. This guide assumes you are familiar with a basic clone, fork, and pull request (PR) workflow on GitHub.
+Here, you will learn how to release a conda package distributed through the conda-forge channel in 10 to 15 minutes. This guide assumes you are familiar with a basic clone, fork, and pull request (PR) workflow on GitHub.
 
 Step 1. Prepare ``meta.yaml``. See Appendix 1 to learn more about ``meta.yaml``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -40,7 +40,7 @@ If you are interested in learning more about each component within ``meta.yaml``
 
     :license_file: The license file that is located in your project repository. i.g., ``LICENSE.rst``.
 
-    :recipe_maintainers: You may have multiple maintianers ``sbillinge, bobleesj`` or just ``sbillinge``
+    :recipe_maintainers: You may have multiple maintainers ``sbillinge, bobleesj`` or just ``sbillinge``
 
     :build_requirements: copy ``requirements/build.txt`` from the project repo. It should be empty for pure Python packages, otherwise compilers will be required.
 

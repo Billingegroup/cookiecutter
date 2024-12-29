@@ -8,10 +8,38 @@
 How to cookiecut Python package
 ===============================
 
+Cookiecutting refers to the process of standardizing a Python package structure using the project template. The guide helps you (1) migrate an existing Python package or (2) start a new project.
+
+Overview
+--------
+
+We have divided the process into four workflows to guide you through your cookiecutting journey:
+
+1. :ref:`Pre-commit workflow: <cookiecutter-workflow-pre-commit>` You will use automatic formatting tools to standardize package with PEP8 and PEP257 before migrating it to the Billinge group's project structure with ``cookiecutter`` you've installed. We will utilize the ``pre-commit`` library installed above to check the code is in good shape! You can skip this step if you are starting a new project.
+
+2. :ref:`Cookiecutting workflow: <cookiecutter-workflow-main>` After your package is formatted, you will use the ``cookiecutter`` library to generate a folder with documents dynamically filled based on your inputs such as repository name, license, contributors. Then, you will move files from the old to the new structure using Git.
+
+3. :ref:`API documentation build workflow: <cookiecutter-workflow-api>` Once you have the packagee cookiecuttered, you will use our Python script to automatically generate API documentation for your package.
+
+4. :ref:`Final sign-off: <cookiecutter-workflow-final>` Finally you are done! You will check your licenses, documentations, and host documentation online. If you are then, we will then guide you how to release your package in a separate page :ref:`here <release_guide>`.
+
+Tips and how to receive support
+-------------------------------
+
+We offer the following ways to help guide you through the cookiecutting process:
+
+1. Cross-check with the Billinge Group's up-to-date cookiecuttered package, ``diffpy.utils``: https://github.com/diffpy/diffpy.utils
+
+2. If you have any questions, first read the :ref:`FAQ <frequently_asked_questions>` page if you are wondering about certain implementations or have questions on how to customize for your project's needs.
+
+3. After you've cross-checked and searched through the FAQ, please feel free to ask questions by creating an issue on the Cookiecutter repository.
+
 .. _cookiecutter-installation:
 
 Installation
 ------------
+
+To get started, install ``cookiecutter``, ``black``, and ``pre-commit`` in a new Cnoda environment. Follow the steps below:
 
 Create a new environment named ``cookiecutter_env``: ::
 
@@ -21,42 +49,18 @@ Activate the environment: ::
 
         conda activate cookiecutter_env
 
-Install three packages: ::
+Install packages: ::
 
         pip install cookiecutter black pre-commit
 
-You are now ready to cookiecut a Python package!
-
-Overview
---------
-
-We have divided the process into four workflows to guide you through cookiecutting your package:
-
-1. :ref:`Pre-commit workflow: <cookiecutter-workflow-pre-commit>` You will use automatic formatting tools to standardize package with PEP8 and PEP257 before migrating it to the Billinge group's project structure with ``cookiecutter`` you've installed. We will utilize the ``pre-commit`` library installed above to check the code is in good shape!
-
-2. :ref:`Cookiecutting workflow: <cookiecutter-workflow-main>` After your package is formatted, you will use the ``cookiecutter`` library installed to use our group's structure and move files from the old to the new structure using Git. We will also configure how to set up the package on GitHub. This step requires basic knowledge of GitHub.
-
-3. :ref:`API documentation build workflow: <cookiecutter-workflow-api>` Once we have the package standardized, you will use our Python script to automatically generate API documentation for your package.
-
-4. :ref:`Final sign-off: <cookiecutter-workflow-final>` Finally you are done! You will check your licenses, documentations, and host documentation online. If you are then, we will then guide you how to release your package in a separate page :ref:`here <release_guide>`.
-
-Tips and how to receive support
--------------------------------
-
-If you are here to migrate your existing Python repository, you may find them useful as they are used internally in the group as well.
-
-1. Cross-check with the Billinge Group's up-to-date package, ``diffpy.utils``: https://github.com/diffpy/diffpy.utils
-
-2. If you have any questions, first read the :ref:`FAQ <frequently_asked_questions>` page if you are wondering about certain implementations or have questions on how to customize for your project's needs.
-
-3. After you've cross-checked and searched through the FAQ, please feel free to ask questions by creating an issue on the Cookiecutter repository.
+You are now ready to cookiecut your Python package!
 
 .. _cookiecutter-workflow-pre-commit:
 
 1. Pre-commit workflow
 ----------------------
 
-.. Important:: Skip Pre-commit workflow if you are starting a new project!
+.. Important:: Skip this section and go to :ref:`2. Cookiecutter main workflow <cookiecutter-workflow-main>` if you are starting a new project!
 
 1. In your ``dev`` folder, fork and clone the package.
 
@@ -115,56 +119,55 @@ If you are migrating an existing project,
 
     If you are unsure, please ask for help.
 
-If you are here starting a new project, The :ref:`1, Pre-commit workflow <cookiecutter-workflow-pre-commit>` section has been taken care for you already in the group's Python structure. Next, visit `installation <_cookiecutter-installation>`_ section and download the dependencies that we will be using.
-
+If you are here starting a new project, the :ref:`1, Pre-commit workflow <cookiecutter-workflow-pre-commit>` section is completed in the project template. Visit `installation <_cookiecutter-installation>`_ section and download the dependencies that we will be using.
 
 1. Type ``cookiecutter https://github.com/billingegroup/cookiecutter`` inside the package directory.
 
 2. Answer the questions as the following -- note that (default) means to hit enter without modifying anything:
 
-   :github_org: diffpy
+:github_org: The GitHub organization name or owner's GitHub username. e.g., ``Billingegroup``.
 
-   :keywords: current keywords in the ``setup.py`` or ``pyproject.toml`` in comma-separated string format, e.g., ``diffpy, pdf, diffraction``
+:keywords: The keywords of the project. Each word is separated by a comma and a space. e.g., ``pdf, diffraction, neutron, x-ray``. The keywords may be found in ``pyproject.toml`` or ``setup.py``.
 
-   :project_name: <name_of_project (e.g. ``diffpy.pdfmorph``)>
+:project_name: The name of the project e.g., ``my-package``. For a namespace package, use e.g., ``diffpy.my-package``.
 
-   :package_dist_name: the default value is diffpy.my_project
+:package_dist_name: The name in the package distribution in PyPI and conda-forge .If your package name contains ``_``, replace it with ``-``. e.g., ``my-package``. For a namespace package, use e.g., ``diffpy.my-package``.
 
-   :package_dir_name: the default value is diffpy.my_project
+:package_dir_name: The name of the package directory. It must be lowercase e.g., ``my_package`` so that it can be imported as ``import my_package`` in a Python script.
 
-   :repo_name: default is diffpy.my_project
+:repo_name: The repository name of the project displayed on GitHub. It should be identical as the project_name.
 
-   :minimum_python_version: the default is 3.11
+:min_python: The minimum Python version. The default is ``3.11``.
 
-   :maximum_python_version: the default is 3.13
+:max_python: The maximum Python version. The default is ``3.13``.
 
-   :have_c_code: no (in general, but if there are C++ extensions, this will be yes)
+:have_c_code: Whether the package require C/C++ code that requires building the package. For pure Python packages, this is ``False``. The default is ``False``.
 
-   :Is a GUI application: run 'HEADLESS' tests (default: false): (default). If it is a GUI package, change this to ``true``.
+:headless_GUI_test: Run headless testing in GitHub CI. If your package does not contain GUI, the default is ``False``.
 
-   :workflow VERSION: (default). Version of the workflow to use.
+:workflow_version: Version of the reuseuable workflow to use. ``v0`` is the default.
 
-.. Important:: Skip the rest of Cookiecutter main workflow if you are starting a new project! Proceed to the :ref:` API documentation workflow<cookiecutter-workflow-api>` below.
+.. Important:: Skip the rest of Cookiecutter main workflow if you are starting a new project! Proceed to the :ref:`3. API documentation workflow<cookiecutter-workflow-api>` below.
 
-1. cd into the new ``diffpy.<package_name>/`` directory (e.g., in our example ``pwd`` would return ``~/dev/diffpy.pdfmorph/diffpy.pdfmorph``) (we will refer to the nested directory as the "**cookiecutter**" directory and ``~/dev/diffpy.pdfmorph/`` as the "**main**" directory).
+3. cd into the new ``diffpy.<package_name>/`` directory (e.g., in our example ``pwd`` would return ``~/dev/diffpy.pdfmorph/diffpy.pdfmorph``) (we will refer to the nested directory as the "**cookiecutter**" directory and ``~/dev/diffpy.pdfmorph/`` as the "**main**" directory).
 
-2. Type ``ls -als`` (if you have the alias, this is ``ll``) compare the directory structures in this directory tree to that in the original repo to see what is different (ignore files at this point). Nothing to do here, just get familiar with the differences.
+4. Type ``ls -als`` (if you have the alias, this is ``ll``) compare the directory structures in this directory tree to that in the original repo to see what is different (ignore files at this point). Nothing to do here, just get familiar with the differences.
 
-3. Type ``mv ../.git .`` to move the ``.git`` directory from the main repo to the cookiecutter repo.
+5. Type ``mv ../.git .`` to move the ``.git`` directory from the main repo to the cookiecutter repo.
 
-4. Create a new branch for all the changes, e.g., ``git checkout -b cookierelease``.
+6. Create a new branch for all the changes, e.g., ``git checkout -b cookierelease``.
 
-5. Type ``cp -n -r ../src .`` to copy the source code from the main to the cookiecutter repo, without overwriting existing files in the destination. If there is no src directory, it will be something like ``cp -n -r ../diffpy ./src``.
+7. Type ``cp -n -r ../src .`` to copy the source code from the main to the cookiecutter repo, without overwriting existing files in the destination. If there is no src directory, it will be something like ``cp -n -r ../diffpy ./src``.
 
-6. Type ``git status`` to see a list of files that have been (1) untracked, (2) deleted, (3) modified. Untracked files are in the cookiecutter but not in the original repo, deleted files are in the original but haven't been moved over, and modified files are in both but have been changed.
+8. Type ``git status`` to see a list of files that have been (1) untracked, (2) deleted, (3) modified. Untracked files are in the cookiecutter but not in the original repo, deleted files are in the original but haven't been moved over, and modified files are in both but have been changed.
 
-7.  Let's now copy over any documentation, similar to what we did with the src files. We want to copy over everything in the ``doc/<path>/source`` file from the old repo to the ``doc/source`` file in the new repo.
+9.  Let's now copy over any documentation, similar to what we did with the src files. We want to copy over everything in the ``doc/<path>/source`` file from the old repo to the ``doc/source`` file in the new repo.
 
     1. If you see this extra ``manual`` directory, run ``cp -n -r ../doc/manual/source/* ./doc/source``.
 
     2. If files are moved to a different path, open the project in PyCharm and do a global search (ctrl + shift + f) for ``../`` or ``..`` and modify all relative path instances.
 
-8.  Now we will work on correcting all the things that are wrong.
+10. Now we will work on correcting all the things that are wrong.
 
     1. Add and commit each of the (1) untracked files to the git repo. These files are in the cookiecutter repo but not in the main repo, so can simply be "git added". Do it one (or a few) at a time to make it easier to rewind by having multiple commits.
 
@@ -176,7 +179,7 @@ If you are here starting a new project, The :ref:`1, Pre-commit workflow <cookie
 
     5. Any files that we moved over from the old place, but put into a new location in the new repo, we need to delete them from git. For example, files that were in ``doc/manual/source/`` in the old repo but are not ``doc/source`` we correct by typing ``git add doc/manual/source``.
 
-9.  Run pytest ``python -m pytest`` or ``pytest`` to make sure everything is working. There should be no errors if all tests passed previously when you were working on pre-commit. You may encounter deprecation warnings. There might be several possibilities:
+11. Run pytest ``python -m pytest`` or ``pytest`` to make sure everything is working. There should be no errors if all tests passed previously when you were working on pre-commit. You may encounter deprecation warnings. There might be several possibilities:
 
  fixes separate from cookiecuttering. Remember to add it to Github issue.
 
@@ -230,7 +233,7 @@ Make a PR! It will be merged, trust!
 Appendix 1. How to test your package locally
 --------------------------------------------
 
-We will use the ``diffpy.utils`` package as an example. In the package directory, follow these instructions:
+Ensure your package has been cookiecuttered. We will use the ``diffpy.utils`` package as an example. In the package directory, follow these instructions:
 
 .. code-block:: bash
 
