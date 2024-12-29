@@ -45,7 +45,7 @@ Project setup
 I read ``bg-cookiecutter`` supports a namespace package. What is it and how do I set it up?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In plain English, a namespace package refers to a package that is organized in a way that allows importing and installing a package like ``pip install diffpy.pdffit2``. The package starts with an ``org-name`` or similar, and each package has a separate repository, i.e., https://github.com/diffpy/diffpy.pdffit2. The consistency in naming is benefit for research groups, organizing multiple research software projects, and maintaining branding.
+In plain English, a namespace package refers to a package that is organized in a way that allows importing and installing a package like ``pip install diffpy.pdffit2``. The package starts with an ``org-name`` or similar, and each package has a separate repository, i.e., https://github.com/diffpy/diffpy.pdffit2. The consistency in naming can be hihgly beneficial research groups by organizing research software projects and maintaining branding, as demonstrated by software projects in https://www.diffpy.org/.
 
 What is the difference between a namespace package and a regular package?
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -53,6 +53,7 @@ What is the difference between a namespace package and a regular package?
 The difference is in the folder structure:
 
 For a regular package ``bg-mpl-stylesheets``:
+
 .. code-block:: text
 
   ├── src
