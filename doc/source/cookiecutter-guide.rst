@@ -60,7 +60,7 @@ We offer the following ways to help guide you through the cookiecutting process:
 
 .. Important:: Skip this section and go to :ref:`2. Cookiecutter main workflow <cookiecutter-workflow-main>` if you are starting a new project!
 
-1. Fork and clone the the repostory.
+1. Fork and clone the the repository.
 
 2. ``cd`` into the top-level directory of that project.
 

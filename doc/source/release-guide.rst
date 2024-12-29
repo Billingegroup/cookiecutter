@@ -30,14 +30,14 @@ When you are ready for PyPI and GitHub release, please follow these steps:
 
 4. After conda release, complete the third checklist and close the issue.
 
-Instructions for Projcet Owner for release
+Instructions for Project Owner for release
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Review the checklist prepared by the contributor in the issue.
 
 2. Ensure ``PYPI_TOKEN`` and ``PAT_TOKEN`` are configured at the org level. See Appendix :ref:`1 <pypi-token-setup>`, :ref:`2 <pat-token-setup>`, respectively.
 
-3. Check the ``github_admin_username`` setion in ``.github/workflows/build-wheel-release-upload.yml`` is that of the project owner.
+3. Check the ``github_admin_username`` section in ``.github/workflows/build-wheel-release-upload.yml`` is that of the project owner.
 
 4. In your terminal, run ``git checkout main && git pull upstream main`` to sync with the main branch.
 
@@ -121,4 +121,3 @@ Copy and paste the ``PAT_TOKEN`` to your GitHub organization:
 3. Click ``New organization secret`` and add a new secret and name it as ``PAT_TOKEN``.
 
 4. Done!
-
