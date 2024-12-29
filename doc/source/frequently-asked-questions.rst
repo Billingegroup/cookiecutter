@@ -1,8 +1,8 @@
 :tocdepth: -1
 
-.. index:: frequently_asked_questions
+.. index:: frequently-asked-questions
 
-.. _frequently_asked_questions:
+.. _frequently-asked-questions:
 
 ================================
 Frequently asked questions (FAQ)
@@ -44,6 +44,13 @@ To ignore a specific file extension, add ``*.ext`` to the ``skip`` section under
 
 Release
 -------
+
+.. _release_authority:
+
+How can I change who is authorized to release a package?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In ``.github/workflows/build-wheel-release-upload.yml``, modify ``github_admin_username`` to the desired GitHub username. This username will be able to authorize the release.
 
 How is the package version set and retrieved?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

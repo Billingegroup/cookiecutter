@@ -4,7 +4,7 @@
 How to release conda-forge package
 ==================================
 
-.. _create-feedstock:
+.. _create_feedstock:
 
 I am new to conda-forge. How do I create a conda package?
 ---------------------------------------------------------
@@ -125,7 +125,7 @@ Create a PR to your conda-forge feedstock:
 
 10. Once the PR is merged, verify the latest conda-forge package version from the README badge.
 
-.. _conda-pre-release:
+.. _conda_pre_release:
 
 I am familiar with the regular conda release process. How do I do pre-release?
 ------------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 :tocdepth: -1
 
-.. index:: cookiecutter_guide
+.. index:: cookiecutter-guide
 
 .. _cookiecutter-title:
 
@@ -8,38 +8,12 @@
 How to cookiecut Python package
 ===============================
 
-Cookiecutting refers to the process of standardizing a Python package structure using the project template. The guide helps you (1) migrate an existing Python package or (2) start a new project.
-
-Overview
---------
-
-We have divided the process into four workflows to guide you through your cookiecutting journey:
-
-1. :ref:`Pre-commit workflow: <cookiecutter-workflow-pre-commit>` You will use automatic formatting tools to standardize package with PEP8 and PEP257 before migrating it to the Billinge group's project structure with ``cookiecutter`` you've installed. We will utilize the ``pre-commit`` library installed above to check the code is in good shape! You can skip this step if you are starting a new project.
-
-2. :ref:`Cookiecutting workflow: <cookiecutter-workflow-main>` After your package is formatted, you will use the ``cookiecutter`` library to generate a folder with documents dynamically filled based on your inputs such as repository name, license, contributors. Then, you will move files from the old to the new structure using Git.
-
-3. :ref:`API documentation build workflow: <cookiecutter-workflow-api>` Once you have the packagee cookiecuttered, you will use our Python script to automatically generate API documentation for your package.
-
-4. :ref:`Final sign-off: <cookiecutter-workflow-final>` Finally you are done! You will check your licenses, documentations, and host documentation online. If you are then, we will then guide you how to release your package in a separate page :ref:`here <release_guide>`.
-
-Tips and how to receive support
--------------------------------
-
-We offer the following ways to help guide you through the cookiecutting process:
-
-1. Cross-check with the Billinge Group's up-to-date cookiecuttered package, ``diffpy.utils``: https://github.com/diffpy/diffpy.utils
-
-2. If you have any questions, first read the :ref:`FAQ <frequently_asked_questions>` page if you are wondering about certain implementations or have questions on how to customize for your project's needs.
-
-3. After you've cross-checked and searched through the FAQ, please feel free to ask questions by creating an issue on the Cookiecutter repository.
-
 .. _cookiecutter-installation:
 
 Installation
 ------------
 
-To get started, install ``cookiecutter``, ``black``, and ``pre-commit`` in a new Cnoda environment. Follow the steps below:
+To get started, install ``cookiecutter``, ``black``, and ``pre-commit`` in a new conda environment. Follow the steps below:
 
 Create a new environment named ``cookiecutter_env``: ::
 
@@ -55,6 +29,30 @@ Install packages: ::
 
 You are now ready to cookiecut your Python package!
 
+Overview
+--------
+
+We have divided the cookiecutting process into four workflows:
+
+1. :ref:`Pre-commit workflow: <cookiecutter-workflow-pre-commit>` you will use automatic formatting tools to standardize your package with PEP8 before migrating it to the Billinge group's project structure with ``cookiecutter``. Then, the ``pre-commit`` library installed is used ensure the code is in good shape. You can skip this step if you are starting a new project.
+
+2. :ref:`Cookiecutting workflow: <cookiecutter-workflow-main>` After your code is formatted, you will use the ``cookiecutter`` library to generate a new project inside the package directory. The new project contains dynamically filled templates based on your inputs such as repository name, license, and contributors. Then, you will move files from the old to the new structure using Git.
+
+3. :ref:`API documentation build workflow: <cookiecutter-workflow-api>` Once you have cookiecuttered the package, you will use our Python script to automatically generate API documentation for your package and render the documentation locally.
+
+4. :ref:`Final sign-off: <cookiecutter-workflow-final>` After you've checked the licenses, README, and documentation, you will host your package documentation online. Once you are done with this page, we will guide you on how to release your package on a separate page :ref:`here <release-guide>`.
+
+Tips and how to receive support
+-------------------------------
+
+We offer the following ways to help guide you through the cookiecutting process:
+
+1. You may cross-check with the Billinge group's up-to-date cookiecuttered package, ``diffpy.utils``: https://github.com/diffpy/diffpy.utils.
+
+2. If you have any questions, first read the :ref:`FAQ <frequently-asked-questions>` for how to customize your package and certain design decisions in the cookiecutter template.
+
+3. After you've cross-checked and searched through the FAQ, please feel free to ask questions by creating an issue on the Cookiecutter repository `here <https://github.com/Billingegroup/cookiecutter/issues>`_.
+
 .. _cookiecutter-workflow-pre-commit:
 
 1. Pre-commit workflow
@@ -62,23 +60,47 @@ You are now ready to cookiecut your Python package!
 
 .. Important:: Skip this section and go to :ref:`2. Cookiecutter main workflow <cookiecutter-workflow-main>` if you are starting a new project!
 
-1. In your ``dev`` folder, fork and clone the package.
+1. Fork and clone the the repostory.
 
 2. ``cd`` into the top-level directory of that project.
 
 3. Type ``git pull upstream main`` to sync with the main branch.
 
-4. Double-check that no bug-fix etc. pull-requests are waiting to be merged. Check with Simon if not sure.
+4. Double-check that no bug-fix etc. pull-requests are waiting to be merged. If you are a member, check with the project repository owner if you are unsure.
 
 5. Create a new branch called ``black``.
 
-6. Create ``pyproject.toml``. Copy and paste the ``[tools.black]`` sections from ``pyproject.toml`` in the ``{{ cookiecutter.repo_name }}`` folder path.
+6. Create ``pyproject.toml``. Copy and paste the following to ``pyproject.toml``.
 
-7. Run ``black src`` (note: some of the older packages do not have an ``src`` directory, so you may have to run black on a different directory).
+.. code-block:: bash
 
-8. Commit the automatic changes by ``black``.
+    [tool.black]
+    line-length = 115
+    include = '\.pyi?$'
+    exclude = '''
+    /(
+        \.git
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | \.rst
+    | \.txt
+    | _build
+    | buck-out
+    | build
+    | dist
 
-9. Run ``black .`` and create a PR into ``main``.
+    # The following are specific to Black, you probably don't want those.
+    | blib2to3
+    | tests/data
+    )/
+
+7. Run ``black src`` in your Terminal. If your source code is in a different directory, replace ``src`` with the appropriate directory path. This will automatically format your code to PEP8 standards given the line-length provided under ``line-length`` above in ``pyproject.toml``.
+
+8. Add add commit the automatic changes by ``black``. The commit message can be ``git commit -m "style: apply black to src directory after configuring black in pyproject.toml"``.
+
+9.  Run ``black .`` Here, you are running black across the entire package directory. Again, ``git add`` and commit the changes. The commit message can be ``git commit -m "style: apply black to all files in the project directory"``. Then, create a pull request into a new branch called ``pre-commit``.
 
 10. After the ``black`` branch has been merged, run unit tests to ensure your tests, if there are any, pass locally.
 
