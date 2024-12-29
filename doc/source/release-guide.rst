@@ -11,11 +11,11 @@ How to release Python package
 FAQ for PyPI/GitHub release
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Q1. No conda-forge feedstock yet? To release a conda-package, you first need to create one. Follow the instructions :ref:`here <create_feedstock>`.
+Q1. No conda-forge feedstock yet? To release a conda-package, you first need to create one. Follow the instructions :ref:`here <create-feedstock>`.
 
 Q2. Not a feedstock admin? Create an issue with the title/comment: ``@conda-forge-admin, please add user @username``. Example `issue <https://github.com/conda-forge/diffpy.pdffit2-feedstock/issues/21>`_.
 
-Q3. Interested in pre-release? Please follow the instructions under the conda-forge: pre-release section :ref:`here <conda_pre_release>`.
+Q3. Interested in pre-release? Please follow the instructions under the conda-forge: pre-release section :ref:`here <conda-pre-release>`.
 
 Instructions for GitHub repository contributors
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -35,7 +35,7 @@ Instructions for Projcet Owner for release
 
 1. Review the checklist prepared by the contributor in the issue.
 
-2. Ensure ``PYPI_TOKEN`` and ``PAT_TOKEN`` are configured at the org level. See Appendix :ref:`1 <pypi_token_setup>`, :ref:`2 <pat_token_setup>`, respectively.
+2. Ensure ``PYPI_TOKEN`` and ``PAT_TOKEN`` are configured at the org level. See Appendix :ref:`1 <pypi-token-setup>`, :ref:`2 <pat-token-setup>`, respectively.
 
 3. Check the ``github_admin_username`` setion in ``.github/workflows/build-wheel-release-upload.yml`` is that of the project owner.
 
@@ -56,7 +56,7 @@ Instructions for Projcet Owner for release
 
 9. Wait for the contributor to test the released package. The issue will be closed by the contributor.
 
-.. _pypi_token_setup:
+.. _pypi-token-setup:
 
 Appendix 1. Setup ``PYPI_TOKEN``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -87,7 +87,7 @@ Add the generated token to GitHub:
    :alt: add-pypi-secret
    :width: 600px
 
-.. _pat_token_setup:
+.. _pat-token-setup:
 
 Appendix 2. Setup ``PAT_TOKEN``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

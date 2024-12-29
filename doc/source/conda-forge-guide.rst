@@ -4,7 +4,7 @@
 How to release conda-forge package
 ==================================
 
-.. _create_feedstock:
+.. _create-feedstock:
 
 I am new to conda-forge. How do I create a conda package?
 ---------------------------------------------------------
@@ -18,7 +18,7 @@ To generate a package, we first need to generate a "recipe" for the package. The
 
 Hence, in Step 1, we will generate ``meta.yaml`` using the Billinge group's template. See https://github.com/conda-forge/diffpy.utils-feedstock/blob/main/recipe/meta.yaml as an example of a ``meta.yaml`` used in production.
 
-If you are interested in learning more about each component within ``meta.yaml``, read :ref:`Appendix 1 <appendix1>` located at the end of this document.
+If you are interested in learning more about each component within ``meta.yaml``, read :ref:`Appendix 1 <meta-yaml-info>` located at the end of this document.
 
 1. Install ``cookiecutter`` via ``pip install cookiecutter`` and run ``cookiecutter https://github.com/billingegroup/staged-recipes-cookiecutter``
 
@@ -125,7 +125,7 @@ Create a PR to your conda-forge feedstock:
 
 10. Once the PR is merged, verify the latest conda-forge package version from the README badge.
 
-.. _conda_pre_release:
+.. _conda-pre-release:
 
 I am familiar with the regular conda release process. How do I do pre-release?
 ------------------------------------------------------------------------------
@@ -147,7 +147,7 @@ To install the pre-release build::
 
 For more, read the documentation for pre-release: https://conda-forge.org/docs/maintainer/knowledge_base/#pre-release-builds
 
-.. _appendix1:
+.. _meta-yaml-info:
 
 Appendix 1. Background info on ``meta.yml``
 -------------------------------------------
