@@ -45,14 +45,25 @@ Project setup
 I read ``bg-cookiecutter`` supports a namespace package. What is it and how do I set it up?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-A namespace package is a folder structure that allows importing and installing a package like ``pip install diffpy.pdffit2``, etc. While the package starts with ``org-name``, ``diffpy.pdffit2`` and ``diffpy.utils``, for example, reside in their own repositories, i.e., https://github.com/diffpy/diffpy.utils. This is highly useful for organizing a large project into smaller packages and benefits from branding and organizational advantages.
+In plain English, a namespace package refers to a package that is organized in a way that allows importing and installing a package like ``pip install diffpy.pdffit2``. The package starts with an ``org-name`` or similar, and each package has a separate repository, i.e., https://github.com/diffpy/diffpy.pdffit2. The consistency in naming is benefit for research groups, organizing multiple research software projects, and maintaining branding.
 
 What is the difference between a namespace package and a regular package?
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-The difference is in folder structure:
+The difference is in the folder structure:
 
-Here is an example of ``diffpy.utils`` namespace package:
+For a regular package ``bg-mpl-stylesheets``:
+.. code-block:: text
+
+  ├── src
+  │   ├── bg_mpl_stylesheets
+  │   │   ├── __init__.py
+  │   │   ├── colors.py
+  │   │   ├── inkscape_tools.py
+
+You would import it as ``import bg_mpl_stylesheets`` and the package name is ``bg-mpl-stylesheets`` on PyPI and conda-forge. See https://pypi.org/project/bg-mpl-stylesheets/.
+
+In constrat, here is an example of the ``diffpy.utils`` namespace package:
 
 .. code-block:: text
 
@@ -64,19 +75,7 @@ Here is an example of ``diffpy.utils`` namespace package:
   │   │       ├── __init__.py
   │   │       ├── diffraction_objects.py
 
-Now, this contrasts with a regular package structure like ``bg-mpl-stylesheets``:
-
-.. code-block:: text
-
-  ├── src
-  │   ├── bg_mpl_stylesheets
-  │   │   ├── __init__.py
-  │   │   ├── colors.py
-  │   │   ├── inkscape_tools.py
-
-Notice that there is a ``diffpy`` folder under ``src``. This is the namespace package. The ``utils`` package is a subpackage of the namespace package. The package name is ``diffpy-utils`` on PyPI and conda-forge. It is installable as ``pip install diffpy.utils``. If you visit https://github.com/diffpy/diffpy.utils, you will see multiple packages like ``diffpy.pdffit2``, etc. Notice that each package is a separate repository, maintaining the organizational and branding benefits mentioned earlier.
-
-For this package, you would import it as ``import bg_mpl_stylesheets`` and the package name is ``bg-mpl-stylesheets`` on PyPI and conda-forge. See https://pypi.org/project/bg-mpl-stylesheets/.
+Notice that there is a ``diffpy`` folder under ``src``. The package name is ``diffpy.utils`` on PyPI and conda-forge and installable like ``pip install diffpy.utils``.
 
 Now, I am interested in setting up a namespace package. How do I set it up?
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
