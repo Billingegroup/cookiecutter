@@ -121,4 +121,3 @@ Copy and paste the ``PAT_TOKEN`` to your GitHub organization:
 3. Click ``New organization secret`` and add a new secret and name it as ``PAT_TOKEN``.
 
 4. Done!
-
