@@ -10,7 +10,7 @@ Frequently asked questions (FAQ)
 
 Here, you will learn how to customize the ``bg-cookiecutter`` template for your own project, such as setting the line-width and including/excluding files for PyPI distribution. We also provide design decisions for the current setup of the ``bg-cookiecutter`` template.
 
-Formatting
+Pre-commit
 ----------
 
 How do I modify line-width limits?
@@ -21,11 +21,8 @@ Three files need to be modified:
 1. In ``.isort.cfg``, modify ``line_length``
 2. In ``.flake8``, modify ``max-line-length``
 3. In ``pyproject.toml``, modify ``line-length`` under ``[tool.black]``.
-
-Pre-commit
-----------
-
-.. codespell-add-word:
+4.
+.. _codespell-add-word:
 
 How do I ignore words/lines/files in automatic spelling checks in pre-commit?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -41,6 +38,50 @@ To ignore a specific line, add it to ``.codespell/ignore_lines.txt``. See the ex
   # Hallo Welt
 
 To ignore a specific file extension, add ``*.ext`` to the ``skip`` section under ``[tool.codespell]`` in ``pyproject.toml``. For example, to ignore ``.cif`` and ``.dat`` files, use ``skip = "*.cif,*.dat"``.
+
+Project setup
+-------------
+
+I read ``bg-cookiecutter`` supports a namespace package. What is it and how do I set it up?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A namespace package is a folder structure that allows importing and installing a package like ``pip install diffpy.pdffit2``, etc. While the package starts with ``org-name``, ``diffpy.pdffit2`` and ``diffpy.utils``, for example, reside in their own repositories, i.e., https://github.com/diffpy/diffpy.utils. This is highly useful for organizing a large project into smaller packages and benefits from branding and organizational advantages.
+
+What is the difference between a namespace package and a regular package?
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+The difference is in folder structure:
+
+Here is an example of ``diffpy.utils`` namespace package:
+
+.. code-block:: text
+
+  ├── pyproject.toml
+  ├── src
+  │   ├── diffpy
+  │   │   ├── __init__.py
+  │   │   └── utils
+  │   │       ├── __init__.py
+  │   │       ├── diffraction_objects.py
+
+Now, this contrasts with a regular package structure like ``bg-mpl-stylesheets``:
+
+.. code-block:: text
+
+  ├── src
+  │   ├── bg_mpl_stylesheets
+  │   │   ├── __init__.py
+  │   │   ├── colors.py
+  │   │   ├── inkscape_tools.py
+
+Notice that there is a ``diffpy`` folder under ``src``. This is the namespace package. The ``utils`` package is a subpackage of the namespace package. The package name is ``diffpy-utils`` on PyPI and conda-forge. It is installable as ``pip install diffpy.utils``. If you visit https://github.com/diffpy/diffpy.utils, you will see multiple packages like ``diffpy.pdffit2``, etc. Notice that each package is a separate repository, maintaining the organizational and branding benefits mentioned earlier.
+
+For this package, you would import it as ``import bg_mpl_stylesheets`` and the package name is ``bg-mpl-stylesheets`` on PyPI and conda-forge. See https://pypi.org/project/bg-mpl-stylesheets/.
+
+Now, I am interested in setting up a namespace package. How do I set it up?
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Our ``bg-cookiecutter`` handles a namespace package automatically for you! This is what makes our cookiecutter unique. All you have to do while creating a cookiecutter package is to provide your package name as e.g., ``diffpy.my_project`` when prompted by ``cookiecutter https://github.com/Billingegroup/cookiecutter``. The cookiecutter will automatically create a namespace package for you based on the existence of the ``.`` that separates the ``diffpy`` and ``my_project``.
 
 Release
 -------
