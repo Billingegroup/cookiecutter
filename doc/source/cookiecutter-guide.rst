@@ -60,75 +60,85 @@ We offer the following ways to help guide you through the cookiecutting process:
 
 .. Important:: Skip this section and go to :ref:`2. Cookiecutter main workflow <cookiecutter-workflow-main>` if you are starting a new project!
 
-1. Fork and clone the the repository.
+#. Fork and clone the repository.
 
-2. ``cd`` into the top-level directory of that project.
+#. ``cd`` into the top-level directory of that project.
 
-3. Type ``git pull upstream main`` to sync with the main branch.
+#. Type ``git pull upstream main`` to sync with the main branch.
 
-4. Double-check that no bug-fix etc. pull-requests are waiting to be merged. If you are a member, check with the project repository owner if you are unsure.
+#. Double-check that no bug-fix etc. pull-requests are waiting to be merged. If you are a member, check with the project repository owner if you are unsure.
 
-5. Create a new branch called ``black``.
+#. Create a new branch called ``black``.
 
-6. Create ``pyproject.toml``. Copy and paste the following to ``pyproject.toml``.
+#. Create ``pyproject.toml``. Copy and paste the following to ``pyproject.toml``.
 
-.. code-block:: bash
+    .. code-block:: bash
 
-    [tool.black]
-    line-length = 115
-    include = '\.pyi?$'
-    exclude = '''
-    /(
-        \.git
-    | \.hg
-    | \.mypy_cache
-    | \.tox
-    | \.venv
-    | \.rst
-    | \.txt
-    | _build
-    | buck-out
-    | build
-    | dist
+        [tool.black]
+        line-length = 115
+        include = '\.pyi?$'
+        exclude = '''
+        /(
+            \.git
+        | \.hg
+        | \.mypy_cache
+        | \.tox
+        | \.venv
+        | \.rst
+        | \.txt
+        | _build
+        | buck-out
+        | build
+        | dist
 
-    # The following are specific to Black, you probably don't want those.
-    | blib2to3
-    | tests/data
-    )/
+        # The following are specific to Black, you probably don't want those.
+        | blib2to3
+        | tests/data
+        )/
 
-7. Run ``black src`` in your Terminal. If your source code is in a different directory, replace ``src`` with the appropriate directory path. This will automatically format your code to PEP8 standards given the line-length provided under ``line-length`` above in ``pyproject.toml``.
+#. Run ``black src`` in your Terminal. If your source code is in a different directory, replace ``src`` with the appropriate directory path. This will automatically format your code to PEP8 standards given the line-length provided under ``line-length`` above in ``pyproject.toml``.
 
-8. Add add commit the automatic changes by ``black``. The commit message can be ``git commit -m "style: apply black to src directory after configuring black in pyproject.toml"``.
+#. Add and commit the automatic changes by ``black``. The commit message can be ``git commit -m "style: apply black to src directory with black configured in pyproject.toml"``.
 
-9.  Run ``black .`` Here, you are running black across the entire package directory. Again, ``git add`` and commit the changes. The commit message can be ``git commit -m "style: apply black to all files in the project directory"``. Then, create a pull request into a new branch called ``pre-commit``.
+#. Run ``black .`` Here, you are running black across the entire package directory. Then, test your package with unit tests locally.
 
-10. After the ``black`` branch has been merged, run unit tests to ensure your tests, if there are any, pass locally.
+#. git add and commit the changes. The commit message can be ``git commit -m "style: apply black to all files in the project directory"``.
 
-11. Type ``git checkout main && git pull upstream main`` and create a new branch called ``precommit``.
+#. Create a pull request into ``main``. The pull request title can be ``cookiecut: Apply black to project directory with no manual edits``.
 
-12. Copy and paste the ``.flake8`` and ``.pre-commit-config.yaml`` files from ``{{ cookiecutter.repo_name }}`` to the top directory level. Cross-check with https://github.com/diffpy/diffpy.utils.
+#. After the ``black`` branch has been merged to ``main``, type ``git checkout main && git pull upstream main`` and create a new branch called ``precommit`` by typing ``git checkout -b precommit``.
 
-13. Run ``pre-commit run --all-files``.
+#. Copy and paste two files of ``.flake8`` `here <https://github.com/Billingegroup/cookiecutter/blob/main/%7B%7B%20cookiecutter.repo_name%20%7D%7D/.flake8>`_ and ``.pre-commit-config.yaml`` `here <https://github.com/Billingegroup/cookiecutter/blob/main/%7B%7B%20cookiecutter.repo_name%20%7D%7D/.pre-commit-config.yaml>`_ to your project directory. Cross-check with https://github.com/diffpy/diffpy.utils.
 
-14. Create a PR to ``main``. Mention in the PR that you need to address flake8 errors.
+#. Run ``pre-commit run --all-files`` in your Terminal. This will attempt to lint your code such as docstrings, extra spaces, across all file types such as ``.yml``, ``.md``, ``.rst``, etc. However, most likely, you will have to manually fix some of the errors raised by ``flake8``.
 
-15. After the ``precommit`` branch has been merged, sync with ``main`` in Step 11, create a new branch called ``flake8``.
+#. Before manually editing, let's first take a look at the changes made by running ``git status`` to get an overview of the files modified and then by running ``git diff <file-or-directory-path>`` to see the specific changes. If you do not want the new changes, you can run ``git restore <file-or-directory-path>`` to revert the changes.
 
-16. Fix flake8 errors manually:
+    .. note::
 
-    - Tip 1: Start with easier error types to fix, such as line-lengths and "module imported not used", etc.
+        Q1. Do you want to prevent certain automatic modifications on files? You can add the folder or extension to the ``exclude`` section in ``.pre-commit-config.yaml`` with an example shown `here <https://github.com/Billingegroup/cookiecutter/blob/main/.pre-commit-config.yaml>`_.
 
-    - Tip 2: Submit periodic commits within a single PR.
+        Q2. Do you want to ignore certain spelling recommendations by Codespell? Please refer to this section in the FAQ :ref:`here <codespell-add-word>`.
 
-    - Tip 3: Create multiple PRs, each containing a specific theme (e.g., "Fix docstring line-length flake8 errors" using ``flake8-length`` branch, etc.) to reduce cognitive overload for the reviewer (Simon).
+#. At this point, you may have flake8 errors but we want to address them in a separate pull request. Hence, git add and commit and push the automatic changes made by ``precommit`` and create a pull request to ``main``. The commit message can be ``style: apply pre-commit without manual modification`` and the pull request title can be ``cookiecut: Apply pre-commit to project directory with no manual edits``.
 
-    - Tip 4: Don't hesitate to reach out for help.
+#. After the ``precommit`` branch has been merged to ``main``, run ``git checkout main && git pull upstream main`` and create a new branch called ``flake8`` by typing ``git checkout -b flake8``. If you have many flake8 errors and types, feel free to create one branch for each specific type of error, like ``flake8-length``.
 
-Once all flake8 errors are fixed, create a pull request to ``main``. Mention in the PR that you need to address the ``pre-commit`` errors.
+Here are some tips to reduce cognitive overload:
+
+    1. Start with easier error types to fix, such as line lengths and "module imported but not used", etc.
+
+    2. Create multiple PRs, each containing a specific theme (e.g., "Fix docstring line-length flake8 errors" using the ``flake8-length`` branch, etc.) to reduce cognitive overload for the reviewer.
+
+    3. If you are unsure, suppress the flake8 error by adding ``# noqa: <error-code>`` at the end of the line. For example, ``import numpy as np # noqa: E000`` but make sure you create an issue for this so that you can revisit them after cookiecutting.
+
+For each `flake8` branch, create a PR request to ``main``. Since you are fixing flake8 errors, the commit message can be ``style: fix flake8 <readable-error-type> errors`` and the pull request title can be ``cookiecut: Fix flake8 <readable-error-type> errors``. In each PR, feel free to communicate the remaining flake8 issues in each pull request to track progress.
+
+Congratulations! You have successfully completed the pre-commit workflow. You may proceed to the section to now transform your package structure!
 
 .. _cookiecutter-workflow-main:
 
-2. Cookiecutter main workflow
+1. Cookiecutter main workflow
 -----------------------------
 
 If you are migrating an existing project,
@@ -169,7 +179,7 @@ If you are here starting a new project, the :ref:`1, Pre-commit workflow <cookie
 
 :workflow_version: Version of the reuseuable workflow to use. ``v0`` is the default.
 
-.. Important:: Skip the rest of Cookiecutter main workflow if you are starting a new project! Proceed to the :ref:`3. API documentation workflow<cookiecutter-workflow-api>` below.
+.. Important:: Skip the rest of Cookiecutter main workflow if you are starting a new project! Proceed to the :ref:`3. API documentation workflow<cookiecutter-workflow-api>` below. Otherwise, please continue!
 
 3. cd into the new ``diffpy.<package_name>/`` directory (e.g., in our example ``pwd`` would return ``~/dev/diffpy.pdfmorph/diffpy.pdfmorph``) (we will refer to the nested directory as the "**cookiecutter**" directory and ``~/dev/diffpy.pdfmorph/`` as the "**main**" directory).
 
@@ -240,17 +250,17 @@ Make a PR! It will be merged, trust!
 4. Final sign-off
 -----------------
 
-1. For the ``cookierelease`` activity make a ``<branchname>.rst`` file by copying ``TEMPLATE.rst`` in the news folder and under "fixed" put ``Repo structure modified to the new diffpy standard``
+#. For the ``cookierelease`` activity make a ``<branchname>.rst`` file by copying ``TEMPLATE.rst`` in the news folder and under "fixed" put ``Repo structure modified to the new diffpy standard``
 
-2. If a new Python version has been added under "added" add `Python 3.xx, 3,xx support`. If a previous version has been removed, under "fixed", add a new item `Python 3.xx, 3.xx, support`.
+#. If a new Python version has been added under "added" add `Python 3.xx, 3,xx support`. If a previous version has been removed, under "fixed", add a new item `Python 3.xx, 3.xx, support`.
 
-3. Check the `README` and make sure that all parts have been filled in and all links resolve correctly.
+#. Check the `README` and make sure that all parts have been filled in and all links resolve correctly.
 
-4. Run through the documentation online and do the same, fix any last typos and make all the links work. To do this the documentation must have been correctly built on a merge to main and enabled on the github.io website. Instructions are [here](https://gitlab.thebillingegroup.com/resources/group-wiki/-/wikis/Maintaining-and-Deploying-Documentation).
+#. Run through the documentation online and do the same, fix grammar and make sure all links work.
 
-5. When you are are happy to sign off on the release send a Slack message to Simon saying something like "`OK to release diffpy.<package-name>`"
+#. Follow the instructions on setting up GitHub pages here.
 
-6. Make sure that the codecov secret is set in the GH actions repository secrets.
+.. _test-package-locally:
 
 Appendix 1. How to test your package locally
 --------------------------------------------
@@ -295,6 +305,11 @@ To run as a single command:
 .. code-block:: bash
 
     cd doc && make html && open build/html/index.html && cd ..
+
+.. _build-documentation-preview-real-time:
+
+Real-time preview with Visual Studio Code
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Alternatively, you may render the Sphinx documentation by installing the `Esbonio <https://marketplace.visualstudio.com/items?itemName=swyddfa.esbonio>`_ extension in VS Code. This will allow you to see the changes in real-time and increase productivity.
 
@@ -388,4 +403,9 @@ To configure ``pre-commit CI``, follow the simple steps below:
 2. Select the repository(s).
 3. Done!
 
-.. _test-package-locally:
+Appendix 6. How to setup GitHub Pages for your package
+------------------------------------------------------
+
+You have API doc built and tested locally. Now you want to deploy your doc via ``https://org-name/github.io/repo-name`` i.e., https://diffpy.github.io/diffpy.utils using GitHub Pages.
+
+Go to `Settings` in your repository.
