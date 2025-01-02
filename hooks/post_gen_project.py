@@ -227,7 +227,7 @@ def main():
         or "{{ cookiecutter.maximum_supported_python_version }}" != max_python_version):
         print(
             "ACTION REQUIRED (non-default Python versions): You've entered Python versions outside of the default according to "
-            "https://scientific-python.org/specs/spec-0000/. Please specify Python versions following the instructions in the link below:\n"
+            "https://scientific-python.org/specs/spec-0000/. Please consider specifying Python versions following the instructions in the link below:\n"
             "\nFAQ: https://Billingegroup.github.io/cookiecutter/frequently-asked-questions.html#github-actions\n"
         )
 
