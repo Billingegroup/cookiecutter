@@ -17,5 +17,3 @@
   "project_needs_headless_GUI_testing": ["No", "Yes"],
   "_copy_without_render": ["*.html", "*.js", ".github/*"]
 }
-
-
