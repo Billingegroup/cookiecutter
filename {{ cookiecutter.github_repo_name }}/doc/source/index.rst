@@ -17,13 +17,13 @@ Authors
 and its community contributors.
 
 For a detailed list of contributors see
-https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.repo_name }}/graphs/contributors.
+https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.github_repo_name }}/graphs/contributors.
 
 ============
 Installation
 ============
 
-See the `README <https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.repo_name }}#installation>`_
+See the `README <https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.github_repo_name }}#installation>`_
 file included with the distribution.
 
 =================

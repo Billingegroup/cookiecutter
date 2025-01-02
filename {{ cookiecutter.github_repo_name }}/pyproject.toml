@@ -3,7 +3,7 @@ requires = ["setuptools>=62.0", "setuptools-git-versioning>=2.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "{{ cookiecutter.package_dist_name }}"
+name = "{{ cookiecutter.conda_pypi_package_dist_name }}"
 dynamic=['version', 'dependencies']
 authors = [
   { name="{{ cookiecutter.project_owner_name }}", email="{{ cookiecutter.project_owner_email }}" },
@@ -40,8 +40,8 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.repo_name }}/"
-Issues = "https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.repo_name }}/issues/"
+Homepage = "https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.github_repo_name }}/"
+Issues = "https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.github_repo_name }}/issues/"
 
 [tool.setuptools-git-versioning]
 enabled = true

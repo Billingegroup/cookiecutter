@@ -223,7 +223,7 @@ latex_elements = {
 latex_documents = [
     (
         "index",
-        "{{ cookiecutter.package_dist_name }}.tex",
+        "{{ cookiecutter.conda_pypi_package_dist_name }}.tex",
         "{{ cookiecutter.project_name }} Documentation",
         ab_authors,
         "manual",
@@ -258,7 +258,7 @@ latex_documents = [
 man_pages = [
     (
         "index",
-        "{{ cookiecutter.package_dist_name }}",
+        "{{ cookiecutter.conda_pypi_package_dist_name }}",
         "{{ cookiecutter.project_name }} Documentation",
         ab_authors,
         1,
@@ -277,7 +277,7 @@ man_pages = [
 texinfo_documents = [
     (
         "index",
-        "{{ cookiecutter.package_dist_name }}",
+        "{{ cookiecutter.conda_pypi_package_dist_name }}",
         "{{ cookiecutter.project_name }} Documentation",
         ab_authors,
         "{{ cookiecutter.project_name }}",

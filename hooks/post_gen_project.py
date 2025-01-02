@@ -9,6 +9,7 @@ ROOT = Path.cwd()
 
 
 def __gen_init__(module_name):
+    """Generate __init__.py file for namespace module."""
     __init__ = f"""#!/usr/bin/env python
 ##############################################################################
 #
@@ -18,7 +19,7 @@ def __gen_init__(module_name):
 # File coded by: Billinge Group members and community contributors.
 #
 # See GitHub contributions for a more detailed list of contributors.
-# https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.repo_name }}/graphs/contributors
+# https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.github_repo_name }}/graphs/contributors
 #
 # See LICENSE.rst for license information.
 #
@@ -80,8 +81,8 @@ if __name__ == '__main__':
     return setuppy
 
 
-# Add module packages for each leading period
 def add_supermodules(ROOT, name):
+    """Add module packages for each leading period."""
     src_dir = ROOT / "src"
     c_dir = src_dir  # Current directory
 
@@ -121,6 +122,7 @@ def add_supermodules(ROOT, name):
     cp_dir.rename(c_dir / module_names[-1])
 
 def wrapper_setup():
+    """Generate setup.py file for C extensions."""
     src_dir = ROOT / "src"
     ext_dir = src_dir / "extensions"
     try:
@@ -138,7 +140,7 @@ def wrapper_setup():
         spfile.write(__gen_setuppy__())
 
 def update_workflow():
-
+    """Generate GitHub workflow .yml files with user input."""
     CENTRAL_REPO_ORG = "Billingegroup"
     CENTRAL_REPO_NAME = "release-scripts"
     CENTRAL_WORKFLOW_DIR = ".github/workflows/templates"
@@ -146,11 +148,12 @@ def update_workflow():
 
     workflow_input = {"PROJECT": "{{ cookiecutter.project_name }}",
                       "GITHUB_ADMIN_USERNAME": "{{ cookiecutter.project_owner_github_username }}",
-                      "C_EXTENSION": str("{{ cookiecutter.have_c_code }}"=="y").lower(),
-                      "HEADLESS": input(f"Is a GUI application, run 'HEADLESS' tests (default: {'false'}): ").strip().lower() or 'false',
-                      "VERSION": input(f"Enter value for workflow 'VERSION' (default: {'v0'}): ").strip() or "v0"}
+                      "C_EXTENSION": str("{{ cookiecutter.project_needs_c_code_compiled }}"=="Yes").lower(),
+                      "HEADLESS": str("{{ cookiecutter.project_has_gui_tests }}"=="Yes").lower(),
+                      "VERSION": "v0"}
 
     def get_central_workflows():
+        """Get GitHub workflows from Billingegroup/release-scripts."""
         base_url = f"https://api.github.com/repos/{CENTRAL_REPO_ORG}/{CENTRAL_REPO_NAME}/contents/{CENTRAL_WORKFLOW_DIR}"
         response = requests.get(base_url, timeout=5)
         if response.status_code != 200:
@@ -166,7 +169,8 @@ def update_workflow():
 
 
     def update_workflow_params(content):
-
+        """Replace placeholder parameters in workflow .yml files with user
+        input."""
         def replace_match(match):
             key = match.group(1)
             return str(workflow_input[key])
@@ -176,6 +180,8 @@ def update_workflow():
 
 
     def update_local_workflows(central_workflows):
+        """Replace existing GitHub workflow files with latest from
+        Billingegroup/release-scripts."""
         local_workflows = set(f.name for f in LOCAL_WORKFLOW_DIR.glob("*.yml"))
         central_workflow_names = set(central_workflows.keys())
 
@@ -189,24 +195,41 @@ def update_workflow():
 
         for name in local_workflows - central_workflow_names:
             (LOCAL_WORKFLOW_DIR / name).unlink()
-            print(f"Removed workflow {name}")
-
 
     try:
         LOCAL_WORKFLOW_DIR.mkdir(parents=True, exist_ok=True)
         central_workflows = get_central_workflows()
         update_local_workflows(central_workflows)
-        print("Workflow synchronization completed successfully")
     except Exception as e:
         print(f"Error: {str(e)}")
 
 
 def main():
+    """Execute when user runs cookiecutter."""
     if "." in "{{ cookiecutter.project_name }}":
         add_supermodules(ROOT, "{{ cookiecutter.project_name }}")
-    if "{{ cookiecutter.have_c_code }}" == "y":
+    if "{{ cookiecutter.project_needs_c_code_compiled }}" == "Yes":
         wrapper_setup()
     update_workflow()
+    print(
+        "\nCongratulations! A new cookiecuttered project is created! Enter the directory with cd <package_name>."
+        "\nIf you have any additional questions, "
+        "please read our FAQ section or leave issues below: "
+        "  \n\nFAQ: https://Billingegroup.github.io/cookiecutter/frequently-asked-questions"
+        "  \nGitHub issues: https://github.com/Billingegroup/cookiecutter/issues\n"
+        )
+
+    # Dynamically check if the user has selected a non-default Python version
+    max_python_version = "3.13"
+    min_pyhton_version = "3.11"
+
+    if ("{{ cookiecutter.minimum_supported_python_version }}" != min_pyhton_version
+        or "{{ cookiecutter.maximum_supported_python_version }}" != max_python_version):
+        print(
+            "ACTION REQUIRED (non-default Python versions): You've entered Python versions outside of the default according to "
+            "https://scientific-python.org/specs/spec-0000/. Please consider specifying Python versions following the instructions in the link below:\n"
+            "\nFAQ: https://Billingegroup.github.io/cookiecutter/frequently-asked-questions.html#github-actions\n"
+        )
 
 if __name__ == '__main__':
     main()

@@ -28,7 +28,7 @@ If you are interested in learning more about each component within ``meta.yaml``
 
     2. module_name (diffpy.my_project): diffpy.srreal
 
-    3. repo_name (diffpy.srreal):
+    3. github_repo_name (diffpy.srreal):
 
     4. version (1.0.0): 1.3.1
 
