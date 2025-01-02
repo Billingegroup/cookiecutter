@@ -4,7 +4,7 @@
 
 **Changed:**
 
-* import package_dir_name in the `__init__.py` instead of package_dist_name to ensure package import is lowercased
+* import package_dir_name in the `__init__.py` instead of `conda_pypi_package_dist_name` to ensure package import is lowercased
 
 **Deprecated:**
 

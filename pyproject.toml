@@ -80,5 +80,5 @@ exclude = '''
 
 [tool.pytest.ini_options]
 addopts = [
-    "--ignore={{ cookiecutter.repo_name }}",
+    "--ignore={{ cookiecutter.github_repo_name }}",
 ]

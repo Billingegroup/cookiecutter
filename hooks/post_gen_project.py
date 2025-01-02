@@ -19,7 +19,7 @@ def __gen_init__(module_name):
 # File coded by: Billinge Group members and community contributors.
 #
 # See GitHub contributions for a more detailed list of contributors.
-# https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.repo_name }}/graphs/contributors
+# https://github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.github_repo_name }}/graphs/contributors
 #
 # See LICENSE.rst for license information.
 #
@@ -149,7 +149,7 @@ def update_workflow():
     workflow_input = {"PROJECT": "{{ cookiecutter.project_name }}",
                       "GITHUB_ADMIN_USERNAME": "{{ cookiecutter.project_owner_github_username }}",
                       "C_EXTENSION": str("{{ cookiecutter.project_needs_c_code_compiled }}"=="Yes").lower(),
-                      "HEADLESS": str("{{ cookiecutter.project_needs_headless_GUI_testing }}"=="Yes").lower(),
+                      "HEADLESS": str("{{ cookiecutter.project_has_gui_tests }}"=="Yes").lower(),
                       "VERSION": "v0"}
 
     def get_central_workflows():
@@ -217,6 +217,18 @@ def main():
         "please read our FAQ section or leave issues below: "
         "  \n\nFAQ: https://Billingegroup.github.io/cookiecutter/frequently-asked-questions"
         "  \nGitHub issues: https://github.com/Billingegroup/cookiecutter/issues\n"
+        )
+
+    # Dynamically check if the user has selected a non-default Python version
+    max_python_version = "3.13"
+    min_pyhton_version = "3.11"
+
+    if ("{{ cookiecutter.minimum_supported_python_version }}" != min_pyhton_version
+        or "{{ cookiecutter.maximum_supported_python_version }}" != max_python_version):
+        print(
+            "ACTION REQUIRED (non-default Python versions): You've entered Python versions outside of the default according to "
+            "https://scientific-python.org/specs/spec-0000/. Please specify Python versions following the instructions in the link below:\n"
+            "\nFAQ: https://Billingegroup.github.io/cookiecutter/frequently-asked-questions.html#github-actions\n"
         )
 
 if __name__ == '__main__':

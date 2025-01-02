@@ -1,4 +1,4 @@
-name: {{ cookiecutter.package_dist_name }}
+name: {{ cookiecutter.conda_pypi_package_dist_name }}
 channels:
   - conda-forge
 dependencies:

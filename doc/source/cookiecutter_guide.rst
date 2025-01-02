@@ -59,7 +59,7 @@ WARNINGS
 
 5. Create a new branch called ``black``.
 
-6. Create ``pyproject.toml``. Copy and paste the ``[tools.black]`` and ``[tool.codespell]`` sections from ``pyproject.toml`` in the ``{{ cookiecutter.repo_name }}`` folder path.
+6. Create ``pyproject.toml``. Copy and paste the ``[tools.black]`` and ``[tool.codespell]`` sections from ``pyproject.toml`` in the ``{{ cookiecutter.github_repo_name }}`` folder path.
 
 7. Run ``black src`` (note: some of the older packages do not have an ``src`` directory, so you may have to run black on a different directory).
 
@@ -71,7 +71,7 @@ WARNINGS
 
 11. Type ``git checkout main && git pull upstream main`` and create a new branch called ``precommit``.
 
-12. Copy and paste the ``.flake8`` and ``.pre-commit-config.yaml`` files from ``{{ cookiecutter.repo_name }}`` to the top directory level. Cross-check with https://github.com/diffpy/diffpy.utils.
+12. Copy and paste the ``.flake8`` and ``.pre-commit-config.yaml`` files from ``{{ cookiecutter.github_repo_name }}`` to the top directory level. Cross-check with https://github.com/diffpy/diffpy.utils.
 
 13. Run ``pre-commit run --all-files``. Fix any spelling suggestions from Codespell. To ignore a specific word or line, add it under  ``.codespell/ignore_words.txt`` or ``.codespell/ignore_lines.txt``. To ignore specific file types, add the file extensions i.e. ``*.gr`` in ``skip = line`` under ``[tool.codespell]`` in ``pyproject.toml``. Include explanations for each addition.
 
@@ -110,11 +110,11 @@ Please follow the instructions in the `installation <_cookiecutter-installation>
 
    4. project_name: <name_of_project (e.g. ``diffpy.pdfmorph``)>
 
-   5. package_dist_name: (default)
+   5. conda_pypi_package_dist_name: (default)
 
    6. package_dir_name: (default)
 
-   7. repo_name: (default)
+   7. github_repo_name: (default)
 
    8. minimum_python_version: (default -- this is 3.11)
 
