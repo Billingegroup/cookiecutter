@@ -212,7 +212,7 @@ def main():
         wrapper_setup()
     update_workflow()
     print(
-        "\nCongratulations! Your package is cookiecutteed! Enter the directory with cd <package_name>."
+        "\nCongratulations! A new cookiecuttered project is created! Enter the directory with cd <package_name>."
         "\nIf you have any additional questions, "
         "please read our FAQ section or leave issues below: "
         "  \n\nFAQ: https://Billingegroup.github.io/cookiecutter/frequently-asked-questions"
