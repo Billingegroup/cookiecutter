@@ -1,6 +1,6 @@
 **Added:**
 
-* Configure `PYTHON_DEFAULT_MAX_VERSION` and `PYTHON_DEFAULT_MIN_VERSION` in `doc/source/conf.py` to increase maintainability throughout the documentation.
+* Configure `PYTHON_MAX_VERSION` and `PYTHON_MIN_VERSION` in `doc/source/conf.py` to increase maintainability throughout the documentation.
 
 **Changed:**
 
