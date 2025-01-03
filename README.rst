@@ -35,9 +35,6 @@
 .. |Tracking| image:: https://img.shields.io/badge/issue_tracking-github-blue
         :target: https://github.com/Billingegroup/cookiecutter/issues
 
-Features
---------
-
 ``bg-cookiecutter`` is a Python package standard and generator for scientific code. Use ``bg-cookiecutter`` to launch a new project or migrate existing ones to support the latest Python versions and streamline the process of distributing and maintaining your software package.
 
 - Automated `PEP8 <https://peps.python.org/pep-0008/>`_ and `PEP256 <https://peps.python.org/pep-0256/>`_ standard checks.
