@@ -7,19 +7,22 @@
 # File coded by: Billinge Group members and community contributors.
 #
 # See GitHub contributions for a more detailed list of contributors.
-# https://github.com/Billingegroup/cookiebutter/graphs/contributors
+# https://github.com/Billingegroup/scikit-package/graphs/contributors
 #
 # See LICENSE.rst for license information.
 #
 ##############################################################################
-"""Definition of __version__."""
+"""A Python package standard and generator for scientific code.
 
-#  We do not use the other three variables, but can be added back if needed.
-#  __all__ = ["__date__", "__git_commit__", "__timestamp__", "__version__"]
+Use scikit-package to launch a new project or migrate existing ones to
+support the latest Python versions and streamline the process of
+distributing and maintaining your software package.
+"""
 
-# obtain version information
-from importlib.metadata import version
+# package version
+from scikit_package.version import __version__
 
-__version__ = version("bg_cookiebutter")
+# silence the pyflakes syntax checker
+assert __version__ or True
 
 # End of file

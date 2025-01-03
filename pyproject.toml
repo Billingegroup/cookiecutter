@@ -3,7 +3,7 @@ requires = ["setuptools>=62.0", "setuptools-git-versioning>=2.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "bg-cookiecutter"
+name = "scikit-package"
 dynamic=['version', 'dependencies']
 authors = [
   { name="Simon J.L. Billinge group", email="simon.billinge@gmail.com" },
@@ -11,7 +11,7 @@ authors = [
 maintainers = [
   { name="Simon J.L. Billinge group", email="simon.billinge@gmail.com" },
 ]
-description = "A Python package standard and generator for scientific code. Use bg-cookiecutter to launch a new project or migrate existing ones to support the latest Python versions and streamline the process of distributing and maintaining your software package."
+description = "A Python package standard and generator for scientific code. Use scikit-package to launch a new project or migrate existing ones to support the latest Python versions and streamline the process of distributing and maintaining your software package."
 keywords = ['Package template', 'open-source software']
 readme = "README.rst"
 requires-python = ">=3.11, <3.14"
@@ -33,8 +33,8 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/Billingegroup/cookiecutter/"
-Issues = "https://github.com/Billingegroup/cookiecutter/issues/"
+Homepage = "https://github.com/Billingegroup/scikit-package/"
+Issues = "https://github.com/Billingegroup/scikit-package/issues/"
 
 [tool.setuptools-git-versioning]
 enabled = true
