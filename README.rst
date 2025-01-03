@@ -44,6 +44,13 @@
 - Rich README template containing badges, installation, support, and contribution guide.
 - Automatic spelling check, linting for .json, .yml, and .md files.
 
+Demo
+----
+
+.. image:: doc/source/gif/demo.gif
+   :alt: bg-cookiecutter demo
+   :align: center
+
 Are you interested in amplifying your scientific contribution by standarlizing and distributing your Python code? Begin with the ``Getting started`` page in our online documentation at https://Billingegroup.github.io/cookiecutter!
 
 How to cite bg-cookiecutter
