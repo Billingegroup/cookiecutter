@@ -6,7 +6,7 @@
   "license_holders": "The Trustees of Columbia University in the City of New York",
   "project_name": "diffpy.my-project",
   "github_org": "diffpy",
-  "github_repo_name": "diffpy.my-project",
+  "github_repo_name": "{{ cookiecutter.project_name|replace(' ', '-')|lower }}",
   "conda_pypi_package_dist_name": "{{ cookiecutter.project_name|replace(' ', '-')|lower }}",
   "package_dir_name": "{{ cookiecutter.project_name|replace(' ', '_')|replace('-', '_')|lower }}",
   "project_short_description": "Python package for doing science.",

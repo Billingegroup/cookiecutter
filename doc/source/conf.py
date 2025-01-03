@@ -25,6 +25,16 @@ from pathlib import Path
 sys.path.insert(0, str(Path("../..").resolve()))
 sys.path.insert(0, str(Path("../../src").resolve()))
 
+# Here provide the default values for the Python version range
+PYTHON_MAX_VERSION = 3.13
+PYTHON_MIN_VERSION = 3.11
+
+# Replace e.g., |PYTHON_MAX_VERSION| with actual value in .rst files
+rst_epilog = f"""
+.. |PYTHON_MAX_VERSION| replace:: {PYTHON_MAX_VERSION}
+.. |PYTHON_MIN_VERSION| replace:: {PYTHON_MIN_VERSION}
+"""
+
 # abbreviations
 ab_authors = "Billinge Group members and community contributors"
 

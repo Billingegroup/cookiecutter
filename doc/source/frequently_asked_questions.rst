@@ -88,7 +88,7 @@ GitHub Actions
 How do I set different Python versions for GitHub CI?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The default is Python 3.13 for ``_tests-on-pr.yml`` and ``_publish-docs-on-release.yml``. Python 3.11, 3.12, and 3.13 are used for ``_matrix-and-codecov-on-merge-to-main.yml``. To override the default, modify the three ``.yml`` files above in ``.github/workflows/`` as shown below:
+The default Python version is |PYTHON_MAX_VERSION| for ``_tests-on-pr.yml`` and ``_publish-docs-on-release.yml``. Python |PYTHON_MIN_VERSION| through |PYTHON_MAX_VERSION| are for ``_matrix-and-codecov-on-merge-to-main.yml``. To override the default, modify the three ``.yml`` files above in ``.github/workflows/`` as shown below:
 
 1. Add ``python_version`` in ``.github/workflows/tests-on-pr.yml``:
 
