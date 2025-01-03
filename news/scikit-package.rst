@@ -4,7 +4,7 @@
 
 **Changed:**
 
-* Rename therepositroy and package name to `scikit-package`.
+* Rename repositroy and package name to `scikit-package`.
 
 **Deprecated:**
 
