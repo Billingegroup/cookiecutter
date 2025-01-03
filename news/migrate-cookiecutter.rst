@@ -1,6 +1,6 @@
 **Added:**
 
-* Sphinx documentation for `scikit-package`
+* Add Sphinx documentation for `scikit-package`.
 
 **Changed:**
 
