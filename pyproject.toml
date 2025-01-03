@@ -51,6 +51,9 @@ namespaces = false  # to disable scanning PEP 420 namespaces (true by default)
 [tool.setuptools.dynamic]
 dependencies = {file = ["requirements/pip.txt"]}
 
+[project.scripts]
+cookie = "bg_cookiecutter.cli:run_cookiecutter"
+
 [tool.codespell]
 exclude-file = ".codespell/ignore_lines.txt"
 ignore-words = ".codespell/ignore_words.txt"
