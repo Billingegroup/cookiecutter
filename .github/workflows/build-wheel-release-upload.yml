@@ -10,7 +10,7 @@ jobs:
   release:
     uses: Billingegroup/release-scripts/.github/workflows/_build-wheel-release-upload.yml@v0
     with:
-      project: bg-cookiecutter
+      project: scikit-package
     secrets:
       PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
       PAT_TOKEN: ${{ secrets.PAT_TOKEN }}

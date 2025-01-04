@@ -1,6 +1,6 @@
 **Added:**
 
-* automatic linting of .md, .yml, .rst files via prettier hook in pre-commit
+* Add automatic linting of .md, .yml, .rst files via prettier hook in `pre-commit`.
 
 **Changed:**
 

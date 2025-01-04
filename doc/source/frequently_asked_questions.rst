@@ -8,7 +8,7 @@
 Frequently asked questions (FAQ)
 ================================
 
-Here, you will learn how to customize the ``bg-cookiecutter`` template for your own project, such as setting the line-width and including/excluding files for PyPI distribution. We also provide design decisions for the current setup of the ``bg-cookiecutter`` template.
+Here, you will learn how to customize the ``scikit-package`` template for your own project, such as setting the line-width and including/excluding files for PyPI distribution. We also provide design decisions for the current setup of the ``scikit-package`` template.
 
 Formatting
 ----------

@@ -4,7 +4,7 @@
 
 **Changed:**
 
-* <news item>
+* Rename repositroy and package name to `scikit-package`.
 
 **Deprecated:**
 
@@ -16,7 +16,7 @@
 
 **Fixed:**
 
-* sub section titles in doc to improve readability and navigation working with conda-forge package
+* <news item>
 
 **Security:**
 

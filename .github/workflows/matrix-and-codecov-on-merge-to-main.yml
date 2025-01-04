@@ -14,7 +14,7 @@ jobs:
   matrix-coverage:
     uses: Billingegroup/release-scripts/.github/workflows/_matrix-and-codecov-on-merge-to-main.yml@v0
     with:
-      project: bg-cookiecutter
+      project: scikit-package
       c_extension: false
       headless: false
     secrets:

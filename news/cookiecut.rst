@@ -4,7 +4,7 @@
 
 **Changed:**
 
-* package structure based on its own Billinge Group's Python bg-cookiecutter template
+* Standarlize the current repository based on `scikit-package` structure.
 
 **Deprecated:**
 

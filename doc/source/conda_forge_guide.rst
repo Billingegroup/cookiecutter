@@ -20,7 +20,7 @@ Hence, in Step 1, we will generate ``meta.yaml`` using the Billinge group's temp
 
 If you are interested in learning more about each component within ``meta.yaml``, read :ref:`Appendix 1 <appendix1>` located at the end of this document.
 
-1. Install ``cookiecutter`` via ``pip install cookiecutter`` and run ``cookiecutter https://github.com/billingegroup/staged-recipes-cookiecutter``
+1. Install ``scikit-package`` via ``pip install scikit-package`` and run ``scikit-package https://github.com/billingegroup/staged-recipes-cookiecutter``
 
 2. Answer the following questions. Default values in parentheses are used if no value is provided.
 

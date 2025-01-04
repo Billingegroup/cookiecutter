@@ -1,6 +1,6 @@
 **Added:**
 
-* Add demo .gif file used in README.rst in generating a package and building documentation with `bg-cookiecutter`.
+* Add demo .gif file used in README.rst in generating a package and building documentation with `scikit-package`.
 
 **Changed:**
 

@@ -1,4 +1,4 @@
-name: bg-cookiecutter
+name: sckit-package
 channels:
   - conda-forge
 dependencies:

@@ -1,6 +1,6 @@
 **Added:**
 
-* Sphinx documentation for cookiecutter
+* Add Sphinx documentation for `scikit-package`.
 
 **Changed:**
 

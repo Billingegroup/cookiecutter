@@ -1,7 +1,7 @@
 **Added:**
 
-* full description of bg-cookiecutter in pyproject.toml
-* motivating statements under the Statement of need section in index.rst
+* Add full description of `scikit-package` in `pyproject.toml`.
+* Add motivating statements under the Statement of need section in `index.rst`.
 
 **Changed:**
 

@@ -1,6 +1,6 @@
 **Added:**
 
-* extra metadata of email, name, username, license holder, etc. collected to dynamically populate rendered cookiecuttered files
+* Add extra metadata of email, name, username, license holder, etc. collected to dynamically populate rendered cookiecuttered files.
 
 **Changed:**
 

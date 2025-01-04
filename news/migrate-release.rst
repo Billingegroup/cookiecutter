@@ -1,6 +1,6 @@
 **Added:**
 
-* documentation for Python package release with GitHub Actions
+* Add documentation for Python package release with GitHub Actions.
 
 **Changed:**
 

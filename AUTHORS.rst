@@ -11,4 +11,4 @@ Contributors
 ------------
 
 For a list of contributors, visit
-https://github.com/Billingegroup/cookiecutter/graphs/contributors
+https://github.com/Billingegroup/scikit_package/graphs/contributors

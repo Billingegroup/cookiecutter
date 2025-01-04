@@ -1,11 +1,11 @@
 |Icon| |title|_
 ===============
 
-.. |title| replace:: bg-cookiecutter
-.. _title: https://Billingegroup.github.io/cookiecutter
+.. |title| replace:: scikit-package
+.. _title: https://Billingegroup.github.io/scikit-package
 
 .. |Icon| image:: https://avatars.githubusercontent.com/Billingegroup
-        :target: https://Billingegroup.github.io/cookiecutter
+        :target: https://Billingegroup.github.io/scikit-package
         :height: 100px
 
 |PyPi| |Forge| |PythonVersion| |PR|
@@ -15,27 +15,27 @@
 .. |Black| image:: https://img.shields.io/badge/code_style-black-black
         :target: https://github.com/psf/black
 
-.. |CI| image:: https://github.com/Billingegroup/cookiecutter/actions/workflows/matrix-and-codecov-on-merge-to-main.yml/badge.svg
-        :target: https://github.com/Billingegroup/cookiecutter/actions/workflows/matrix-and-codecov-on-merge-to-main.yml
+.. |CI| image:: https://github.com/Billingegroup/scikit-package/actions/workflows/matrix-and-codecov-on-merge-to-main.yml/badge.svg
+        :target: https://github.com/Billingegroup/scikit-package/actions/workflows/matrix-and-codecov-on-merge-to-main.yml
 
-.. |Codecov| image:: https://codecov.io/gh/Billingegroup/cookiecutter/branch/main/graph/badge.svg
-        :target: https://codecov.io/gh/Billingegroup/cookiecutter
+.. |Codecov| image:: https://codecov.io/gh/Billingegroup/scikit-package/branch/main/graph/badge.svg
+        :target: https://codecov.io/gh/Billingegroup/scikit-package
 
-.. |Forge| image:: https://img.shields.io/conda/vn/conda-forge/bg-cookiecutter
-        :target: https://anaconda.org/conda-forge/bg-cookiecutter
+.. |Forge| image:: https://img.shields.io/conda/vn/conda-forge/scikit-package
+        :target: https://anaconda.org/conda-forge/scikit-package
 
 .. |PR| image:: https://img.shields.io/badge/PR-Welcome-29ab47ff
 
-.. |PyPi| image:: https://img.shields.io/pypi/v/bg-cookiecutter
-        :target: https://pypi.org/project/bg-cookiecutter/
+.. |PyPi| image:: https://img.shields.io/pypi/v/scikit-package
+        :target: https://pypi.org/project/scikit-package/
 
-.. |PythonVersion| image:: https://img.shields.io/pypi/pyversions/bg-cookiecutter
-        :target: https://pypi.org/project/bg-cookiecutter/
+.. |PythonVersion| image:: https://img.shields.io/pypi/pyversions/scikit-package
+        :target: https://pypi.org/project/scikit-package/
 
 .. |Tracking| image:: https://img.shields.io/badge/issue_tracking-github-blue
-        :target: https://github.com/Billingegroup/cookiecutter/issues
+        :target: https://github.com/Billingegroup/scikit-package/issues
 
-``bg-cookiecutter`` is a Python package standard and generator for scientific code. Use ``bg-cookiecutter`` to launch a new project or migrate existing ones to support the latest Python versions and streamline the process of distributing and maintaining your software package.
+``scikit-package`` is a Python package standard and generator for scientific code. Use ``scikit-package`` to launch a new project or migrate existing ones to support the latest Python versions and streamline the process of distributing and maintaining your software package.
 
 - Automated `PEP8 <https://peps.python.org/pep-0008/>`_ and `PEP256 <https://peps.python.org/pep-0256/>`_ standard checks.
 - Automated PyPI/GitHub release, testing, documentation, and CHANGELOG updates.
@@ -48,17 +48,17 @@ Demo
 ----
 
 .. image:: doc/source/gif/demo.gif
-   :alt: bg-cookiecutter demo
+   :alt: scikit-package demo
    :align: center
 
 Getting started
 ---------------
 
-Are you interested in amplifying your scientific contribution by standarlizing and distributing your Python code? Begin with the ``Getting started`` page in our online documentation at https://Billingegroup.github.io/cookiecutter!
+Are you interested in amplifying your scientific contribution by standarlizing and distributing your Python code? Begin with the ``Getting started`` page in our online documentation at https://Billingegroup.github.io/scikit-package!
 
-How to cite bg-cookiecutter
+How to cite scikit-package
 ---------------------------
 
-If you use ``bg-cookiecutter`` to standardize your Python software, we would like you to cite bg-cookiecutter as follows:
+If you use ``scikit-package`` to standardize your Python software, we would like you to cite scikit-package as follows:
 
-   bg-cookiecutter, https://github.com/Billingegroup/cookiecutter
+   scikit-package, https://github.com/Billingegroup/scikit-package

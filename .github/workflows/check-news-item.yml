@@ -9,4 +9,4 @@ jobs:
   check-news-item:
     uses: Billingegroup/release-scripts/.github/workflows/_check-news-item.yml@v0
     with:
-      project: bg-cookiecutter
+      project: scikit-package
