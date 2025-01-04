@@ -1,6 +1,6 @@
 **Added:**
 
-* instructions for Codecov setup in cookiecutter guide
+* Add instructions for Codecov setup in documentation.
 
 **Changed:**
 

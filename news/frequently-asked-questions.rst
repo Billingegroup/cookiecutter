@@ -1,6 +1,6 @@
 **Added:**
 
-* FAQ section to the documentation on how to customize the template and design decisions for the current setup
+* Add FAQ section to the documentation on how to customize the template and design decisions for the current setup.
 
 **Changed:**
 

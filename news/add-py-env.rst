@@ -1,6 +1,6 @@
 **Added:**
 
-* support for Billinge group's reusesable workflow by adding requirement files and environment.yml
+* Support Billinge group's reusesable workflow by adding requirement files and `environment.yml`.
 
 **Changed:**
 

@@ -16,7 +16,7 @@
 
 **Fixed:**
 
-* sub section titles in doc to improve readability and navigation working with conda-forge package
+* Modified sub-section titles in doc to improve readability and navigation working with conda-forge package.
 
 **Security:**
 

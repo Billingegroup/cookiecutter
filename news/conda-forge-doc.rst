@@ -1,6 +1,6 @@
 **Added:**
 
-* conda-forge feedstock creation and maintenance guide
+* Add conda-forge feedstock creation and maintenance guide.
 
 **Changed:**
 

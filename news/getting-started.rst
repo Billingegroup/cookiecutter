@@ -1,8 +1,8 @@
 **Added:**
 
-* Getting started page in documentation
-* FAQ section on why both pip.txt and conda.txt added
-* FAQ section on how version is set and retrieved dynamically
+* Add `Getting started`` page in documentation.
+* Add FAQ section on why both `pip.txt`` and `conda.txt`` added.
+* Add FAQ section on how version is set and retrieved dynamically.
 
 **Changed:**
 
